@@ -1647,7 +1647,7 @@
         <!--Record List-->
         <scene sceneID="1xd-R3-7mz">
             <objects>
-                <tableViewController id="EA1-Bd-ddT" customClass="ListController" sceneMemberID="viewController">
+                <tableViewController id="EA1-Bd-ddT" customClass="TallyListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="j5n-yU-8md">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -73,7 +73,6 @@
 		E4C271571AF6304900823426 /* Icon.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C271561AF6304900823426 /* Icon.m */; };
 		E4C29DA91A3717F200003D51 /* main_head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C29DA81A3717F200003D51 /* main_head.jpg */; };
 		E4C29DAB1A371D5600003D51 /* AccountBookBG.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C29DAA1A371D5600003D51 /* AccountBookBG.jpg */; };
-		E4C8CCC01A6262ED00073B07 /* ListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C8CCBF1A6262ED00073B07 /* ListController.m */; };
 		E4CAF8481A419CC800155A3F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CAF8471A419CC800155A3F /* MainViewController.m */; };
 		E4D7EC5B1A4299EF00C35931 /* TimeInformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D7EC5A1A4299EF00C35931 /* TimeInformationController.m */; };
 		E4E265981AFB07E5002019F5 /* ImportUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E265971AFB07E5002019F5 /* ImportUserViewController.m */; };
@@ -87,6 +86,7 @@
 		E4E8D61A1AF6F9B0007F6569 /* RecordDao.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E8D6191AF6F9B0007F6569 /* RecordDao.m */; };
 		E4E8D61D1AF6F9E9007F6569 /* TransferDao.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E8D61C1AF6F9E9007F6569 /* TransferDao.m */; };
 		E4E8D6201AF6FA21007F6569 /* TemplateDao.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E8D61F1AF6FA21007F6569 /* TemplateDao.m */; };
+		E4F63D471B0EE5270016D1DE /* TallyListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F63D461B0EE5270016D1DE /* TallyListTableViewController.m */; };
 		E4FA68A71A667E0F007AC9AE /* AccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FA68A61A667E0F007AC9AE /* AccountController.m */; };
 		E4FA68AA1A669B47007AC9AE /* AddSpendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FA68A91A669B47007AC9AE /* AddSpendViewController.m */; };
 		E4FA68AD1A669B57007AC9AE /* AddEarnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FA68AC1A669B57007AC9AE /* AddEarnViewController.m */; };
@@ -227,8 +227,6 @@
 		E4C271561AF6304900823426 /* Icon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Icon.m; sourceTree = "<group>"; };
 		E4C29DA81A3717F200003D51 /* main_head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = main_head.jpg; sourceTree = "<group>"; };
 		E4C29DAA1A371D5600003D51 /* AccountBookBG.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = AccountBookBG.jpg; sourceTree = "<group>"; };
-		E4C8CCBE1A6262ED00073B07 /* ListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListController.h; sourceTree = "<group>"; };
-		E4C8CCBF1A6262ED00073B07 /* ListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListController.m; sourceTree = "<group>"; };
 		E4CAF8461A419CC800155A3F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		E4CAF8471A419CC800155A3F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		E4D7EC591A4299EF00C35931 /* TimeInformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeInformationController.h; sourceTree = "<group>"; };
@@ -255,6 +253,8 @@
 		E4E8D61C1AF6F9E9007F6569 /* TransferDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferDao.m; sourceTree = "<group>"; };
 		E4E8D61E1AF6FA21007F6569 /* TemplateDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateDao.h; sourceTree = "<group>"; };
 		E4E8D61F1AF6FA21007F6569 /* TemplateDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateDao.m; sourceTree = "<group>"; };
+		E4F63D451B0EE5270016D1DE /* TallyListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TallyListTableViewController.h; sourceTree = "<group>"; };
+		E4F63D461B0EE5270016D1DE /* TallyListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TallyListTableViewController.m; sourceTree = "<group>"; };
 		E4FA68A51A667E0F007AC9AE /* AccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountController.h; sourceTree = "<group>"; };
 		E4FA68A61A667E0F007AC9AE /* AccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountController.m; sourceTree = "<group>"; };
 		E4FA68A81A669B47007AC9AE /* AddSpendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSpendViewController.h; sourceTree = "<group>"; };
@@ -512,8 +512,6 @@
 		E4C8CCBD1A62629300073B07 /* Tally */ = {
 			isa = PBXGroup;
 			children = (
-				E4C8CCBE1A6262ED00073B07 /* ListController.h */,
-				E4C8CCBF1A6262ED00073B07 /* ListController.m */,
 				E4FA68AB1A669B57007AC9AE /* AddEarnViewController.h */,
 				E4FA68AC1A669B57007AC9AE /* AddEarnViewController.m */,
 				E400B8B51AFE6C7900B31D26 /* AddRecordViewController.h */,
@@ -522,6 +520,8 @@
 				E4FA68A91A669B47007AC9AE /* AddSpendViewController.m */,
 				E4FA68AE1A669B68007AC9AE /* AddTransferViewController.h */,
 				E4FA68AF1A669B68007AC9AE /* AddTransferViewController.m */,
+				E4F63D451B0EE5270016D1DE /* TallyListTableViewController.h */,
+				E4F63D461B0EE5270016D1DE /* TallyListTableViewController.m */,
 			);
 			name = Tally;
 			sourceTree = "<group>";
@@ -686,10 +686,10 @@
 				E46423B21B0A16D700FE40D9 /* RecordViewController.m in Sources */,
 				E4E2659B1AFB39B1002019F5 /* ClassificationsTableViewController.m in Sources */,
 				E4E265A41AFB5A9E002019F5 /* AddAccountViewController.m in Sources */,
+				E4F63D471B0EE5270016D1DE /* TallyListTableViewController.m in Sources */,
 				E4C2161D1ADFA9F100AEC554 /* AddAccountBookViewController.m in Sources */,
 				E4C271511AF6304900823426 /* Classification.m in Sources */,
 				E4A9775E1AFA409900910FF7 /* CoreDataTableViewController.m in Sources */,
-				E4C8CCC01A6262ED00073B07 /* ListController.m in Sources */,
 				E42F24721AFD118800F5216E /* SelectorView.m in Sources */,
 				E4E265A71AFB5AB4002019F5 /* AddShopViewController.m in Sources */,
 				E4C2714E1AF6304900823426 /* Photo.m in Sources */,
