@@ -7,10 +7,29 @@
 //
 
 #import "TransferDao.h"
-#import "Transfer.h"
 
 #define TransferEntityName @"Transfer"
 
 @implementation TransferDao
+
+-(NSManagedObjectID *)saveWithMoney:(NSNumber *)money
+                          andRemark:(NSString *)remark
+                            andTime:(NSDate *)time
+                      andOutAccount:(Account *)tfout
+                       andInAccount:(Account *)tfin
+                      inAccountBook:(AccountBook *)accountBook{
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    Transfer *transfer=[NSEntityDescription insertNewObjectForEntityForName:TransferEntityName
+                                                     inManagedObjectContext:self.cdh.context];
+    transfer.money=money;
+    transfer.remark=remark;
+    transfer.time=time;
+    transfer.tfin=tfin;
+    transfer.tfout=tfout;
+    transfer.accountBook=accountBook;
+    [self.cdh saveContext];
+    return transfer.objectID;
+}
 
 @end

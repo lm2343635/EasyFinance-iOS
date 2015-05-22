@@ -7,7 +7,15 @@
 //
 
 #import "DaoTemplate.h"
+#import "Transfer.h"
 
 @interface TransferDao : DaoTemplate
+
+-(NSManagedObjectID *)saveWithMoney:(NSNumber *)money
+                          andRemark:(NSString *)remark
+                            andTime:(NSDate *)time
+                      andOutAccount:(Account *)tfout
+                       andInAccount:(Account *)tfin
+                      inAccountBook:(AccountBook *)accountBook;
 
 @end

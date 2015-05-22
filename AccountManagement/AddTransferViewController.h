@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SelectorView.h"
+#import "DateSelectorView.h"
 
-@interface AddTransferViewController : UIViewController
+@interface AddTransferViewController : UIViewController <UITextViewDelegate>
+@property (strong, nonatomic) IBOutlet SelectorView *selectorView;
+@property (strong, nonatomic) IBOutlet DateSelectorView *dateSelectorView;
 
 @property (strong, nonatomic) IBOutlet UITextField *moneyTextField;
 @property (strong, nonatomic) IBOutlet UIButton *selectOutAccountButton;
@@ -20,5 +24,8 @@
 
 - (IBAction)closeAddTransfer:(id)sender;
 - (IBAction)saveTransfer:(id)sender;
+- (IBAction)selectOutAccount:(id)sender;
+- (IBAction)selectInAccount:(id)sender;
+- (IBAction)selectTime:(id)sender;
 
 @end
