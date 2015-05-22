@@ -14,7 +14,7 @@
 
 @implementation AddSpendViewController
 
-- (IBAction)saveSpendRecord:(id)sender {
+- (IBAction)saveSpendRecord:(id)sender { 
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     //验证合法才能提交
