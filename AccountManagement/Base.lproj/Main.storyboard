@@ -2977,19 +2977,14 @@
                                                 <action selector="closeAddTransfer:" destination="rZO-xt-KHi" id="Phy-Em-l28"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="CWZ-17-PSo"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="CWZ-17-PSo">
+                                            <connections>
+                                                <action selector="saveTransfer:" destination="rZO-xt-KHi" id="aJ2-oM-6El"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9wD-vs-chz">
-                                <rect key="frame" x="86" y="79" width="218" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <state key="normal" title="0.00">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <view contentMode="scaleToFill" id="7e0-Yg-BXf">
                                 <rect key="frame" x="16" y="140" width="288" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -3001,7 +2996,7 @@
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transfer Out" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vw6-gx-M7R">
-                                <rect key="frame" x="16" y="157" width="103" height="21"/>
+                                <rect key="frame" x="16" y="157" width="78" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -3023,7 +3018,7 @@
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transfer In" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b4M-Rf-o56">
-                                <rect key="frame" x="16" y="206" width="103" height="21"/>
+                                <rect key="frame" x="16" y="206" width="78" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -3036,13 +3031,6 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XQF-xr-V0r">
-                                <rect key="frame" x="22" y="479" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remark" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E3Y-lv-7uS">
                                 <rect key="frame" x="135" y="293" width="50" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -3062,7 +3050,7 @@
                                 <rect key="frame" x="171" y="153" width="133" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="DefalutOutAccount">
+                                <state key="normal" title="Select an Account">
                                     <color key="titleColor" red="1" green="0.083186807720000006" blue="0.16540810149999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -3071,7 +3059,7 @@
                                 <rect key="frame" x="171" y="202" width="133" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="DefalutInAccount">
+                                <state key="normal" title="Select an Account">
                                     <color key="titleColor" red="0.002491650711" green="0.32413983590000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -3080,50 +3068,39 @@
                                 <rect key="frame" x="135" y="252" width="169" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="January 14, 2015 at 21:14">
+                                <state key="normal" title="yyyy-MM-dd  hh:mm    ">
                                     <color key="titleColor" red="0.38924536320000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <view contentMode="scaleToFill" id="suB-Ed-vSk" customClass="DateSelectorView">
-                                <rect key="frame" x="0.0" y="219" width="320" height="207"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.00" textAlignment="right" minimumFontSize="17" id="PDx-Eq-9sq">
+                                <rect key="frame" x="16" y="79" width="288" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <datePicker tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" id="cRE-UV-5r4">
-                                        <rect key="frame" x="0.0" y="45" width="320" height="162"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="453037330.45533103">
-                                            <!--2015-05-11 11:42:10 +0000-->
-                                        </date>
-                                    </datePicker>
-                                    <view contentMode="scaleToFill" id="Zrj-Bj-UfR">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" id="1dT-mE-Gx5">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8fx-YG-kRA">
-                                                <rect key="frame" x="266" y="9" width="46" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="Done">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="xw4-8m-33V">
+                                <rect key="frame" x="131" y="152" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hje-dp-i2F">
+                                <rect key="frame" x="131" y="201" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Transfer" image="add_transfer" id="JdM-pi-E5t"/>
+                    <connections>
+                        <outlet property="moneyTextField" destination="PDx-Eq-9sq" id="PqM-NE-jQW"/>
+                        <outlet property="remarkTextView" destination="If2-je-cTJ" id="WRP-Gz-b7s"/>
+                        <outlet property="selectInAccountButton" destination="OJB-s6-m9m" id="nJG-87-9VV"/>
+                        <outlet property="selectInAccountImageView" destination="hje-dp-i2F" id="iAU-0m-nHE"/>
+                        <outlet property="selectOutAccountButton" destination="h4N-yi-BVR" id="gZh-SV-upe"/>
+                        <outlet property="selectOutAccountImageView" destination="xw4-8m-33V" id="aWQ-6b-9Wm"/>
+                        <outlet property="selectTimeButton" destination="mLH-A7-Jne" id="qQJ-Nz-G7H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBK-k3-yA3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3428,7 +3405,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="NbG-3y-aWz" customClass="SelectorView">
-                                <rect key="frame" x="0.0" y="181" width="320" height="206"/>
+                                <rect key="frame" x="0.0" y="47" width="320" height="206"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <pickerView tag="1" contentMode="scaleToFill" id="3hn-0J-z8V">
@@ -3955,6 +3932,9 @@
                                 <rect key="frame" x="16" y="79" width="62" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="CameraButton"/>
+                                <connections>
+                                    <segue destination="1Gd-gX-v8e" kind="modal" identifier="recordPhotoSegue" id="Gmg-KL-hli"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" id="p64-N8-Unm">
                                 <rect key="frame" x="86" y="140" width="218" height="1"/>
@@ -4151,12 +4131,18 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="Ttv-rW-TrX">
+                                <rect key="frame" x="29" y="91" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Spend" image="add_spend_record" id="V7j-bc-TL0"/>
                     <navigationItem key="navigationItem" id="QU8-c1-JyB"/>
                     <connections>
+                        <outlet property="downloadPhotoActivityIndicator" destination="Ttv-rW-TrX" id="eYc-4e-nFF"/>
                         <outlet property="moneyTextFeild" destination="vvh-ji-wnD" id="4yc-8h-hv5"/>
                         <outlet property="remarkTextView" destination="RM9-oy-OQs" id="vQd-Nz-5RX"/>
                         <outlet property="selectAccountButton" destination="oNH-7L-N8F" id="0Wo-IK-ZxJ"/>
@@ -4173,6 +4159,39 @@
             </objects>
             <point key="canvasLocation" x="-1824" y="-1617"/>
         </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="0fh-M0-nCB">
+            <objects>
+                <viewController id="1Gd-gX-v8e" customClass="PhotoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZFq-h7-cFx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="whO-cb-P4D">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hm1-E1-csF">
+                                <rect key="frame" x="23" y="23" width="23" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="close_record_photo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="back:" destination="1Gd-gX-v8e" eventType="touchUpInside" id="Rg3-BL-fCk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="photoImageView" destination="whO-cb-P4D" id="WAp-Yu-bVU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZmJ-xV-kyZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1387" y="-1617"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AccountBookCover1" width="402" height="480"/>
@@ -4182,6 +4201,7 @@
         <image name="add_earn_record" width="27" height="27"/>
         <image name="add_spend_record" width="27" height="27"/>
         <image name="add_transfer" width="21" height="21"/>
+        <image name="close_record_photo" width="23" height="23"/>
         <image name="date_today" width="32" height="32"/>
         <image name="icon_qtsr" width="32" height="32"/>
         <image name="icon_yhsr" width="32" height="32"/>

@@ -73,6 +73,7 @@
 		E4C271571AF6304900823426 /* Icon.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C271561AF6304900823426 /* Icon.m */; };
 		E4C29DA91A3717F200003D51 /* main_head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C29DA81A3717F200003D51 /* main_head.jpg */; };
 		E4C29DAB1A371D5600003D51 /* AccountBookBG.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C29DAA1A371D5600003D51 /* AccountBookBG.jpg */; };
+		E4C2B2BA1B0F289200230249 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C2B2B91B0F289200230249 /* PhotoViewController.m */; };
 		E4CAF8481A419CC800155A3F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CAF8471A419CC800155A3F /* MainViewController.m */; };
 		E4D7EC5B1A4299EF00C35931 /* TimeInformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D7EC5A1A4299EF00C35931 /* TimeInformationController.m */; };
 		E4E265981AFB07E5002019F5 /* ImportUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E265971AFB07E5002019F5 /* ImportUserViewController.m */; };
@@ -227,6 +228,8 @@
 		E4C271561AF6304900823426 /* Icon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Icon.m; sourceTree = "<group>"; };
 		E4C29DA81A3717F200003D51 /* main_head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = main_head.jpg; sourceTree = "<group>"; };
 		E4C29DAA1A371D5600003D51 /* AccountBookBG.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = AccountBookBG.jpg; sourceTree = "<group>"; };
+		E4C2B2B81B0F289200230249 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		E4C2B2B91B0F289200230249 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		E4CAF8461A419CC800155A3F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		E4CAF8471A419CC800155A3F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		E4D7EC591A4299EF00C35931 /* TimeInformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeInformationController.h; sourceTree = "<group>"; };
@@ -541,6 +544,8 @@
 				E4C216191ADF9B7F00AEC554 /* MainTabBarController.m */,
 				E4CAF8461A419CC800155A3F /* MainViewController.h */,
 				E4CAF8471A419CC800155A3F /* MainViewController.m */,
+				E4C2B2B81B0F289200230249 /* PhotoViewController.h */,
+				E4C2B2B91B0F289200230249 /* PhotoViewController.m */,
 				E46423B01B0A16D700FE40D9 /* RecordViewController.h */,
 				E46423B11B0A16D700FE40D9 /* RecordViewController.m */,
 				E4C215FC1ADF844D00AEC554 /* RegisterViewController.h */,
@@ -724,6 +729,7 @@
 				E43368901AF4E209005F7BC4 /* SystemInit.m in Sources */,
 				E43368961AF4E539005F7BC4 /* UserDao.m in Sources */,
 				E43ECDCB1AEF302D00CB3C46 /* AFURLConnectionOperation.m in Sources */,
+				E4C2B2BA1B0F289200230249 /* PhotoViewController.m in Sources */,
 				E494C9F01AECD9E80035B8C8 /* AccountBookDao.m in Sources */,
 				E494C9ED1AECD8580035B8C8 /* DaoTemplate.m in Sources */,
 				E4A213181B00CFFB00105FD3 /* DateSelectorView.m in Sources */,

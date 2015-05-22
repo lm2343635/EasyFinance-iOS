@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DaoManager.h"
+#import "SystemInit.h"
 
 @interface RecordViewController : UIViewController
 
 @property (nonatomic,strong) Record *record;
 
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *downloadPhotoActivityIndicator;
 @property (strong, nonatomic) IBOutlet UIButton *takePhotoButton;
 @property (strong, nonatomic) IBOutlet UITextField *moneyTextFeild;
 @property (strong, nonatomic) IBOutlet UIButton *selectClassificationButton;

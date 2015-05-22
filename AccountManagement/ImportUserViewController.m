@@ -9,6 +9,7 @@
 #import "ImportUserViewController.h"
 #import "InternetHelper.h"
 #import "DaoManager.h"
+#import "SystemInit.h"
 
 @interface ImportUserViewController ()
 
@@ -367,7 +368,7 @@
                 count=0;
                 NSSet *accountBooks=importUser.accountBooks;
                 for(AccountBook *accountBook in accountBooks) {
-                    [manager POST:[InternetHelper createUrl:@""]
+                    [manager POST:[InternetHelper createUrl:@"iOSRecordServlet?task=getRecords"]
                        parameters:@{@"abid":accountBook.sid}
                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
                               if(DEBUG==1)
@@ -383,6 +384,11 @@
                                   int said=[[object valueForKey:@"aid"] intValue];
                                   int ssid=[[object valueForKey:@"sid"] intValue];
                                   int spid=[[object valueForKey:@"pid"] intValue];
+                                  //服务其中照片为空的那些个收支记录其实是有一张带麻子的照片
+                                  //在iOS客户端中直接让record.photo指向空指针
+                                  Photo *photo=nil;
+                                  if(spid!=SYS_RECORD_PHOTO_NULL)
+                                      photo=[dao.photoDao getBySid:[NSNumber numberWithInt:spid]];
                                   NSManagedObjectID *rid=[dao.recordDao saveWithSid:[NSNumber numberWithInt:srid]
                                                     andMoney:[NSNumber numberWithDouble:[[object valueForKey:@"money"] doubleValue]]
                                                    andRemark:[object valueForKey:@"remark"]
@@ -390,7 +396,7 @@
                                            andClassification:[dao.classificationDao getBySid:[NSNumber numberWithInt:scid]]
                                                   andAccount:[dao.accountDao getBySid:[NSNumber numberWithInt:said]]
                                                      andShop:[dao.shopDao getBySid:[NSNumber numberWithInt:ssid]]
-                                                    andPhoto:[dao.photoDao getBySid:[NSNumber numberWithInt:spid]]
+                                                    andPhoto:photo
                                                inAccountBook:accountBook];
                                   if(DEBUG==1)
                                       NSLog(@"Create Record(rid=%@) in accountBook %@",rid,accountBook.abname);
