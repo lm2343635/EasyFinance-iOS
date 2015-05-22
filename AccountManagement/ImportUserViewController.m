@@ -20,6 +20,7 @@
     NSNumber *importUserUsid;
     User *importUser;
     int count;
+    NSDateFormatter *dateFormatter;
 }
 
 - (void)viewDidLoad {
@@ -28,6 +29,9 @@
     [super viewDidLoad];
     dao=[[DaoManager alloc] init];
     manager=[InternetHelper getRequestOperationManager];
+    dateFormatter = [[NSDateFormatter alloc] init];
+    // 为日期格式器设置格式字符串
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     //清空导入控制台
     self.consoleTextView.text=@"";
     //开始导入数据
@@ -317,6 +321,92 @@
                 break;
             }
             case ImportUserInfoStatusPhoto: {
+                if(DEBUG==1)
+                    NSLog(@"Importing Photos...");
+                //导入各个账本下的照片
+                count=0;
+                NSSet *accountBooks=importUser.accountBooks;
+                for(AccountBook *accountBook in accountBooks) {
+                    [manager POST:[InternetHelper createUrl:@"iOSPhotoServlet?task=getPhotos"]
+                       parameters:@{@"abid":accountBook.sid}
+                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                              if(DEBUG==1)
+                                  NSLog(@"Get message from server: %@",operation.responseString);
+                              NSArray *objects=[NSJSONSerialization JSONObjectWithData:responseObject
+                                                                               options:NSJSONReadingMutableContainers
+                                                                                 error:nil];
+                              for(NSObject *object in objects) {
+                                  int spid=[[object valueForKey:@"pid"] intValue];
+                                  long long timeInterval=[[object valueForKey:@"timeInterval"] longLongValue];
+                                  NSDate *upload=[NSDate dateWithTimeIntervalSince1970:timeInterval/1000];
+                                  NSManagedObjectID *pid=[dao.photoDao saveWithSid:[NSNumber numberWithInt:spid]
+                                                                         andUpload:upload
+                                                                     inAccountBook:accountBook];
+                                  if(DEBUG==1)
+                                      NSLog(@"Create Photo(pid=%@) in accountBook %@",pid,accountBook.abname);
+                                  [self refreshConsole:[NSString stringWithFormat:@"Importing photo uploaded in %@ in account book: %@",[dateFormatter stringFromDate:upload],accountBook.abname]];
+                              }
+                              count++;
+                              if(count==accountBooks.count)
+                                  self.importUserInfoStatus++;
+                          }
+                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                              NSLog(@"Importing photos failed. Server Error: %@",error);
+                          }];
+                }
+                break;
+            }
+            case ImportUserInfoStatusIcon: {
+                //暂无用户自定义图标,跳过
+                self.importUserInfoStatus++;
+                break;
+            }
+            case ImportUserInfoStatusRecord: {
+                if(DEBUG==1)
+                    NSLog(@"Importing Records...");
+                count=0;
+                NSSet *accountBooks=importUser.accountBooks;
+                for(AccountBook *accountBook in accountBooks) {
+                    [manager POST:[InternetHelper createUrl:@""]
+                       parameters:@{@"abid":accountBook.sid}
+                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                              if(DEBUG==1)
+                                  NSLog(@"Get message from server: %@",operation.responseString);
+                              NSArray *objects=[NSJSONSerialization JSONObjectWithData:responseObject
+                                                                               options:NSJSONReadingMutableContainers
+                                                                                 error:nil];
+                              for(NSObject *object in objects) {
+                                  long long timeInterval=[[object valueForKey:@"timeInterval"] longLongValue];
+                                  NSDate *time=[NSDate dateWithTimeIntervalSince1970:timeInterval/1000];
+                                  int srid=[[object valueForKey:@"rid"] intValue];
+                                  int scid=[[object valueForKey:@"cid"] intValue];
+                                  int said=[[object valueForKey:@"aid"] intValue];
+                                  int ssid=[[object valueForKey:@"sid"] intValue];
+                                  int spid=[[object valueForKey:@"pid"] intValue];
+                                  NSManagedObjectID *rid=[dao.recordDao saveWithSid:[NSNumber numberWithInt:srid]
+                                                    andMoney:[NSNumber numberWithDouble:[[object valueForKey:@"money"] doubleValue]]
+                                                   andRemark:[object valueForKey:@"remark"]
+                                                     andTime:time
+                                           andClassification:[dao.classificationDao getBySid:[NSNumber numberWithInt:scid]]
+                                                  andAccount:[dao.accountDao getBySid:[NSNumber numberWithInt:said]]
+                                                     andShop:[dao.shopDao getBySid:[NSNumber numberWithInt:ssid]]
+                                                    andPhoto:[dao.photoDao getBySid:[NSNumber numberWithInt:spid]]
+                                               inAccountBook:accountBook];
+                                  if(DEBUG==1)
+                                      NSLog(@"Create Record(rid=%@) in accountBook %@",rid,accountBook.abname);
+                                  [self refreshConsole:[NSString stringWithFormat:@"Importing record created in %@ in account book: %@",[dateFormatter stringFromDate:time],accountBook.abname]];
+                              }
+                              count++;
+                              if(count==accountBooks.count)
+                                  self.importUserInfoStatus++;
+                          }
+                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                              NSLog(@"Importing records failed. Server Error: %@",error);
+                          }];
+                }
+                break;
+            }
+            case ImportUserInfoStatusTransfer: {
                 //导入全部完成
                 [self finishImport];
                 break;

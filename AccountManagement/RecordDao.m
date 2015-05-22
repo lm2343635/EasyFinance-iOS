@@ -10,6 +10,32 @@
 
 @implementation RecordDao
 
+-(NSManagedObjectID *)saveWithSid:(NSNumber *)sid
+                         andMoney:(NSNumber *)money
+                        andRemark:(NSString *)remark
+                          andTime:(NSDate *)time
+                andClassification:(Classification *)classsification
+                       andAccount:(Account *)account
+                          andShop:(Shop *)shop
+                         andPhoto:(Photo *)photo
+                    inAccountBook:(AccountBook *)accountBook {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    Record *record=[NSEntityDescription insertNewObjectForEntityForName:RecordEntityName
+                                                 inManagedObjectContext:self.cdh.context];
+    record.sid=sid;
+    record.money=money;
+    record.remark=remark;
+    record.time=time;
+    record.classification=classsification;
+    record.account=account;
+    record.shop=shop;
+    record.photo=photo;
+    record.accountBook=accountBook;
+    [self.cdh saveContext];
+    return record.objectID;
+}
+
 -(NSManagedObjectID *)saveWithMoney:(NSNumber *)money
                           andRemark:(NSString *)remark
                             andTime:(NSDate *)time

@@ -21,5 +21,10 @@
 -(NSManagedObjectID *)saveWithData:(NSData *)pdata
                      inAccountBook:(AccountBook *)accountBook;
 
+//导入账本照片使用
+-(NSManagedObjectID *)saveWithSid:(NSNumber *)sid
+                        andUpload:(NSDate *)upload
+                    inAccountBook:(AccountBook *)accountBook;
+
 -(Photo *)getBySid:(NSNumber *)sid;
 @end

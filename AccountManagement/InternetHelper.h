@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "AppDelegate.h"
 
-#define Server @"120.25.237.244"
+//#define Server @"120.25.237.244"
+#define Server @"127.0.0.1:8080"
 #define WebServiceName @"AccountManagement"
 
 #define LOGIN_SUCCESS 0

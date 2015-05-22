@@ -17,8 +17,8 @@
 #define ImportUserInfoStatusTemplate 6
 #define ImportUserInfoStatusPhoto 7
 #define ImportUserInfoStatusIcon 8
-#define ImportUserInfoStatusRecord 8
-#define ImportUserInfoStatusTransfer 8
+#define ImportUserInfoStatusRecord 9
+#define ImportUserInfoStatusTransfer 10
 
 @interface ImportUserViewController : UIViewController
 

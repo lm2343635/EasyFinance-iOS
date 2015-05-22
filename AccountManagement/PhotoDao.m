@@ -34,6 +34,20 @@
     return photo.objectID;
 }
 
+-(NSManagedObjectID *)saveWithSid:(NSNumber *)sid
+                        andUpload:(NSDate *)upload
+                    inAccountBook:(AccountBook *)accountBook {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    Photo *photo=[NSEntityDescription insertNewObjectForEntityForName:PhotoEntityName
+                                               inManagedObjectContext:self.cdh.context];
+    photo.sid=sid;
+    photo.upload=upload;
+    photo.accountBook=accountBook;
+    [self.cdh saveContext];
+    return photo.objectID;
+}
+
 -(Photo *)getBySid:(NSNumber *)sid {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));

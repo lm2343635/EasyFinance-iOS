@@ -13,6 +13,16 @@
 
 @interface RecordDao : DaoTemplate
 
+-(NSManagedObjectID *)saveWithSid:(NSNumber *)sid
+                         andMoney:(NSNumber *)money
+                        andRemark:(NSString *)remark
+                          andTime:(NSDate *)time
+                andClassification:(Classification *)classsification
+                       andAccount:(Account *)account
+                          andShop:(Shop *)shop
+                         andPhoto:(Photo *)photo
+                    inAccountBook:(AccountBook *)accountBook;
+
 -(NSManagedObjectID *)saveWithMoney:(NSNumber *)money
                           andRemark:(NSString *)remark
                             andTime:(NSDate *)time
