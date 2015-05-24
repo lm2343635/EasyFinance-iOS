@@ -400,7 +400,8 @@
                                                inAccountBook:accountBook];
                                   if(DEBUG==1)
                                       NSLog(@"Create Record(rid=%@) in accountBook %@",rid,accountBook.abname);
-                                  [self refreshConsole:[NSString stringWithFormat:@"Importing record created in %@ in account book: %@",[dateFormatter stringFromDate:time],accountBook.abname]];
+                                  [self refreshConsole:[NSString stringWithFormat:@"Importing record created in %@ in account book: %@",
+                                                        [dateFormatter stringFromDate:time],accountBook.abname]];
                               }
                               count++;
                               if(count==accountBooks.count)
@@ -413,10 +414,51 @@
                 break;
             }
             case ImportUserInfoStatusTransfer: {
+                if(DEBUG==1)
+                    NSLog(@"Importing Transfers...");
+                count=0;
+                NSSet *accountBooks=importUser.accountBooks;
+                for(AccountBook *accountBook in accountBooks) {
+                    [manager POST:[InternetHelper createUrl:@"iOSTransferServlet?task=getTransfers"]
+                       parameters:@{@"abid":accountBook.sid}
+                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                              if(DEBUG==1)
+                                  NSLog(@"Get message from server: %@",operation.responseString);
+                              NSArray *objects=[NSJSONSerialization JSONObjectWithData:responseObject
+                                                                               options:NSJSONReadingMutableContainers
+                                                                                 error:nil];
+                              for(NSObject *object in objects) {
+                                  long long timeInterval=[[object valueForKey:@"timeInterval"] longLongValue];
+                                  NSDate *time=[NSDate dateWithTimeIntervalSince1970:timeInterval/1000];
+                                  int stfid=[[object valueForKey:@"tfid"] intValue];
+                                  int stfoutid=[[object valueForKey:@"tfoutid"] intValue];
+                                  int stfinid=[[object valueForKey:@"tfinid"] intValue];
+                                  NSManagedObjectID *tfid=[dao.transferDao saveWithSid:[NSNumber numberWithInt:stfid]
+                                                                              andMoney:[NSNumber numberWithDouble:[[object valueForKey:@"money"] doubleValue]]
+                                                                             andRemark:[object valueForKey:@"remark"]
+                                                                               andTime:time
+                                                                         andOutAccount:[dao.accountDao getBySid:[NSNumber numberWithInt:stfoutid]]
+                                                                          andInAccount:[dao.accountDao getBySid:[NSNumber numberWithInt:stfinid]]
+                                                                         inAccountBook:accountBook];
+                                  if(DEBUG==1)
+                                      NSLog(@"Create Transfer(tfid=%@) in accountBook %@",tfid,accountBook.abname);
+                                  [self refreshConsole:[NSString stringWithFormat:@"Importing transfer created in %@ in account book %@",
+                                                        [dateFormatter stringFromDate:time],accountBook.abname]];
+                              }
+                              count++;
+                              if(count==accountBooks.count)
+                                  self.importUserInfoStatus++;
+                          }
+                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                              NSLog(@"Importing records failed. Server Error: %@",error);
+                          }];
+                }
+                break;
+            }
+            case ImportUserInfoStatusEnd:
                 //导入全部完成
                 [self finishImport];
                 break;
-            }
             default:
                 break;
         }
@@ -429,6 +471,7 @@
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSString *text=[self.consoleTextView.text stringByAppendingFormat:@"\n%@",message];
     self.consoleTextView.text=text;
+    [self.consoleTextView setContentOffset:CGPointMake(0, self.consoleTextView.contentSize.height)];
 }
 
 //导入全部完成

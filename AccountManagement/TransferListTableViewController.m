@@ -11,6 +11,7 @@
 #import "DaoManager.h"
 #import "DateTool.h"
 #import "TransferMonthlyStatisticalData.h"
+#import "MJRefresh.h"
 
 @interface TransferListTableViewController ()
 
@@ -19,6 +20,8 @@
 @implementation TransferListTableViewController {
     DaoManager *dao;
     User *loginedUser;
+    //要显示数据的那一年的其中一个日期
+    NSDate *yearDate;
     NSArray *monthlyStatisticalDatas;
     NSArray *transfers;
     Transfer *selectedTransfer;
@@ -34,29 +37,34 @@
     [super viewDidLoad];
     dao=[[DaoManager alloc] init];
     loginedUser=[dao.userDao getLoginedUser];
+    //默认显示今年的数据
+    yearDate=[NSDate date];
     //默认显示第一个月的详细视图
     showMonthIndex=0;
     //进度条最大值默认值为0
     progressMaxValue=0;
+    //去掉表格分割线
+    self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    //设置下拉加载上一年的数据
+    [self.tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(loadListOfLastYear)];
+    [self.tableView.header setTitle:@"Load transfer list of last year" forState:MJRefreshHeaderStateIdle];
+    [self.tableView.header setTitle:@"Release to load" forState:MJRefreshHeaderStatePulling];
+    [self.tableView.header setTitle:@"Loading ..." forState:MJRefreshHeaderStateRefreshing];
+    self.tableView.header.updatedTimeHidden = YES;
+    //设置上拉加载下一年的数据
+    [self.tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(loadListOfNextYear)];
+    [self.tableView.footer setTitle:@"Drag up to load transfer list of last year" forState:MJRefreshFooterStateIdle];
+    [self.tableView.footer setTitle:@"Loading ..." forState:MJRefreshFooterStateRefreshing];
+    [self.tableView.footer setTitle:@"No more data" forState:MJRefreshFooterStateNoMoreData];
+    //根据当前默认年份设置要显示的数据
+    [self setDataByYear];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    NSDate *nowDate=[NSDate date];
-    monthlyStatisticalDatas=[dao.transferDao getMonthlyStatisticalDataFrom:[DateTool getThisYearStart:nowDate]
-                                                                        to:[DateTool getThisYearEnd:nowDate]
-                                                             inAccountBook:loginedUser.usingAccountBook];
-    for(TransferMonthlyStatisticalData *data in monthlyStatisticalDatas) {
-        NSLog(@"%@ %f",[DateTool formateDate:data.date withFormat:DateFormatLocalMonth],data.amount);
-        if(data.amount>progressMaxValue)
-            progressMaxValue=data.amount;
-    }
-    TransferMonthlyStatisticalData *data=[monthlyStatisticalDatas objectAtIndex:0];
-    transfers=[dao.transferDao findByAccountBook:loginedUser.usingAccountBook
-                                            from:[DateTool getThisMonthStart:data.date]
-                                              to:[DateTool getThisMonthEnd:data.date]];
-    [self.tableView reloadData];
+    
+
 }
 
 #pragma mark - Navigation
@@ -142,4 +150,48 @@
     }
 }
 
+#pragma mark Service
+//根据年份决定要显示的数据
+-(void)setDataByYear {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    self.navigationItem.title=[NSString stringWithFormat:@"%@ in %@",TransferListNavigationTitle,
+                               [DateTool formateDate:yearDate withFormat:DateFormatYear]];
+    monthlyStatisticalDatas=[dao.transferDao getMonthlyStatisticalDataFrom:[DateTool getThisYearStart:yearDate]
+                                                                        to:[DateTool getThisYearEnd:yearDate]
+                                                             inAccountBook:loginedUser.usingAccountBook];
+    if(monthlyStatisticalDatas.count>0) {
+        progressMaxValue=0;
+        for(TransferMonthlyStatisticalData *data in monthlyStatisticalDatas) {
+            NSLog(@"%@ %f",[DateTool formateDate:data.date withFormat:DateFormatLocalMonth],data.amount);
+            if(data.amount>progressMaxValue)
+                progressMaxValue=data.amount;
+        }
+        TransferMonthlyStatisticalData *data=[monthlyStatisticalDatas objectAtIndex:0];
+        transfers=[dao.transferDao findByAccountBook:loginedUser.usingAccountBook
+                                                from:[DateTool getThisMonthStart:data.date]
+                                                  to:[DateTool getThisMonthEnd:data.date]];
+    }else{
+        transfers=nil;
+    }
+    [self.tableView reloadData];
+}
+
+//加载上一年的数据
+-(void)loadListOfLastYear {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    yearDate=[DateTool getADayOfLastYear:yearDate];
+    [self setDataByYear];
+    [self.tableView.header endRefreshing];
+}
+
+//加载下一年的数据
+-(void)loadListOfNextYear {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    yearDate=[DateTool getADayOfNextYear:yearDate];
+    [self setDataByYear];
+    [self.tableView.footer endRefreshing];
+}
 @end

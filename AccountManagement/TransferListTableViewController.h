@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define TransferListNavigationTitle @"Transfer List"
+
 @interface TransferListTableViewController : UITableViewController
 
 @end

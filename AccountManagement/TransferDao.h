@@ -11,6 +11,14 @@
 
 @interface TransferDao : DaoTemplate
 
+-(NSManagedObjectID *)saveWithSid:(NSNumber *)sid
+                         andMoney:(NSNumber *)money
+                        andRemark:(NSString *)remark
+                          andTime:(NSDate *)time
+                    andOutAccount:(Account *)tfout
+                     andInAccount:(Account *)tfin
+                    inAccountBook:(AccountBook *)accountBook;
+
 -(NSManagedObjectID *)saveWithMoney:(NSNumber *)money
                           andRemark:(NSString *)remark
                             andTime:(NSDate *)time

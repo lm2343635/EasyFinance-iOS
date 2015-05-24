@@ -42,8 +42,6 @@
     yearDate=[NSDate date];
     //默认显示第一个月的详细视图
     showMonthIndex=0;
-    //进度条最大值默认值为0
-    progressMaxValue=0;
     //去掉表格分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //设置下拉加载上一年的数据
@@ -175,6 +173,8 @@
                                                                       to:[DateTool getThisYearEnd:yearDate]
                                                            inAccountBook:loginedUser.usingAccountBook];
     if(monthlyStatisticalDatas.count>0) {
+        //进度条最大值默认值为0
+        progressMaxValue=0;
         for(RecordMonthlyStatisticalData *data in monthlyStatisticalDatas) {
             if(data.earn>progressMaxValue)
                 progressMaxValue=data.earn;
