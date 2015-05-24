@@ -6,19 +6,22 @@
 //  Copyright (c) 2015年 李大爷. All rights reserved.
 //
 
-#import "TallyListTableViewController.h"
+#import "RecordListTableViewController.h"
 #import "RecordViewController.h"
 #import "DaoManager.h"
 #import "DateTool.h"
 #import "RecordMonthlyStatisticalData.h"
+#import "MJRefresh.h"
 
-@interface TallyListTableViewController ()
+@interface RecordListTableViewController ()
 
 @end
 
-@implementation TallyListTableViewController {
+@implementation RecordListTableViewController {
     DaoManager *dao;
     User *loginedUser;
+    //要显示数据的那一年的其中一个日期
+    NSDate *yearDate;
     //按月分类的统计数据
     NSArray *monthlyStatisticalDatas;
     NSArray *records;
@@ -35,40 +38,43 @@
     [super viewDidLoad];
     dao=[[DaoManager alloc] init];
     loginedUser=[dao.userDao getLoginedUser];
+    //默认显示今年的数据
+    yearDate=[NSDate date];
     //默认显示第一个月的详细视图
     showMonthIndex=0;
     //进度条最大值默认值为0
     progressMaxValue=0;
+    //去掉表格分割线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //设置下拉加载上一年的数据
+    [self.tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(loadListOfLastYear)];
+    [self.tableView.header setTitle:@"Load record list of last year" forState:MJRefreshHeaderStateIdle];
+    [self.tableView.header setTitle:@"Release to load" forState:MJRefreshHeaderStatePulling];
+    [self.tableView.header setTitle:@"Loading ..." forState:MJRefreshHeaderStateRefreshing];
+    self.tableView.header.updatedTimeHidden = YES;
+    //设置上拉加载下一年的数据
+    [self.tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(loadListOfNextYear)];
+    [self.tableView.footer setTitle:@"Drag up to load record list of last year" forState:MJRefreshFooterStateIdle];
+    [self.tableView.footer setTitle:@"Loading ..." forState:MJRefreshFooterStateRefreshing];
+    [self.tableView.footer setTitle:@"No more data" forState:MJRefreshFooterStateNoMoreData];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    NSDate *nowDate=[NSDate date];
-    monthlyStatisticalDatas=[dao.recordDao getMonthlyStatisticalDataFrom:[DateTool getThisYearStart:nowDate]
-                                                                      to:[DateTool getThisYearEnd:nowDate]
-                                                           inAccountBook:loginedUser.usingAccountBook];
-    for(RecordMonthlyStatisticalData *data in monthlyStatisticalDatas) {
-        if(data.earn>progressMaxValue)
-            progressMaxValue=data.earn;
-        if(data.spend>progressMaxValue)
-            progressMaxValue=data.spend;
-        if(fabs(data.earn-data.spend)>progressMaxValue)
-            progressMaxValue=fabs(data.earn-data.spend);
-    }
-    RecordMonthlyStatisticalData *data =[monthlyStatisticalDatas objectAtIndex:0];
-    records=[dao.recordDao findByAccountBook:loginedUser.usingAccountBook
-                                        from:[DateTool getThisMonthStart:data.date]
-                                          to:[DateTool getThisMonthEnd:data.date]];
-    [self.tableView reloadData];
+    [self setDataByYear];
 }
 
 #pragma mark - Navigation
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    RecordViewController *controller=(RecordViewController *)[segue destinationViewController];
-    controller.record=selectedRecord;
+    if([segue.identifier isEqualToString:@"recordSegue"]) {
+        RecordViewController *controller=(RecordViewController *)[segue destinationViewController];
+        controller.record=selectedRecord;
+    }
+
 }
 
 #pragma mark - Table view data source
@@ -115,8 +121,7 @@
         UIProgressView *earnProgressView=(UIProgressView *)[cell viewWithTag:6];
         UIProgressView *spendProgressView=(UIProgressView *)[cell viewWithTag:7];
         UIProgressView *surplusProgressView=(UIProgressView *)[cell viewWithTag:8];
-        monthLabel.text=[NSString stringWithFormat:@"%@",[DateTool formateDate:data.date
-                                                                    withFormat:DateFormatLocalMonth]];
+        monthLabel.text=[DateTool formateDate:data.date withFormat:DateFormatLocalMonth];
         NSDateComponents *components=[DateTool getDateComponents:[DateTool getThisMonthEnd:data.date]];
         int days=(int)components.day;
         int month=(int)components.month;
@@ -143,7 +148,6 @@
         NSUInteger dataIndex=indexPath.row;
         if(indexPath.row>showMonthIndex+records.count)
             dataIndex-=records.count;
-        NSLog(@"dataIndex=%ld",dataIndex);
         //当当前月份的详细信息被展开时，就关闭
         if(dataIndex==showMonthIndex&&records!=nil)
             records=nil;
@@ -159,4 +163,51 @@
     }
 }
 
+
+#pragma mark Service
+//根据年份决定要显示的数据
+-(void)setDataByYear {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    self.navigationItem.title=[NSString stringWithFormat:@"%@ in %@",RecordListNavigationTitle,
+                               [DateTool formateDate:yearDate withFormat:DateFormatYear]];
+    monthlyStatisticalDatas=[dao.recordDao getMonthlyStatisticalDataFrom:[DateTool getThisYearStart:yearDate]
+                                                                      to:[DateTool getThisYearEnd:yearDate]
+                                                           inAccountBook:loginedUser.usingAccountBook];
+    if(monthlyStatisticalDatas.count>0) {
+        for(RecordMonthlyStatisticalData *data in monthlyStatisticalDatas) {
+            if(data.earn>progressMaxValue)
+                progressMaxValue=data.earn;
+            if(data.spend>progressMaxValue)
+                progressMaxValue=data.spend;
+            if(fabs(data.earn-data.spend)>progressMaxValue)
+                progressMaxValue=fabs(data.earn-data.spend);
+        }
+        RecordMonthlyStatisticalData *data =[monthlyStatisticalDatas objectAtIndex:0];
+        records=[dao.recordDao findByAccountBook:loginedUser.usingAccountBook
+                                            from:[DateTool getThisMonthStart:data.date]
+                                              to:[DateTool getThisMonthEnd:data.date]];
+    }else{
+        records=nil;
+    }
+    [self.tableView reloadData];
+}
+
+//加载上一年的数据
+-(void)loadListOfLastYear {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    yearDate=[DateTool getADayOfLastYear:yearDate];
+    [self setDataByYear];
+    [self.tableView.header endRefreshing];
+}
+
+//加载下一年的数据
+-(void)loadListOfNextYear {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    yearDate=[DateTool getADayOfNextYear:yearDate];
+    [self setDataByYear];
+    [self.tableView.footer endRefreshing];
+}
 @end

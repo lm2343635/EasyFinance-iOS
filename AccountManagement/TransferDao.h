@@ -18,4 +18,12 @@
                        andInAccount:(Account *)tfin
                       inAccountBook:(AccountBook *)accountBook;
 
+-(NSArray *)findByAccountBook:(AccountBook *)accountBook
+                         from:(NSDate *)start
+                           to:(NSDate *)end;
+
+-(NSArray *)getMonthlyStatisticalDataFrom:(NSDate *)start
+                                       to:(NSDate *)end
+                            inAccountBook:(AccountBook *)accountBook;
+
 @end

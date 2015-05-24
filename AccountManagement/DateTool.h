@@ -11,10 +11,14 @@
 #define DateFormatYearMonthDayHourMinutesSecond @"yyyy-MM-dd HH:mm:ss"
 #define DateFormatLocalMonth @"MMMM"
 #define DateFormatDay @"dd"
+#define DateFormatYear @"yyyy"
 
 @interface DateTool : NSObject
 
 +(NSUInteger)getNumberOfDaysInThisMonth:(NSDate *)date;
+
++(NSDate *)getADayOfLastYear:(NSDate *)date;
++(NSDate *)getADayOfNextYear:(NSDate *)date;
 
 +(NSDate *)getThisYearStart:(NSDate *)date;
 +(NSDate *)getThisYearEnd:(NSDate *)date;

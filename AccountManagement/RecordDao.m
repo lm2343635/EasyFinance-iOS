@@ -97,14 +97,7 @@
                             inAccountBook:(AccountBook *)accountBook {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    NSFetchRequest *request=[NSFetchRequest fetchRequestWithEntityName:RecordEntityName];
-    request.sortDescriptors=[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"time"
-                                                                                   ascending:NO]];
-    request.predicate=[NSPredicate predicateWithFormat:@"time>=%@ and time<=%@ and accountBook=%@",start,end,accountBook];
-    NSError *error=nil;
-    NSArray *records=[self.cdh.context executeFetchRequest:request error:&error];
-    if(error)
-        NSLog(@"Error: %@",error);
+    NSArray *records=[self findByAccountBook:accountBook from:start to:end];
     NSMutableArray *datas=[[NSMutableArray alloc] init];
     int month=0;
     int count=0;

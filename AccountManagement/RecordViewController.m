@@ -8,6 +8,8 @@
 
 #import "RecordViewController.h"
 #import "PhotoViewController.h"
+#import "InternetHelper.h"
+#import "DateTool.h"
 
 @interface RecordViewController ()
 
@@ -35,11 +37,8 @@
     [self.selectShopButton setTitle:self.record.shop.sname
                            forState:UIControlStateNormal];
     self.selectShopIconImageView.image=[UIImage imageWithData:self.record.shop.sicon.idata];
-    // 创建一个日期格式器
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    // 为日期格式器设置格式字符串
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-    [self.selectTimeButton setTitle:[dateFormatter stringFromDate:self.record.time]
+    [self.selectTimeButton setTitle:[DateTool formateDate:self.record.time
+                                               withFormat:DateFormatYearMonthDayHourMinutes]
                            forState:UIControlStateNormal];
     self.remarkTextView.text=self.record.remark;
 }
@@ -84,7 +83,7 @@
     }
 }
 
-//在后台线程中对照品
+//在后台线程中下载品
 -(void)downloadPhoto:(Photo *)photo {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SystemInit.h"
+#import "DaoManager.h"
 
 @interface RecordViewController : UIViewController
 
-@property (nonatomic,strong) Record *record;
+@property (strong, nonatomic) Record *record;
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *downloadPhotoActivityIndicator;
 @property (strong, nonatomic) IBOutlet UIButton *takePhotoButton;

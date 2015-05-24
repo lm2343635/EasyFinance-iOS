@@ -10,6 +10,23 @@
 
 @implementation DateTool
 
++(NSDate *)getADayOfLastYear:(NSDate *)date {
+    NSCalendar *calendar=[NSCalendar currentCalendar];
+    NSDateComponents *components=[calendar components:NSCalendarUnitYear
+                                             fromDate:date];
+    components.day=-1;
+    return [calendar dateFromComponents:components];
+}
+
++(NSDate *)getADayOfNextYear:(NSDate *)date {
+    NSCalendar *calendar=[NSCalendar currentCalendar];
+    NSDateComponents *components=[calendar components:NSCalendarUnitYear
+                                             fromDate:date];
+    components.month=12;
+    components.day=32;
+    return [calendar dateFromComponents:components];
+}
+
 +(NSUInteger)getNumberOfDaysInThisMonth:(NSDate *)date {
     NSCalendar *calendar=[NSCalendar currentCalendar];
     NSRange daysRange=[calendar rangeOfUnit:NSCalendarUnitDay

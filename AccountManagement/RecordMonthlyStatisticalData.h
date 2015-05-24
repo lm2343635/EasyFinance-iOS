@@ -10,7 +10,7 @@
 
 @interface RecordMonthlyStatisticalData : NSObject
 
-@property (nonatomic) NSDate *date;
+@property (nonatomic,retain) NSDate *date;
 @property (nonatomic) double spend;
 @property (nonatomic) double earn;
 

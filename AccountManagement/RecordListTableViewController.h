@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TallyListTableViewController : UITableViewController
+#define RecordListNavigationTitle @"Record List"
+
+@interface RecordListTableViewController : UITableViewController
 
 @end
