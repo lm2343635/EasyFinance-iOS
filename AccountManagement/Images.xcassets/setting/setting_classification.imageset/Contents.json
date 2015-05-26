@@ -3,17 +3,16 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "SettingCategoryIcon.png"
+      "filename" : "setting_classification.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "SettingCategoryIcon@2x.png"
+      "filename" : "setting_classification@2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "SettingCategoryIcon@3x.png"
+      "scale" : "3x"
     }
   ],
   "info" : {

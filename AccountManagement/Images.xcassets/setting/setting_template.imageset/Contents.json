@@ -3,17 +3,16 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "SettingTemplateIcon.png"
+      "filename" : "setting_template.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "SettingTemplateIcon@2x.png"
+      "filename" : "setting_template@2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "SettingTemplateIcon@3x.png"
+      "scale" : "3x"
     }
   ],
   "info" : {

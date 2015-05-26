@@ -32,10 +32,17 @@
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSDate *nowDate=[NSDate date];
     AccountBook *usingAccountBook=loginedUser.usingAccountBook;
+    //设置TabBar选中图标和颜色
+    self.tabBarController.tabBar.selectedItem.selectedImage=[UIImage imageNamed:@"tab_main_selected"];
+    self.tabBarController.tabBar.tintColor=[UIColor colorWithRed:0/255.0 green:136/255.0 blue:0/255.0 alpha:1];
     //设置顶部本月收支信息和正在使用的账本信息
     self.timeLabel.text=[DateTool formateDate:[NSDate date] withFormat:DateFormatLocalMonthYear];
     self.usingAccountBookNameLabel.text=usingAccountBook.abname;
     self.usingAccountBookImageView.image=[UIImage imageWithData:usingAccountBook.abicon.idata];
+    //设置账户信息
+    self.totalAssetsMoneyLabel.text=@"6532";
+    self.totalLibilitiesMoneyLabel.text=@"1256";
+    self.netAssetsMoneyLabel.text=@"5276";
     //设置最近一条收支记录的信息
     Record *latestRecord=[dao.recordDao getLatestRecordInAccountBook:usingAccountBook];
     self.latestRecordClassificationIconImageView.image=[UIImage imageWithData:latestRecord.classification.cicon.idata];

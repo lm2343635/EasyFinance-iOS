@@ -61,6 +61,10 @@
 		E46FD9601B142B8100E10D8F /* DateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FD95F1B142B8100E10D8F /* DateTool.m */; };
 		E476104C1B1031CC00893D09 /* RecordListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E476104B1B1031CC00893D09 /* RecordListTableViewController.m */; };
 		E47610691B10515300893D09 /* RecordMonthlyStatisticalData.m in Sources */ = {isa = PBXBuildFile; fileRef = E47610681B10515300893D09 /* RecordMonthlyStatisticalData.m */; };
+		E47B7F751B14DC30003943E3 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E47B7F741B14DC30003943E3 /* ListViewController.m */; };
+		E47B7F791B14DCEB003943E3 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E47B7F781B14DCEB003943E3 /* ReportViewController.m */; };
+		E47B7F7C1B14DD74003943E3 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E47B7F7B1B14DD74003943E3 /* AccountViewController.m */; };
+		E47B7F7F1B14DDD4003943E3 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E47B7F7E1B14DDD4003943E3 /* SettingViewController.m */; };
 		E48F38C71AEA2FE30039157D /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E48F38C61AEA2FE30039157D /* CoreDataHelper.m */; };
 		E494C9ED1AECD8580035B8C8 /* DaoTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = E494C9EC1AECD8580035B8C8 /* DaoTemplate.m */; };
 		E494C9F01AECD9E80035B8C8 /* AccountBookDao.m in Sources */ = {isa = PBXBuildFile; fileRef = E494C9EF1AECD9E80035B8C8 /* AccountBookDao.m */; };
@@ -230,6 +234,14 @@
 		E476104B1B1031CC00893D09 /* RecordListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordListTableViewController.m; sourceTree = "<group>"; };
 		E47610671B10515300893D09 /* RecordMonthlyStatisticalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordMonthlyStatisticalData.h; sourceTree = "<group>"; };
 		E47610681B10515300893D09 /* RecordMonthlyStatisticalData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordMonthlyStatisticalData.m; sourceTree = "<group>"; };
+		E47B7F731B14DC30003943E3 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		E47B7F741B14DC30003943E3 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		E47B7F771B14DCEB003943E3 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
+		E47B7F781B14DCEB003943E3 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
+		E47B7F7A1B14DD74003943E3 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		E47B7F7B1B14DD74003943E3 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		E47B7F7D1B14DDD4003943E3 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		E47B7F7E1B14DDD4003943E3 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		E48F38C51AEA2FE30039157D /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		E48F38C61AEA2FE30039157D /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		E494C9EB1AECD8580035B8C8 /* DaoTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaoTemplate.h; sourceTree = "<group>"; };
@@ -372,6 +384,8 @@
 				E4E2659A1AFB39B1002019F5 /* ClassificationsTableViewController.m */,
 				E401EE481A402927004EAF7C /* ModifyClassificationController.h */,
 				E401EE491A402927004EAF7C /* ModifyClassificationController.m */,
+				E47B7F7D1B14DDD4003943E3 /* SettingViewController.h */,
+				E47B7F7E1B14DDD4003943E3 /* SettingViewController.m */,
 				E4E2659F1AFB5A7F002019F5 /* ShopsTableViewController.h */,
 				E4E265A01AFB5A7F002019F5 /* ShopsTableViewController.m */,
 				E4450A6A1AFC971400294BB0 /* TemplatesTableViewController.h */,
@@ -431,6 +445,7 @@
 				E4C215831ADF58B600AEC554 /* Data Model */,
 				E4CAF8491A41DE2700155A3F /* Main */,
 				E45E8AF61B11A2390056F320 /* MJRefresh */,
+				E47B7F761B14DC8A003943E3 /* Report */,
 				E4A963961B12AD6C00EF0EE6 /* RESideMenu */,
 				E401EE411A3FFEB7004EAF7C /* Setting */,
 				E43CC5301A33251100146C77 /* Supporting Files */,
@@ -546,6 +561,15 @@
 			name = Data;
 			sourceTree = "<group>";
 		};
+		E47B7F761B14DC8A003943E3 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				E47B7F771B14DCEB003943E3 /* ReportViewController.h */,
+				E47B7F781B14DCEB003943E3 /* ReportViewController.m */,
+			);
+			name = Report;
+			sourceTree = "<group>";
+		};
 		E494C9E71AECD7E80035B8C8 /* Data Dao */ = {
 			isa = PBXGroup;
 			children = (
@@ -646,6 +670,8 @@
 				E4FA68A91A669B47007AC9AE /* AddSpendViewController.m */,
 				E4FA68AE1A669B68007AC9AE /* AddTransferViewController.h */,
 				E4FA68AF1A669B68007AC9AE /* AddTransferViewController.m */,
+				E47B7F731B14DC30003943E3 /* ListViewController.h */,
+				E47B7F741B14DC30003943E3 /* ListViewController.m */,
 				E46423B01B0A16D700FE40D9 /* RecordViewController.h */,
 				E46423B11B0A16D700FE40D9 /* RecordViewController.m */,
 				E476104A1B1031CC00893D09 /* RecordListTableViewController.h */,
@@ -690,6 +716,8 @@
 			children = (
 				E4FA68A51A667E0F007AC9AE /* AccountController.h */,
 				E4FA68A61A667E0F007AC9AE /* AccountController.m */,
+				E47B7F7A1B14DD74003943E3 /* AccountViewController.h */,
+				E47B7F7B1B14DD74003943E3 /* AccountViewController.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -828,11 +856,13 @@
 				E4E2659B1AFB39B1002019F5 /* ClassificationsTableViewController.m in Sources */,
 				E4E265A41AFB5A9E002019F5 /* AddAccountViewController.m in Sources */,
 				E45E8AF01B1180AF0056F320 /* TransferMonthlyStatisticalData.m in Sources */,
+				E47B7F7F1B14DDD4003943E3 /* SettingViewController.m in Sources */,
 				E476104C1B1031CC00893D09 /* RecordListTableViewController.m in Sources */,
 				E4C2161D1ADFA9F100AEC554 /* AddAccountBookViewController.m in Sources */,
 				E45E8B141B11A2390056F320 /* MJRefreshGifHeader.m in Sources */,
 				E4C271511AF6304900823426 /* Classification.m in Sources */,
 				E4A9775E1AFA409900910FF7 /* CoreDataTableViewController.m in Sources */,
+				E47B7F751B14DC30003943E3 /* ListViewController.m in Sources */,
 				E45E8B111B11A2390056F320 /* MJRefreshConst.m in Sources */,
 				E42F24721AFD118800F5216E /* SelectorView.m in Sources */,
 				E4A963951B12352C00EF0EE6 /* MainTableViewController.m in Sources */,
@@ -862,6 +892,7 @@
 				E4FA68B01A669B68007AC9AE /* AddTransferViewController.m in Sources */,
 				E43ECDC91AEF302D00CB3C46 /* AFNetworkReachabilityManager.m in Sources */,
 				E46423AF1B0A02AC00FE40D9 /* LatestRecordTableViewController.m in Sources */,
+				E47B7F791B14DCEB003943E3 /* ReportViewController.m in Sources */,
 				E4C271451AF6304900823426 /* User.m in Sources */,
 				E4C2713C1AF6304800823426 /* Record.m in Sources */,
 				E45E8B181B11A2390056F320 /* UIScrollView+MJExtension.m in Sources */,
@@ -895,6 +926,7 @@
 				E43CC5331A33251100146C77 /* main.m in Sources */,
 				E43ECDC71AEF302D00CB3C46 /* AFHTTPRequestOperationManager.m in Sources */,
 				E4D7EC5B1A4299EF00C35931 /* TimeInformationController.m in Sources */,
+				E47B7F7C1B14DD74003943E3 /* AccountViewController.m in Sources */,
 				E4A963A21B12AE7000EF0EE6 /* MenuRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

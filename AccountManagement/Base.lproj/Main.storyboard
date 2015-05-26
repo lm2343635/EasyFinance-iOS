@@ -1063,7 +1063,7 @@
             </objects>
             <point key="canvasLocation" x="-11742" y="4548"/>
         </scene>
-        <!--Setting-->
+        <!--Settings-->
         <scene sceneID="z85-02-ihU">
             <objects>
                 <tableViewController id="XOk-JH-D7i" sceneMemberID="viewController">
@@ -1072,7 +1072,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="System Settings" id="asa-sR-nSc">
+                            <tableViewSection headerTitle=" " id="asa-sR-nSc">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="ydL-rr-Mai">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
@@ -1112,7 +1112,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting_seurity" id="ED9-TZ-BDH">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting_security" id="ED9-TZ-BDH">
                                                     <rect key="frame" x="22" y="8" width="26" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1124,7 +1124,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Account Setting" id="66w-v5-8af">
+                            <tableViewSection headerTitle=" " id="66w-v5-8af">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="M5s-vM-Z7R">
                                         <rect key="frame" x="0.0" y="196" width="320" height="44"/>
@@ -1229,14 +1229,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Books" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="00J-fJ-btr">
-                                                    <rect key="frame" x="56" y="11" width="118" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Book" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="00J-fJ-btr">
+                                                    <rect key="frame" x="56" y="11" width="109" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting_account_books" id="vli-9c-h6m">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting_account_book" id="vli-9c-h6m">
                                                     <rect key="frame" x="21" y="8" width="27" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1248,7 +1248,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Data Setting" id="8HX-ln-TQY">
+                            <tableViewSection headerTitle=" " id="8HX-ln-TQY">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="XVI-Ve-x7V">
                                         <rect key="frame" x="0.0" y="438" width="320" height="44"/>
@@ -1288,7 +1288,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting_sync" id="Y6R-dX-0E3">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting_synchronization" id="Y6R-dX-0E3">
                                                     <rect key="frame" x="21" y="8" width="27" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1306,7 +1306,7 @@
                             <outlet property="delegate" destination="XOk-JH-D7i" id="dcJ-kv-ryj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Setting" id="HnH-aM-hON"/>
+                    <navigationItem key="navigationItem" title="Settings" id="HnH-aM-hON"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z6i-IJ-kKX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1612,11 +1612,11 @@
             </objects>
             <point key="canvasLocation" x="-9184" y="2752"/>
         </scene>
-        <!--Setting-->
+        <!--Settings-->
         <scene sceneID="10g-Ib-syH">
             <objects>
-                <navigationController id="tTX-DC-Xcu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Setting" image="tab_setting" id="F5T-9l-5Ex"/>
+                <navigationController id="tTX-DC-Xcu" customClass="SettingViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="tab_setting" id="F5T-9l-5Ex"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="L2M-6N-j1T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1632,7 +1632,7 @@
         <!--Report-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ReportViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1994,7 +1994,7 @@
         <!--List-->
         <scene sceneID="99w-T7-ycc">
             <objects>
-                <navigationController id="4oG-eU-ZDV" sceneMemberID="viewController">
+                <navigationController id="4oG-eU-ZDV" customClass="ListViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="List" image="tab_list" id="R1j-Tu-l93"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2YY-hq-bLA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2401,7 +2401,7 @@
         <!--Account-->
         <scene sceneID="2Vw-jK-TyU">
             <objects>
-                <navigationController id="fpF-ae-FAj" sceneMemberID="viewController">
+                <navigationController id="fpF-ae-FAj" customClass="AccountViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Account" image="tab_account" id="RDR-VB-VUN"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MWf-Qw-lSC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2602,14 +2602,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Assets Money" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AKJ-0f-i5t">
-                                            <rect key="frame" x="119" y="148" width="169" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Net Assets Money" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NjX-fW-Ot0">
-                                            <rect key="frame" x="119" y="202" width="169" height="18"/>
+                                            <rect key="frame" x="119" y="149" width="169" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -2654,8 +2647,15 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="iXw-FZ-Jsp">
+                                            <rect key="frame" x="216" y="23" width="68" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Libilities Money" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="81Y-wN-mOf">
-                                            <rect key="frame" x="119" y="174" width="169" height="18"/>
+                                            <rect key="frame" x="119" y="175" width="169" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -2668,11 +2668,11 @@
                                             <color key="textColor" red="0.002491650711" green="0.32413983590000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="iXw-FZ-Jsp">
-                                            <rect key="frame" x="216" y="23" width="68" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Net Assets Money" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NjX-fW-Ot0">
+                                            <rect key="frame" x="119" y="201" width="169" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -2871,13 +2871,14 @@
                             <outlet property="delegate" destination="HEI-Jh-Tsi" id="tsw-dL-dvC"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Main" image="tab_menu" id="tIj-2j-MFh"/>
+                    <tabBarItem key="tabBarItem" title="Main" image="tab_main" id="tIj-2j-MFh"/>
                     <navigationItem key="navigationItem" id="08L-F5-bFC"/>
                     <connections>
                         <outlet property="latestRecordClassificationIconImageView" destination="O2o-hh-pe4" id="znt-Af-Xap"/>
                         <outlet property="latestRecordClassificationLabel" destination="wbF-qV-Yeo" id="1Nv-d1-7D1"/>
                         <outlet property="latestRecordMoneyLabel" destination="GOy-Dy-Wvf" id="vaP-E6-kyi"/>
                         <outlet property="latestRecordTimeLabel" destination="igY-0g-o7S" id="25u-Zg-Xix"/>
+                        <outlet property="netAssetsMoneyLabel" destination="NjX-fW-Ot0" id="bV5-Lg-T0i"/>
                         <outlet property="thisMoneyTotalEarnLabel" destination="glx-Aw-D2w" id="AsC-Ab-b5D"/>
                         <outlet property="thisMonthEarnLabel" destination="iOh-7K-twR" id="03Q-1M-qsU"/>
                         <outlet property="thisMonthLocalNameLabel" destination="eR6-WH-8QK" id="Gq8-Rc-h7D"/>
@@ -2892,6 +2893,8 @@
                         <outlet property="todayEarnLabel" destination="myy-M8-sgo" id="kOS-NX-Oa3"/>
                         <outlet property="todaySpendLabel" destination="z4l-ih-r7x" id="zWy-jp-neB"/>
                         <outlet property="todayTimeInfoLabel" destination="DVQ-mA-zl1" id="vjE-JX-Q8a"/>
+                        <outlet property="totalAssetsMoneyLabel" destination="AKJ-0f-i5t" id="DT2-Pl-plj"/>
+                        <outlet property="totalLibilitiesMoneyLabel" destination="81Y-wN-mOf" id="lBq-pW-cVS"/>
                         <outlet property="usingAccountBookImageView" destination="2oa-SM-R8i" id="jGo-RA-p6A"/>
                         <outlet property="usingAccountBookNameLabel" destination="iXw-FZ-Jsp" id="JGE-l1-gYW"/>
                     </connections>
@@ -4346,7 +4349,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="b5t-hk-KZ9">
                                     <rect key="frame" x="8" y="24" width="24" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="tab_menu">
+                                    <state key="normal" image="back_arrow">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -4956,6 +4959,7 @@
         <image name="add_earn_record" width="27" height="27"/>
         <image name="add_spend_record" width="27" height="27"/>
         <image name="add_transfer" width="21" height="21"/>
+        <image name="back_arrow" width="24" height="24"/>
         <image name="close_record_photo" width="23" height="23"/>
         <image name="d_hssy" width="32" height="32"/>
         <image name="date_month" width="32" height="32"/>
@@ -4970,23 +4974,25 @@
         <image name="menuBackground.jpg" width="500" height="1040"/>
         <image name="selected_account_book" width="33" height="33"/>
         <image name="setting_account" width="27" height="27"/>
+        <image name="setting_account_book" width="27" height="27"/>
         <image name="setting_account_books" width="27" height="27"/>
         <image name="setting_classification" width="27" height="27"/>
         <image name="setting_clear_data" width="27" height="27"/>
         <image name="setting_delete_all" width="27" height="27"/>
-        <image name="setting_seurity" width="27" height="27"/>
-        <image name="setting_shop" width="24" height="24"/>
-        <image name="setting_sync" width="27" height="27"/>
+        <image name="setting_security" width="27" height="27"/>
+        <image name="setting_shop" width="27" height="27"/>
+        <image name="setting_synchronization" width="27" height="27"/>
         <image name="setting_template" width="27" height="27"/>
         <image name="setting_user" width="27" height="27"/>
         <image name="setting_user_mail" width="27" height="27"/>
         <image name="setting_user_name" width="27" height="27"/>
         <image name="setting_user_photo" width="27" height="27"/>
-        <image name="tab_account" width="32" height="26"/>
+        <image name="tab_account" width="24" height="24"/>
         <image name="tab_list" width="24" height="24"/>
+        <image name="tab_main" width="24" height="24"/>
         <image name="tab_menu" width="24" height="24"/>
         <image name="tab_report" width="24" height="24"/>
-        <image name="tab_setting" width="22" height="22"/>
+        <image name="tab_setting" width="24" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

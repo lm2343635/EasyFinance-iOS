@@ -16,6 +16,12 @@
 @property (strong, nonatomic) IBOutlet UILabel *thisMonthTotalSpendLabel;
 @property (strong, nonatomic) IBOutlet UILabel *thisMoneyTotalEarnLabel;
 
+//账户信息
+@property (strong, nonatomic) IBOutlet UILabel *totalAssetsMoneyLabel;
+@property (strong, nonatomic) IBOutlet UILabel *totalLibilitiesMoneyLabel;
+@property (strong, nonatomic) IBOutlet UILabel *netAssetsMoneyLabel;
+
+
 //最近一条收支记录
 @property (strong, nonatomic) IBOutlet UIImageView *latestRecordClassificationIconImageView;
 @property (strong, nonatomic) IBOutlet UILabel *latestRecordClassificationLabel;
