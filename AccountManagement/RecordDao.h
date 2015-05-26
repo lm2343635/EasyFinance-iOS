@@ -46,4 +46,17 @@
                                        to:(NSDate *)end
                             inAccountBook:(AccountBook *)accountBook;
 
+//得到最新收支记录
+-(Record *)getLatestRecordInAccountBook:(AccountBook *)accountBook;
+
+//得到某个时间段的总支出
+-(double)getTotalSpendFrom:(NSDate *)start
+                        to:(NSDate *)end
+             inAccountBook:(AccountBook *)accountBook;
+
+//得到某个时间段的总收入
+-(double)getTotalEarnFrom:(NSDate *)start
+                       to:(NSDate *)end
+            inAccountBook:(AccountBook *)accountBook;
+
 @end

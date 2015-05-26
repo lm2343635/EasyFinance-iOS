@@ -74,6 +74,31 @@
     return [calendar dateFromComponents:components];
 }
 
++(NSDate *)getThisWeekStart:(NSDate *)date {
+    NSCalendar *calendar=[NSCalendar currentCalendar];
+    NSDateComponents *components=[calendar components:NSCalendarUnitYear|
+                                  NSCalendarUnitMonth|
+                                  NSCalendarUnitDay|
+                                  NSCalendarUnitWeekday
+                                             fromDate:date];
+    components.day-=components.weekday-1;
+    return [calendar dateFromComponents:components];
+}
+
++(NSDate *)getThisWeekEnd:(NSDate *)date {
+    NSCalendar *calendar=[NSCalendar currentCalendar];
+    NSDateComponents *components=[calendar components:NSCalendarUnitYear|
+                                  NSCalendarUnitMonth|
+                                  NSCalendarUnitDay|
+                                  NSCalendarUnitWeekday
+                                             fromDate:date];
+    components.day+=7-components.weekday;
+    components.hour=23;
+    components.minute=59;
+    components.second=59;
+    return [calendar dateFromComponents:components];
+}
+
 +(NSDate *)getThisDayStart:(NSDate *)date {
     NSCalendar *calendar=[NSCalendar currentCalendar];
     NSDateComponents *components=[calendar components:NSCalendarUnitYear|

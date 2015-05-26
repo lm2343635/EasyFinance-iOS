@@ -55,7 +55,6 @@
     [self.tableView.footer setTitle:@"Drag up to load record list of last year" forState:MJRefreshFooterStateIdle];
     [self.tableView.footer setTitle:@"Loading ..." forState:MJRefreshFooterStateRefreshing];
     [self.tableView.footer setTitle:@"No more data" forState:MJRefreshFooterStateNoMoreData];
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated {

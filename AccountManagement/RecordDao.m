@@ -129,4 +129,49 @@
     }
     return datas;
 }
+
+-(Record *)getLatestRecordInAccountBook:(AccountBook *)accountBook {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSFetchRequest *request=[NSFetchRequest fetchRequestWithEntityName:RecordEntityName];
+    request.sortDescriptors=[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"time"
+                                                                                   ascending:NO]];
+    request.predicate=[NSPredicate predicateWithFormat:@"accountBook=%@",accountBook];
+    request.fetchLimit=1;
+    NSError *error=nil;
+    NSArray *records=[self.cdh.context executeFetchRequest:request error:&error];
+    if(error)
+        NSLog(@"Error: %@",error);
+    return [records objectAtIndex:0];
+}
+
+-(double)getTotalSpendFrom:(NSDate *)start
+                        to:(NSDate *)end
+             inAccountBook:(AccountBook *)accountBook {
+    double totalSpend=0.0;
+    NSFetchRequest *request=[NSFetchRequest fetchRequestWithEntityName:RecordEntityName];
+    request.predicate=[NSPredicate predicateWithFormat:@"time>=%@ and time<=%@ and accountBook=%@ and money<=0",start,end,accountBook];
+    NSError *error;
+    NSArray *records=[self.cdh.context executeFetchRequest:request error:&error];
+    if(error)
+        NSLog(@"Error:%@",error);
+    for(Record *record in records)
+        totalSpend+=[record.money doubleValue];
+    return totalSpend;
+}
+
+-(double)getTotalEarnFrom:(NSDate *)start
+                       to:(NSDate *)end
+            inAccountBook:(AccountBook *)accountBook {
+    double totalEarn=0.0;
+    NSFetchRequest *request=[NSFetchRequest fetchRequestWithEntityName:RecordEntityName];
+    request.predicate=[NSPredicate predicateWithFormat:@"time>=%@ and time<=%@ and accountBook=%@ and money>0",start,end,accountBook];
+    NSError *error;
+    NSArray *records=[self.cdh.context executeFetchRequest:request error:&error];
+    if(error)
+        NSLog(@"Error:%@",error);
+    for(Record *record in records)
+        totalEarn+=[record.money doubleValue];
+    return totalEarn;
+}
 @end

@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #define DateFormatYearMonthDayHourMinutes @"yyyy-MM-dd HH:mm"
 #define DateFormatYearMonthDayHourMinutesSecond @"yyyy-MM-dd HH:mm:ss"
+#define DateFormatYearMonthDay @"yyyy-MM-dd"
 #define DateFormatLocalMonth @"MMMM"
 #define DateFormatDay @"dd"
 #define DateFormatYear @"yyyy"
+#define DateFormatLocalMonthYear @"MMMM, yyyy"
 
 @interface DateTool : NSObject
 
@@ -24,6 +26,8 @@
 +(NSDate *)getThisYearEnd:(NSDate *)date;
 +(NSDate *)getThisMonthStart:(NSDate *)date;
 +(NSDate *)getThisMonthEnd:(NSDate *)date;
++(NSDate *)getThisWeekStart:(NSDate *)date;
++(NSDate *)getThisWeekEnd:(NSDate *)date;
 +(NSDate *)getThisDayStart:(NSDate *)date;
 +(NSDate *)getThisDayEnd:(NSDate *)date;
 
