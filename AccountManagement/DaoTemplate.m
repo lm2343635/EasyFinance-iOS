@@ -19,13 +19,13 @@
     return self;
 }
 
--(NSManagedObject *)getByPredicate:(NSString *)predicate
+-(NSManagedObject *)getByPredicate:(NSPredicate *)predicate
                     withEntityName:(NSString *)entityName {
     if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSFetchRequest *request=[[NSFetchRequest alloc] initWithEntityName:entityName];
-    request.predicate=[NSPredicate predicateWithFormat:predicate];
-    request.fetchBatchSize=15;
+    request.predicate=predicate;
+    request.fetchLimit=1;
     NSError *error=nil;
     NSArray *objects=[self.cdh.context executeFetchRequest:request error:&error];
     if(error)
@@ -33,6 +33,39 @@
     if(objects.count>0)
         return [objects objectAtIndex:0];
     return nil;
+}
+
+-(NSManagedObject *)getByPredicate:(NSPredicate *)predicate
+                    withEntityName:(NSString *)entityName
+                           orderBy:(NSSortDescriptor *)sortDescriptor {
+    if(DEBUG==1&&DAO_DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSFetchRequest *request=[[NSFetchRequest alloc] initWithEntityName:entityName];
+    request.predicate=predicate;
+    request.fetchLimit=1;
+    request.sortDescriptors=[NSArray arrayWithObject:sortDescriptor];
+    NSError *error=nil;
+    NSArray *objects=[self.cdh.context executeFetchRequest:request error:&error];
+    if(error)
+        NSLog(@"Error in searching user: %@",error);
+    if(objects.count>0)
+        return [objects objectAtIndex:0];
+    return nil;
+}
+
+-(NSArray *)findByPredicate:(NSPredicate *)predicate
+             withEntityName:(NSString *)entityName
+                    orderBy:(NSSortDescriptor *)sortDescriptor {
+    if(DEBUG==1&&DAO_DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSFetchRequest *request=[NSFetchRequest fetchRequestWithEntityName:entityName];
+    request.sortDescriptors=[NSArray arrayWithObject:sortDescriptor];
+    request.predicate=predicate;
+    NSError *error=nil;
+    NSArray *objects=[self.cdh.context executeFetchRequest:request error:&error];
+    if(error)
+        NSLog(@"Error: %@",error);
+    return objects;
 }
 
 @end

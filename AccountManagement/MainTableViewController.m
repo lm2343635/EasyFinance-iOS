@@ -40,9 +40,10 @@
     self.usingAccountBookNameLabel.text=usingAccountBook.abname;
     self.usingAccountBookImageView.image=[UIImage imageWithData:usingAccountBook.abicon.idata];
     //设置账户信息
-    self.totalAssetsMoneyLabel.text=@"6532";
-    self.totalLibilitiesMoneyLabel.text=@"1256";
-    self.netAssetsMoneyLabel.text=@"5276";
+    AccountInformation *information=[dao.accountDao getAccountInformationInAccountBook:usingAccountBook];
+    self.totalAssetsMoneyLabel.text=[NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:information.totalAssets]];
+    self.totalLibilitiesMoneyLabel.text=[NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:information.totaLibilities]];
+    self.netAssetsMoneyLabel.text=[NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:information.netAssets]];
     //设置最近一条收支记录的信息
     Record *latestRecord=[dao.recordDao getLatestRecordInAccountBook:usingAccountBook];
     self.latestRecordClassificationIconImageView.image=[UIImage imageWithData:latestRecord.classification.cicon.idata];

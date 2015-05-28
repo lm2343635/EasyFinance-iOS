@@ -8,11 +8,14 @@
 
 #import "DaoTemplate.h"
 #import "Record.h"
+#import "Classification.h"
+#import "Account.h"
+#import "Shop.h"
 
 #define RecordEntityName @"Record"
 
 @interface RecordDao : DaoTemplate
-
+//从服务器导入数据使用，不需要更新账户、分类和商家的资金流入流出
 -(NSManagedObjectID *)saveWithSid:(NSNumber *)sid
                          andMoney:(NSNumber *)money
                         andRemark:(NSString *)remark
@@ -23,6 +26,7 @@
                          andPhoto:(Photo *)photo
                     inAccountBook:(AccountBook *)accountBook;
 
+//iOS客户端新建收支记录使用，必须更新账户、分类和商家的资金流入流出
 -(NSManagedObjectID *)saveWithMoney:(NSNumber *)money
                           andRemark:(NSString *)remark
                             andTime:(NSDate *)time
@@ -39,6 +43,11 @@
 -(NSArray *)findByAccountBook:(AccountBook *)accountBook
                          from:(NSDate *)start
                            to:(NSDate *)end;
+
+//得到某日的指定账户的收支记录
+-(NSArray *)findByAccount:(Account *)account
+                   onDate:(NSDate *)date;
+
 
 
 //按月份得到收支记录的统计信息

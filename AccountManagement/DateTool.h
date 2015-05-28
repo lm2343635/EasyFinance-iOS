@@ -11,6 +11,7 @@
 #define DateFormatYearMonthDayHourMinutesSecond @"yyyy-MM-dd HH:mm:ss"
 #define DateFormatYearMonthDay @"yyyy-MM-dd"
 #define DateFormatLocalMonth @"MMMM"
+#define DateFormatMonth @"MM"
 #define DateFormatDay @"dd"
 #define DateFormatYear @"yyyy"
 #define DateFormatLocalMonthYear @"MMMM, yyyy"

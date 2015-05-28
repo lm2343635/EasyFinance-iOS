@@ -52,6 +52,10 @@
     transfer.tfin=tfin;
     transfer.tfout=tfout;
     transfer.accountBook=accountBook;
+    //更新账户的资金流入流出
+    double moneyDoubleValue=money.doubleValue;
+    transfer.tfin.ain=[NSNumber numberWithDouble:transfer.tfin.ain.doubleValue+moneyDoubleValue];
+    transfer.tfout.aout=[NSNumber numberWithDouble:transfer.tfout.aout.doubleValue+moneyDoubleValue];
     [self.cdh saveContext];
     return transfer.objectID;
 }
@@ -104,6 +108,34 @@
         count++;
     }
     return datas;
+}
+
+-(NSArray *)findByTfin:(Account *)tfin
+                onDate:(NSDate *)date {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSDate *start=[DateTool getThisDayStart:date];
+    NSDate *end=[DateTool getThisDayEnd:date];
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"time>=%@ and time<=%@ and tfin=%@",start,end,tfin];
+    NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"time"
+                                                         ascending:YES];
+    return [self findByPredicate:predicate
+                  withEntityName:TransferEntityName
+                         orderBy:sort];
+}
+
+-(NSArray *)findByTfout:(Account *)tfout
+                 onDate:(NSDate *)date {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSDate *start=[DateTool getThisDayStart:date];
+    NSDate *end=[DateTool getThisDayEnd:date];
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"time>=%@ and time<=%@ and tfout=%@",start,end,tfout];
+    NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"time"
+                                                         ascending:YES];
+    return [self findByPredicate:predicate
+                  withEntityName:TransferEntityName
+                         orderBy:sort];
 }
 
 @end

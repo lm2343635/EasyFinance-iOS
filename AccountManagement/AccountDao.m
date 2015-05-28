@@ -42,7 +42,7 @@
     account.aname=aname;
     account.aicon=aicon;
     account.ain=ain;
-    account.aout=0;
+    account.aout=[NSNumber numberWithDouble:0.0];
     [self.cdh saveContext];
     return account.objectID;
 }
@@ -50,8 +50,29 @@
 -(Account *)getBySid:(NSNumber *)sid {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    NSString *predicate=[NSString stringWithFormat:@"sid=%@",sid];
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"sid=%@",sid];
     return (Account *)[self getByPredicate:predicate withEntityName:AccountEntityName];
+}
+
+-(AccountInformation *)getAccountInformationInAccountBook:(AccountBook *)accountBook {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSFetchRequest *request=[NSFetchRequest fetchRequestWithEntityName:AccountEntityName];
+    request.predicate=[NSPredicate predicateWithFormat:@"accountBook=%@",accountBook];
+    NSError *error=nil;
+    NSArray *accounts=[self.cdh.context executeFetchRequest:request error:&error];
+    if(error)
+        NSLog(@"Error: %@",error);
+    AccountInformation *information=[[AccountInformation alloc] init];
+    for(Account *account in accounts) {
+        double surplus=account.ain.doubleValue-account.aout.doubleValue;
+        if(surplus>0)
+            information.totalAssets+=surplus;
+        else
+            information.totaLibilities-=surplus;
+    }
+    information.netAssets=information.totalAssets-information.totaLibilities;
+    return information;
 }
 
 @end

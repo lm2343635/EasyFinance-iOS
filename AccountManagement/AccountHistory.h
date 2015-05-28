@@ -1,5 +1,5 @@
 //
-//  Account.h
+//  AccountHistory.h
 //  AccountManagement
 //
 //  Created by 李大爷 on 15/5/27.
@@ -9,15 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class AccountBook, Icon;
+@class Account;
 
-@interface Account : NSManagedObject
+@interface AccountHistory : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * ain;
-@property (nonatomic, retain) NSString * aname;
-@property (nonatomic, retain) NSNumber * aout;
 @property (nonatomic, retain) NSNumber * sid;
-@property (nonatomic, retain) AccountBook *accountBook;
-@property (nonatomic, retain) Icon *aicon;
+@property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSNumber * ain;
+@property (nonatomic, retain) NSNumber * aout;
+@property (nonatomic, retain) Account *account;
 
 @end

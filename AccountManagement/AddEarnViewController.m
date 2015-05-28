@@ -7,6 +7,7 @@
 //
 
 #import "AddEarnViewController.h"
+#import "DateTool.h"
 
 @interface AddEarnViewController ()
 

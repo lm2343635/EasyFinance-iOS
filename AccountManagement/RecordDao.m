@@ -9,6 +9,7 @@
 #import "RecordDao.h"
 #import "DateTool.h"
 #import "RecordMonthlyStatisticalData.h"
+#import "AccountHistoryDao.h"
 
 @implementation RecordDao
 
@@ -58,6 +59,22 @@
     record.shop=shop;
     record.photo=photo;
     record.accountBook=accountBook;
+    double moneyDoubleValue=money.doubleValue;
+    //更新账本历史记录
+    AccountHistoryDao *accountHistoryDao=[[AccountHistoryDao alloc] init];
+    [accountHistoryDao updateWithMoney:moneyDoubleValue
+                                onDate:[DateTool getThisDayStart:time]
+                             inAccount:account];
+    //更新账户、分类和商家的资金流入流出
+    if(moneyDoubleValue>0) {
+        record.classification.cin=[NSNumber numberWithDouble:[record.classification.cin doubleValue]+moneyDoubleValue];
+        record.account.ain=[NSNumber numberWithDouble:[record.account.ain doubleValue]+moneyDoubleValue];
+        record.shop.sin=[NSNumber numberWithDouble:[record.shop.sin doubleValue]+moneyDoubleValue];
+    }else{
+        record.classification.cout=[NSNumber numberWithDouble:[record.classification.cout doubleValue]-moneyDoubleValue];
+        record.account.aout=[NSNumber numberWithDouble:[record.account.aout doubleValue]-moneyDoubleValue];
+        record.shop.sout=[NSNumber numberWithDouble:[record.shop.sout doubleValue]-moneyDoubleValue];
+    }
     [self.cdh saveContext];
     return record.objectID;
 }
@@ -90,6 +107,20 @@
     if(error)
         NSLog(@"Error: %@",error);
     return records;
+}
+
+-(NSArray *)findByAccount:(Account *)account
+                   onDate:(NSDate *)date {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSDate *start=[DateTool getThisDayStart:date];
+    NSDate *end=[DateTool getThisDayEnd:date];
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"time>=%@ and time<=%@ and account=%@",start,end,account];
+    NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"time"
+                                                         ascending:YES];
+    return [self findByPredicate:predicate
+                  withEntityName:RecordEntityName
+                         orderBy:sort];
 }
 
 -(NSArray *)getMonthlyStatisticalDataFrom:(NSDate *)start

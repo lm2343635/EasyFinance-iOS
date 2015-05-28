@@ -49,7 +49,7 @@
 -(Classification *)getBySid:(NSNumber *)sid {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    NSString *predicate=[NSString stringWithFormat:@"sid=%@",sid];
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"sid=%@",sid];
     return (Classification *)[self getByPredicate:predicate withEntityName:ClassificationEntityName];
 }
 @end

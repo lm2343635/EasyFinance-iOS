@@ -455,6 +455,51 @@
                 }
                 break;
             }
+            case ImportUserInfoStatusAccountHistory: {
+                if(DEBUG==1)
+                    NSLog(@"Importing Account Histories...");
+                count=0;
+                int allAccountsCount=0;
+                NSSet *accountBooks=importUser.accountBooks;
+                for(AccountBook *accountBook in accountBooks)
+                    allAccountsCount+=accountBook.accounts.count;
+                for(AccountBook *accountBook in accountBooks) {
+                    for(Account *account in accountBook.accounts) {
+                        [manager POST:[InternetHelper createUrl:@"iOSAccountHistoryServlet?task=getAccountHistories"]
+                           parameters:@{@"aid":account.sid}
+                              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                  if(DEBUG==1)
+                                      NSLog(@"Get message from server: %@",operation.responseString);
+                                  NSArray *objects=[NSJSONSerialization JSONObjectWithData:responseObject
+                                                                                   options:NSJSONReadingMutableContainers
+                                                                                     error:nil];
+                                  for(NSObject *object in objects) {
+                                      int sahid=[[object valueForKey:@"ahid"] intValue];
+                                      double ain=[[object valueForKey:@"ain"] doubleValue];
+                                      double aout=[[object valueForKey:@"aout"] doubleValue];
+                                      long long timeInterval=[[object valueForKey:@"timeInterval"] longLongValue];
+                                      NSDate *date=[NSDate dateWithTimeIntervalSince1970:timeInterval/1000];
+                                      NSManagedObjectID *ahid=[dao.accountHistoryDao saveBySid:[NSNumber numberWithInt:sahid]
+                                                                                        andAin:[NSNumber numberWithDouble:ain]
+                                                                                       andAout:[NSNumber numberWithDouble:aout]
+                                                                                        onDate:date
+                                                                                     inAccount:account];
+                                      if(DEBUG==1)
+                                        NSLog(@"Create AccountHistory(ahid=%@) in account %@",ahid,account.aname);
+                                      [self refreshConsole:[NSString stringWithFormat:@"Importing account history on %@ in the account of %@",
+                                                            [dateFormatter stringFromDate:date],account.aname]];
+                                  }
+                                  count++;
+                                  if(count==allAccountsCount)
+                                      self.importUserInfoStatus++;
+                              }
+                              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                  NSLog(@"Server Error: %@",error);
+                              }];
+                    }
+                }
+                break;
+            }
             case ImportUserInfoStatusEnd:
                 //导入全部完成
                 [self finishImport];

@@ -2,7 +2,7 @@
 //  AccountBook.h
 //  AccountManagement
 //
-//  Created by 李大爷 on 15/5/3.
+//  Created by 李大爷 on 15/5/27.
 //  Copyright (c) 2015年 李大爷. All rights reserved.
 //
 
@@ -18,12 +18,12 @@
 @property (nonatomic, retain) Icon *abicon;
 @property (nonatomic, retain) NSSet *accounts;
 @property (nonatomic, retain) NSSet *classifications;
+@property (nonatomic, retain) NSOrderedSet *photos;
 @property (nonatomic, retain) NSOrderedSet *records;
 @property (nonatomic, retain) NSSet *shops;
 @property (nonatomic, retain) NSSet *templates;
 @property (nonatomic, retain) NSOrderedSet *transfers;
 @property (nonatomic, retain) User *user;
-@property (nonatomic, retain) NSOrderedSet *photos;
 @end
 
 @interface AccountBook (CoreDataGeneratedAccessors)
@@ -38,6 +38,16 @@
 - (void)addClassifications:(NSSet *)values;
 - (void)removeClassifications:(NSSet *)values;
 
+- (void)insertObject:(Photo *)value inPhotosAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromPhotosAtIndex:(NSUInteger)idx;
+- (void)insertPhotos:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removePhotosAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInPhotosAtIndex:(NSUInteger)idx withObject:(Photo *)value;
+- (void)replacePhotosAtIndexes:(NSIndexSet *)indexes withPhotos:(NSArray *)values;
+- (void)addPhotosObject:(Photo *)value;
+- (void)removePhotosObject:(Photo *)value;
+- (void)addPhotos:(NSOrderedSet *)values;
+- (void)removePhotos:(NSOrderedSet *)values;
 - (void)insertObject:(Record *)value inRecordsAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromRecordsAtIndex:(NSUInteger)idx;
 - (void)insertRecords:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
@@ -68,14 +78,4 @@
 - (void)removeTransfersObject:(Transfer *)value;
 - (void)addTransfers:(NSOrderedSet *)values;
 - (void)removeTransfers:(NSOrderedSet *)values;
-- (void)insertObject:(Photo *)value inPhotosAtIndex:(NSUInteger)idx;
-- (void)removeObjectFromPhotosAtIndex:(NSUInteger)idx;
-- (void)insertPhotos:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
-- (void)removePhotosAtIndexes:(NSIndexSet *)indexes;
-- (void)replaceObjectInPhotosAtIndex:(NSUInteger)idx withObject:(Photo *)value;
-- (void)replacePhotosAtIndexes:(NSIndexSet *)indexes withPhotos:(NSArray *)values;
-- (void)addPhotosObject:(Photo *)value;
-- (void)removePhotosObject:(Photo *)value;
-- (void)addPhotos:(NSOrderedSet *)values;
-- (void)removePhotos:(NSOrderedSet *)values;
 @end

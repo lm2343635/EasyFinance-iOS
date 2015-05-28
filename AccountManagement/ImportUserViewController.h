@@ -19,7 +19,8 @@
 #define ImportUserInfoStatusIcon 8
 #define ImportUserInfoStatusRecord 9
 #define ImportUserInfoStatusTransfer 10
-#define ImportUserInfoStatusEnd 11
+#define ImportUserInfoStatusAccountHistory 11
+#define ImportUserInfoStatusEnd 12
 
 @interface ImportUserViewController : UIViewController
 

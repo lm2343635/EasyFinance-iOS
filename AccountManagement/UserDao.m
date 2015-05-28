@@ -33,14 +33,14 @@
 -(User *)getBySid:(NSNumber *)sid {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    return (User *)[self getByPredicate:[NSString stringWithFormat:@"sid=%@",sid]
+    return (User *)[self getByPredicate:[NSPredicate predicateWithFormat:@"sid=%@",sid]
                          withEntityName:UserEntityName];
 }
 
 -(User *)getByEmail:(NSString *)email {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    return (User *)[self getByPredicate:[NSString stringWithFormat:@"email='%@'",email]
+    return (User *)[self getByPredicate:[NSPredicate predicateWithFormat:@"email='%@'",email]
                          withEntityName:UserEntityName];
 
 }
@@ -48,7 +48,7 @@
 -(User *)getLoginedUser {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    return (User *)[self getByPredicate:[NSString stringWithFormat:@"login=%@",[NSNumber numberWithBool:YES]]
+    return (User *)[self getByPredicate:[NSPredicate predicateWithFormat:@"login=%@",[NSNumber numberWithBool:YES]]
                          withEntityName:UserEntityName];
 }
 
