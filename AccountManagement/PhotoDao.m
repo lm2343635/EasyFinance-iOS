@@ -18,6 +18,8 @@
     photo.sid=sid;
     photo.pdata=pdata;
     photo.upload=[NSDate date];
+    //导入服务器数据时sync=1，默认认为它已同步
+    photo.sync=[NSNumber numberWithInt:SYNCED];
     [self.cdh saveContext];
     return photo.objectID;
 }

@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "AppDelegate.h"
 
-#define Server @"120.25.237.244"
-//#define Server @"127.0.0.1:8080"
-#define WebServiceName @"AccountManagement"
+//#define Server @"120.25.237.244"
+//#define WebServiceName @"AccountManagement"
+#define Server @"127.0.0.1:8080"
+#define WebServiceName @"EasyFinanceWeb"
 
 #define LOGIN_SUCCESS 0
 #define LOGIN_PASSWORD_WRONG 1

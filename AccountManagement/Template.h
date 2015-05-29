@@ -2,7 +2,7 @@
 //  Template.h
 //  AccountManagement
 //
-//  Created by 李大爷 on 15/5/27.
+//  Created by 李大爷 on 15/5/28.
 //  Copyright (c) 2015年 李大爷. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSNumber * sid;
 @property (nonatomic, retain) NSString * tpname;
+@property (nonatomic, retain) NSNumber * sync;
 @property (nonatomic, retain) Account *account;
 @property (nonatomic, retain) AccountBook *accountBook;
 @property (nonatomic, retain) Classification *classification;

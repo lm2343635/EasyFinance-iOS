@@ -2,7 +2,7 @@
 //  AccountBook.h
 //  AccountManagement
 //
-//  Created by 李大爷 on 15/5/27.
+//  Created by 李大爷 on 15/5/28.
 //  Copyright (c) 2015年 李大爷. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSString * abname;
 @property (nonatomic, retain) NSNumber * sid;
+@property (nonatomic, retain) NSNumber * sync;
 @property (nonatomic, retain) Icon *abicon;
 @property (nonatomic, retain) NSSet *accounts;
 @property (nonatomic, retain) NSSet *classifications;

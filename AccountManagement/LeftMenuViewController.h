@@ -13,5 +13,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *usingAccountBookLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *usingAccountBookImageView;
 @property (strong, nonatomic) IBOutlet UIImageView *userPhotoImageView;
+@property (strong, nonatomic) IBOutlet UICollectionView *accountBooksCollectionView;
 
+- (IBAction)synchronize:(id)sender;
 @end

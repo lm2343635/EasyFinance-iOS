@@ -2,7 +2,7 @@
 //  Shop.h
 //  AccountManagement
 //
-//  Created by 李大爷 on 15/5/27.
+//  Created by 李大爷 on 15/5/28.
 //  Copyright (c) 2015年 李大爷. All rights reserved.
 //
 
@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSNumber * sin;
 @property (nonatomic, retain) NSString * sname;
 @property (nonatomic, retain) NSNumber * sout;
+@property (nonatomic, retain) NSNumber * sync;
 @property (nonatomic, retain) AccountBook *accountBook;
 @property (nonatomic, retain) Icon *sicon;
 

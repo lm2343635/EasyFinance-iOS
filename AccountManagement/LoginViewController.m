@@ -13,6 +13,7 @@
 #import "DaoManager.h"
 #import "Util.h"
 #import "SystemInit.h"
+#import "Synchronization.h"
 
 @interface LoginViewController ()
 
@@ -60,19 +61,22 @@
     if([email isEqualToString:@""]||[password isEqualToString:@""])
        [Util showAlert:@"Email or password is null."];
     else {
-        NSDictionary *parameters=@{@"email":email,@"password":password};
         [manager POST:[InternetHelper createUrl:@"iOSUserServlet?task=login"]
-           parameters:parameters
+           parameters:@{@"email":email,@"password":password}
               success:^(AFHTTPRequestOperation *operation, id responseObject) {
                   if(DEBUG==1)
                       NSLog(@"Get user login status from server: %@",operation.responseString);
                   int status=[operation.responseString intValue];
                   switch (status) {
                       case LOGIN_SUCCESS: {
-                          User *user=[dao.userDao getLoginedUser];
+                          User *user=[dao.userDao getByEmail:email];
+                          NSLog(@"%@ %@",user,email);
                           if(user!=nil) {
                               //设置当前用户为已登录状态
                               [dao.userDao setUserLogin:YES withUid:user.objectID];
+                              //注册同步密钥
+                              Synchronization *sync=[[Synchronization alloc] init];
+                              [sync registSyncKey];
                               //登录成功且用户在iOS中存在，直接跳转到主界面
                               [self performSegueWithIdentifier:@"loginSuccessSegue" sender:self];
                           }else{
@@ -128,63 +132,4 @@
     self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 }
 
-//#pragma mark - Data
-////当用户登录成功或发现用户没有账本（新用户）后，从服务器加载用户信息到iOS客户端
-//-(void)loadUserFromServerWithEmail:(NSString *)email thenLogin:(BOOL)login{
-//    if(DEBUG==1)
-//        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-//    //如果该用户不为空，直接从iOS客户端中得到即可
-//    self.loginedUser=[dao.userDao getByEmail:email];
-//    //如果该用户在iOS客户端没有用户数据，需要从服务器端加载用户数据到iOS客户端
-//    if(self.loginedUser==nil) {
-//        if(DEBUG==1)
-//            NSLog(@"User has not data in iOS Client database, loading user data from server...");
-//        [manager POST:[InternetHelper createUrl:@"iOSUserServlet?task=getUser"]
-//           parameters:@{@"email":email}
-//              success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                  if(DEBUG==1)
-//                      NSLog(@"Get message from server: %@",operation.responseString);
-//                  NSObject *object=[NSJSONSerialization JSONObjectWithData:responseObject
-//                                                                   options:NSJSONReadingMutableContainers
-//                                                                     error:nil];
-//                  //把服务器的用户导入iOS客户端数据库
-//                  NSLog(@"Password=%@",[object valueForKey:@"password"]);
-//                  NSManagedObjectID *uid=[dao.userDao saveWithEmail:[object valueForKey:@"email"]
-//                                        andUname:[object valueForKey:@"uname"]
-//                                     andPassword:[object valueForKey:@"password"]
-//                                          andSid:[NSNumber numberWithInt:[[object valueForKey:@"uid"] intValue]]];
-//                  //并且设置用户已登录
-//                  [dao.userDao setUserLogin:YES withUid:uid];
-//                  //把该用户设置为登录成功用户
-//                  self.loginedUser=(User *)[dao getObjectById:uid];
-//                  if(login==YES) {
-//                      self.loginedUser.login=[NSNumber numberWithBool:YES];
-//                      [dao.cdh saveContext];
-//                  }
-//                  //导入该用户的其他数据(账本，账户，类别，商家，照片，图标。。。等等)
-//                  SystemInit *init=[[SystemInit alloc] init];
-//                  [init importUserInfoFromServer:self.loginedUser.sid];
-//              }
-//              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//                  NSLog(@"Server Error: %@",error);
-//              }];
-//    }else{
-//        if(login==YES) {
-//            self.loginedUser.login=[NSNumber numberWithBool:YES];
-//            [dao.cdh saveContext];
-//        }
-//    }
-//}
-//
-//#pragma mark - KVO
-//-(void)observeValueForKeyPath:(NSString *)keyPath
-//                     ofObject:(id)object
-//                       change:(NSDictionary *)change
-//                      context:(void *)context {
-//    if([keyPath isEqualToString:@"loginedUser"]) {
-//        NSLog(@"Observing self.loginedUser(uid=%@)",self.loginedUser.objectID);
-//        if(self.loginedUser!=nil)
-//            [self performSegueWithIdentifier:@"noAccountBookSegue" sender:self];
-//    }
-//}
 @end

@@ -14,6 +14,10 @@
 #define APP_DELEGATE_DEBUG 0
 #define CELL_AT_INDEX_PATH_DEBUG 0
 
+#define SYNCED 1
+#define NOT_SYNC 0
+#define SYNC_DELATE -1
+
 #define KeyboardHeight 290.0
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

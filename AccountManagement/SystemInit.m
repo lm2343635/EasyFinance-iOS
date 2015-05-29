@@ -40,6 +40,7 @@
         NSLog(@"Create system null icon(iid=%@)",iid);
     //设置系统空图标的用户为系统空用户
     Icon *icon=(Icon *)[dao getObjectById:iid];
+    icon.sync=[NSNumber numberWithInt:SYNCED];
     User *user=(User *)[dao getObjectById:uid];
     icon.user=user;
     [dao.cdh saveContext];

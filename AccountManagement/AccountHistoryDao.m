@@ -27,6 +27,8 @@
     accountHistory.aout=aout;
     accountHistory.date=date;
     accountHistory.account=account;
+    //导入服务器数据时sync=1，默认认为它已同步
+    accountHistory.sync=[NSNumber numberWithInt:SYNCED];
     return accountHistory.objectID;
 }
 

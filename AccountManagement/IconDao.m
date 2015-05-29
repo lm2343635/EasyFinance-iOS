@@ -36,6 +36,8 @@
     icon.idata=idata;
     icon.type=type;
     icon.user=user;
+    //导入服务器数据时sync=1，默认认为它已同步
+    icon.sync=[NSNumber numberWithInt:SYNCED];
     [self.cdh saveContext];
     return icon.objectID;
 }

@@ -32,6 +32,8 @@
     transfer.tfin=tfin;
     transfer.tfout=tfout;
     transfer.accountBook=accountBook;
+    //导入服务器数据时sync=1，默认认为它已同步
+    transfer.sync=[NSNumber numberWithInt:SYNCED];
     [self.cdh saveContext];
     return transfer.objectID;
 }

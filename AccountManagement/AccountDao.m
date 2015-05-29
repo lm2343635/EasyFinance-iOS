@@ -26,6 +26,8 @@
     account.ain=ain;
     account.aout=aout;
     account.accountBook=accountBook;
+    //导入服务器数据时sync=1，默认认为它已同步
+    account.sync=[NSNumber numberWithInt:SYNCED];
     [self.cdh saveContext];
     return account.objectID;
 }
@@ -75,4 +77,14 @@
     return information;
 }
 
+-(NSArray *)findByAccountBook:(AccountBook *)accountBook {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"accountBook=%@",accountBook];
+    NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"aname"
+                                                         ascending:YES];
+    return [self findByPredicate:predicate
+                  withEntityName:AccountEntityName
+                         orderBy:sort];
+}
 @end

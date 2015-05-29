@@ -2,7 +2,7 @@
 //  AccountBook.m
 //  AccountManagement
 //
-//  Created by 李大爷 on 15/5/27.
+//  Created by 李大爷 on 15/5/28.
 //  Copyright (c) 2015年 李大爷. All rights reserved.
 //
 
@@ -22,6 +22,7 @@
 
 @dynamic abname;
 @dynamic sid;
+@dynamic sync;
 @dynamic abicon;
 @dynamic accounts;
 @dynamic classifications;

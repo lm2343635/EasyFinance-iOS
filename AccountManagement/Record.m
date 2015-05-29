@@ -2,7 +2,7 @@
 //  Record.m
 //  AccountManagement
 //
-//  Created by 李大爷 on 15/5/27.
+//  Created by 李大爷 on 15/5/28.
 //  Copyright (c) 2015年 李大爷. All rights reserved.
 //
 
@@ -20,6 +20,7 @@
 @dynamic remark;
 @dynamic sid;
 @dynamic time;
+@dynamic sync;
 @dynamic account;
 @dynamic accountBook;
 @dynamic classification;

@@ -26,6 +26,8 @@
     shop.sin=sin;
     shop.sout=sout;
     shop.accountBook=accountBook;
+    //导入服务器数据时sync=1，默认认为它已同步
+    shop.sync=[NSNumber numberWithInt:SYNCED];
     [self.cdh saveContext];
     return shop.objectID;
 }

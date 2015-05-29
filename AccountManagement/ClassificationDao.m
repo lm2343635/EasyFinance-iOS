@@ -26,6 +26,8 @@
     classification.cin=cin;
     classification.cout=cout;
     classification.accountBook=accountBook;
+    //导入服务器数据时sync=1，默认认为它已同步
+    classification.sync=[NSNumber numberWithInt:SYNCED];
     [self.cdh saveContext];
     return classification.objectID;
 }

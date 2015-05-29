@@ -54,6 +54,19 @@
 }
 
 -(NSArray *)findByPredicate:(NSPredicate *)predicate
+             withEntityName:(NSString *)entityName {
+    if(DEBUG==1&&DAO_DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSFetchRequest *request=[NSFetchRequest fetchRequestWithEntityName:entityName];
+    request.predicate=predicate;
+    NSError *error=nil;
+    NSArray *objects=[self.cdh.context executeFetchRequest:request error:&error];
+    if(error)
+        NSLog(@"Error: %@",error);
+    return objects;
+}
+
+-(NSArray *)findByPredicate:(NSPredicate *)predicate
              withEntityName:(NSString *)entityName
                     orderBy:(NSSortDescriptor *)sortDescriptor {
     if(DEBUG==1&&DAO_DEBUG==1)

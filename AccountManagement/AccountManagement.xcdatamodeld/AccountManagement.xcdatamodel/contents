@@ -5,12 +5,14 @@
         <attribute name="aname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="aout" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="sid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sync" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="accountBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountBook" inverseName="accounts" inverseEntity="AccountBook" syncable="YES"/>
         <relationship name="aicon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Icon" syncable="YES"/>
     </entity>
     <entity name="AccountBook" representedClassName="AccountBook" syncable="YES">
         <attribute name="abname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sync" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="abicon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Icon" syncable="YES"/>
         <relationship name="accounts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Account" inverseName="accountBook" inverseEntity="Account" syncable="YES"/>
         <relationship name="classifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Classification" inverseName="accountBook" inverseEntity="Classification" syncable="YES"/>
@@ -26,6 +28,7 @@
         <attribute name="aout" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="sid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sync" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" syncable="YES"/>
     </entity>
     <entity name="Classification" representedClassName="Classification" syncable="YES">
@@ -33,18 +36,21 @@
         <attribute name="cname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cout" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="sid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sync" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="accountBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountBook" inverseName="classifications" inverseEntity="AccountBook" syncable="YES"/>
         <relationship name="cicon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Icon" syncable="YES"/>
     </entity>
     <entity name="Icon" representedClassName="Icon" syncable="YES">
         <attribute name="idata" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="sid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sync" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="icons" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Photo" representedClassName="Photo" syncable="YES">
         <attribute name="pdata" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="sid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sync" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="upload" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <relationship name="accountBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountBook" inverseName="photos" inverseEntity="AccountBook" syncable="YES"/>
     </entity>
@@ -52,6 +58,7 @@
         <attribute name="money" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="remark" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sync" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" syncable="YES"/>
         <relationship name="accountBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountBook" inverseName="records" inverseEntity="AccountBook" syncable="YES"/>
@@ -64,11 +71,13 @@
         <attribute name="sin" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="sname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sout" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="sync" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="accountBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountBook" inverseName="shops" inverseEntity="AccountBook" syncable="YES"/>
         <relationship name="sicon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Icon" syncable="YES"/>
     </entity>
     <entity name="Template" representedClassName="Template" syncable="YES">
         <attribute name="sid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sync" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="tpname" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" syncable="YES"/>
         <relationship name="accountBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountBook" inverseName="templates" inverseEntity="AccountBook" syncable="YES"/>
@@ -79,6 +88,7 @@
         <attribute name="money" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="remark" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sync" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <relationship name="accountBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountBook" inverseName="transfers" inverseEntity="AccountBook" syncable="YES"/>
         <relationship name="tfin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" syncable="YES"/>
@@ -89,6 +99,7 @@
         <attribute name="login" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="syncKey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uname" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="accountBooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AccountBook" inverseName="user" inverseEntity="AccountBook" syncable="YES"/>
         <relationship name="icons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Icon" inverseName="user" inverseEntity="Icon" syncable="YES"/>
@@ -96,16 +107,16 @@
         <relationship name="usingAccountBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountBook" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Account" positionX="-164" positionY="170" width="128" height="133"/>
-        <element name="AccountBook" positionX="216" positionY="-9" width="128" height="208"/>
-        <element name="Classification" positionX="-128" positionY="351" width="128" height="135"/>
-        <element name="Icon" positionX="-281" positionY="-37" width="128" height="105"/>
-        <element name="Photo" positionX="628" positionY="-46" width="128" height="103"/>
-        <element name="Record" positionX="457" positionY="287" width="128" height="178"/>
-        <element name="Shop" positionX="-101" positionY="548" width="128" height="135"/>
-        <element name="Template" positionX="394" positionY="477" width="128" height="135"/>
-        <element name="Transfer" positionX="493" positionY="110" width="128" height="148"/>
-        <element name="User" positionX="36" positionY="-261" width="128" height="178"/>
-        <element name="AccountHistory" positionX="-414" positionY="180" width="135" height="118"/>
+        <element name="Account" positionX="-164" positionY="170" width="128" height="148"/>
+        <element name="AccountBook" positionX="216" positionY="-9" width="128" height="223"/>
+        <element name="AccountHistory" positionX="-414" positionY="180" width="135" height="133"/>
+        <element name="Classification" positionX="-128" positionY="351" width="128" height="148"/>
+        <element name="Icon" positionX="-281" positionY="-37" width="128" height="118"/>
+        <element name="Photo" positionX="628" positionY="-46" width="128" height="118"/>
+        <element name="Record" positionX="457" positionY="287" width="128" height="193"/>
+        <element name="Shop" positionX="-101" positionY="548" width="128" height="148"/>
+        <element name="Template" positionX="394" positionY="477" width="128" height="148"/>
+        <element name="Transfer" positionX="493" positionY="110" width="128" height="163"/>
+        <element name="User" positionX="36" positionY="-261" width="128" height="193"/>
     </elements>
 </model>

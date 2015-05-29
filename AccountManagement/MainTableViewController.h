@@ -45,4 +45,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *thisMonthEarnLabel;
 @property (strong, nonatomic) IBOutlet UILabel *thisMonthSpendLabel;
 
+-(void)reloadData;
 @end

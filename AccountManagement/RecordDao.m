@@ -35,6 +35,8 @@
     record.shop=shop;
     record.photo=photo;
     record.accountBook=accountBook;
+    //导入服务器数据时sync=1，默认认为它已同步
+    record.sync=[NSNumber numberWithInt:SYNCED];
     [self.cdh saveContext];
     return record.objectID;
 }
@@ -164,16 +166,12 @@
 -(Record *)getLatestRecordInAccountBook:(AccountBook *)accountBook {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    NSFetchRequest *request=[NSFetchRequest fetchRequestWithEntityName:RecordEntityName];
-    request.sortDescriptors=[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"time"
-                                                                                   ascending:NO]];
-    request.predicate=[NSPredicate predicateWithFormat:@"accountBook=%@",accountBook];
-    request.fetchLimit=1;
-    NSError *error=nil;
-    NSArray *records=[self.cdh.context executeFetchRequest:request error:&error];
-    if(error)
-        NSLog(@"Error: %@",error);
-    return [records objectAtIndex:0];
+    NSSortDescriptor *sortDescriptors=[NSSortDescriptor sortDescriptorWithKey:@"time"
+                                                                    ascending:NO];
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"accountBook=%@",accountBook];
+    return (Record *)[self getByPredicate:predicate
+                           withEntityName:RecordEntityName
+                                  orderBy:sortDescriptors];
 }
 
 -(double)getTotalSpendFrom:(NSDate *)start

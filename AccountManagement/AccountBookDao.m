@@ -12,7 +12,7 @@
 
 -(NSManagedObjectID *)saveWithName:(NSString *)abname
                            andIcon:(Icon *)abicon {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     AccountBook *accountBook=[NSEntityDescription insertNewObjectForEntityForName:AccountBookEntityName
                                                              inManagedObjectContext:self.cdh.context];
@@ -25,7 +25,7 @@
 -(NSManagedObjectID *)saveWithName:(NSString *)abname
                            andIcon:(Icon *)abicon
                            andUser:(User *)user {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     AccountBook *accountBook=[NSEntityDescription insertNewObjectForEntityForName:AccountBookEntityName
                                                            inManagedObjectContext:self.cdh.context];
@@ -40,7 +40,7 @@
                           andName:(NSString *)abname
                           andIcon:(Icon *)abicon
                           andUser:(User *)user {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     AccountBook *accountBook=[NSEntityDescription insertNewObjectForEntityForName:AccountBookEntityName
                                                            inManagedObjectContext:self.cdh.context];
@@ -48,31 +48,37 @@
     accountBook.abicon=abicon;
     accountBook.user=user;
     accountBook.sid=sid;
+    //导入服务器数据时sync=1，默认认为它已同步
+    accountBook.sync=[NSNumber numberWithInt:SYNCED];
     [self.cdh saveContext];
     return accountBook.objectID;
 }
 
 -(AccountBook *)getBySid:(NSNumber *)sid {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSPredicate *predicate=[NSPredicate predicateWithFormat:@"sid=%@",sid];
-    return (AccountBook *)[self getByPredicate:predicate withEntityName:AccountBookEntityName];
+    return (AccountBook *)[self getByPredicate:predicate
+                                withEntityName:AccountBookEntityName];
 }
 
--(NSArray *)findAll {
-    if(DEBUG==1)
+-(NSArray *)findByUser:(User *)user {
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    NSFetchRequest *request=[[NSFetchRequest alloc] initWithEntityName:AccountBookEntityName];
-    //    NSPredicate *predicate=[NSPredicate predicateWithFormat:@""];
-    //    [request setPredicate:predicate];
-    NSError *error=nil;
-    if(self.cdh==nil)
-        NSLog(@"self.cdh==nil");
-    NSArray *accountBooks=[self.cdh.context executeFetchRequest:request error:&error];
-    NSLog(@"accountBooks.count=%ld",accountBooks.count);
-    if(error)
-        NSLog(@"%@",error);
-    return accountBooks;
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"user=%@",user];
+    NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"abname"
+                                                         ascending:YES];
+    return [self findByPredicate:predicate
+                  withEntityName:AccountBookEntityName
+                         orderBy:sort];
+}
+
+-(NSArray *)findNotSyncByUser:(User *)user {
+    if(DEBUG==1&&DAO_DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"sync=%d and user=%@",NOT_SYNC,user];
+    return [self findByPredicate:predicate
+                  withEntityName:AccountBookEntityName];
 }
 
 @end

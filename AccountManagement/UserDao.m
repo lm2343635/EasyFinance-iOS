@@ -40,7 +40,7 @@
 -(User *)getByEmail:(NSString *)email {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    return (User *)[self getByPredicate:[NSPredicate predicateWithFormat:@"email='%@'",email]
+    return (User *)[self getByPredicate:[NSPredicate predicateWithFormat:@"email=%@",email]
                          withEntityName:UserEntityName];
 
 }

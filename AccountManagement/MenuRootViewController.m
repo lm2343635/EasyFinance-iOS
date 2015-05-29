@@ -7,6 +7,7 @@
 //
 
 #import "MenuRootViewController.h"
+#import "MainTableViewController.h"
 
 @interface MenuRootViewController ()
 
@@ -29,6 +30,13 @@
     //    self.rightMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"rightMenuViewController"];
     self.backgroundImage = [UIImage imageNamed:@"Stars"];
     self.delegate = self;
+}
+
+#pragma mark - RESideMenuDelegate
+-(void)sideMenu:(RESideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+
 }
 
 @end

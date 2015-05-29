@@ -32,4 +32,7 @@
 
 //获取账户中心信息
 -(AccountInformation *)getAccountInformationInAccountBook:(AccountBook *)accountBook;
+
+//得到指定账本的所有账户，并按账户名称排序
+-(NSArray *)findByAccountBook:(AccountBook *)accountBook;
 @end

@@ -22,6 +22,7 @@
                            andIcon:(Icon *)abicon
                            andUser:(User *)user;
 
+//导入服务器数据
 -(NSManagedObjectID *)saveWithSid:(NSNumber *)sid
                           andName:(NSString *)abname
                           andIcon:(Icon *)abicon
@@ -30,6 +31,10 @@
 //通过服务器id得到账本
 -(AccountBook *)getBySid:(NSNumber *)sid;
 
--(NSArray *)findAll;
+//得到指定用户的所有账本，并按账本名称排序
+-(NSArray *)findByUser:(User *)user;
+
+//查找指定用户未同步的账本
+-(NSArray *)findNotSyncByUser:(User *)user;
 
 @end

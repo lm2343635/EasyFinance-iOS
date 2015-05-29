@@ -8,6 +8,7 @@
 
 #import "LeftMenuViewController.h"
 #import "DaoManager.h"
+#import "Synchronization.h"
 
 @interface LeftMenuViewController ()
 
@@ -15,7 +16,7 @@
 
 @implementation LeftMenuViewController {
     DaoManager *dao;
-    User *user;
+    User *loginedUser;
     NSArray *accountBooks;
     NSIndexPath *usingAccountBookIndexPath;
 }
@@ -25,27 +26,19 @@
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     [super viewDidLoad];
     dao=[[DaoManager alloc] init];
-    user=[dao.userDao getLoginedUser];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    [super viewWillAppear:animated];
+    loginedUser=[dao.userDao getLoginedUser];
     //读取账本信息
-    accountBooks=[user.accountBooks allObjects];
+    accountBooks=[dao.accountBookDao findByUser:loginedUser];
     //设置默认账本
     [self setUsingAccountBook];
+    [self.accountBooksCollectionView reloadData];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -62,34 +55,47 @@
     UIImageView *accountBookIconImageView=(UIImageView *)[cell viewWithTag:1];
     UILabel *accountBookNameLabel=(UILabel *)[cell viewWithTag:2];
     UIImageView *selectedAccountBookIconImageView=(UIImageView *)[cell viewWithTag:3];
+    selectedAccountBookIconImageView.hidden=YES;
     AccountBook *accountBook=[accountBooks objectAtIndex:indexPath.row];
     accountBookIconImageView.image=[UIImage imageWithData:accountBook.abicon.idata];
     accountBookNameLabel.text=accountBook.abname;
     //设置默认账本的选中图标
-    if(user.usingAccountBook==accountBook) {
+    if(loginedUser.usingAccountBook.objectID==accountBook.objectID) {
         usingAccountBookIndexPath=indexPath;
-        selectedAccountBookIconImageView.hidden=false;
+        selectedAccountBookIconImageView.hidden=NO;
     }
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     //选择默认账本，加载视图
     UICollectionViewCell *usingAccountBookCell=[collectionView cellForItemAtIndexPath:usingAccountBookIndexPath];
     ((UIImageView *)[usingAccountBookCell viewWithTag:3]).hidden=true;
     UICollectionViewCell *cell=[collectionView cellForItemAtIndexPath:indexPath];
     ((UIImageView *)[cell viewWithTag:3]).hidden=false;
     //选择默认账本，存储数据
-    user.usingAccountBook=[accountBooks objectAtIndex:indexPath.row];
+    loginedUser.usingAccountBook=[accountBooks objectAtIndex:indexPath.row];
     [dao.cdh saveContext];
     //设置默认账本的
     [self setUsingAccountBook];
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     UICollectionViewCell *cell=[collectionView cellForItemAtIndexPath:indexPath];
-    ((UIImageView *)[cell viewWithTag:3]).hidden=true;
+    ((UIImageView *)[cell viewWithTag:3]).hidden=YES;
+}
+
+#pragma mark - Action
+- (IBAction)synchronize:(id)sender {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    Synchronization *sync=[[Synchronization alloc] init];
+    [sync synchronize];
 }
 
 #pragma mark - Service
@@ -98,9 +104,10 @@
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     //设置默认账本的label和imageView
-    self.usingAccountBookLabel.text=user.usingAccountBook.abname;
-    self.usingAccountBookImageView.image=[UIImage imageWithData:user.usingAccountBook.abicon.idata];
+    self.usingAccountBookLabel.text=loginedUser.usingAccountBook.abname;
+    self.usingAccountBookImageView.image=[UIImage imageWithData:loginedUser.usingAccountBook.abicon.idata];
     //加载该账本的其他数据到MainViewController中
     //....
 }
+
 @end

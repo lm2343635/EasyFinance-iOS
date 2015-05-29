@@ -29,7 +29,9 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    accountBooks=[loginedUser.accountBooks allObjects];
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    accountBooks=[dao.accountBookDao findByUser:loginedUser];
     [self.tableView reloadData];
 }
 

@@ -30,6 +30,11 @@
 -(void)viewWillAppear:(BOOL)animated {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    [self reloadData];
+}
+
+#pragma mark - Service
+-(void)reloadData {
     NSDate *nowDate=[NSDate date];
     AccountBook *usingAccountBook=loginedUser.usingAccountBook;
     //设置TabBar选中图标和颜色
@@ -89,15 +94,13 @@
                                                       to:thisMonthEnd
                                            inAccountBook:usingAccountBook];
     self.thisMonthSpendLabel.text=self.thisMonthTotalSpendLabel.text=
-        [NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:thisMonthSpend]];
+    [NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:thisMonthSpend]];
     self.thisMonthEarnLabel.text=self.thisMoneyTotalEarnLabel.text=
-        [NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:thisMonthEarn]];
+    [NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:thisMonthEarn]];
     self.thisMonthLocalNameLabel.text=[DateTool formateDate:nowDate withFormat:DateFormatLocalMonth];
     self.thisMonthTimeInfoLabel.text=[NSString stringWithFormat:@"%@ ~ %@",
                                       [DateTool formateDate:thisMonthStart withFormat:DateFormatYearMonthDay],
                                       [DateTool formateDate:thisMonthEnd withFormat:DateFormatYearMonthDay]];
 }
-
-
 
 @end

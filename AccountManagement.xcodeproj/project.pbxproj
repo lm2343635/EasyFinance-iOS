@@ -61,6 +61,20 @@
 		E47B7F791B14DCEB003943E3 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E47B7F781B14DCEB003943E3 /* ReportViewController.m */; };
 		E47B7F7C1B14DD74003943E3 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E47B7F7B1B14DD74003943E3 /* AccountViewController.m */; };
 		E47B7F7F1B14DDD4003943E3 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E47B7F7E1B14DDD4003943E3 /* SettingViewController.m */; };
+		E48EA0711B175C47008890DC /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA0701B175C47008890DC /* Photo.m */; };
+		E48EA0741B175C48008890DC /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA0731B175C48008890DC /* Shop.m */; };
+		E48EA0771B175C48008890DC /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA0761B175C48008890DC /* Transfer.m */; };
+		E48EA07A1B175C48008890DC /* Template.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA0791B175C48008890DC /* Template.m */; };
+		E48EA07D1B175C48008890DC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA07C1B175C48008890DC /* User.m */; };
+		E48EA0801B175C48008890DC /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA07F1B175C48008890DC /* Account.m */; };
+		E48EA0831B175C48008890DC /* Classification.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA0821B175C48008890DC /* Classification.m */; };
+		E48EA0861B175C48008890DC /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA0851B175C48008890DC /* Record.m */; };
+		E48EA0891B175C48008890DC /* AccountBook.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA0881B175C48008890DC /* AccountBook.m */; };
+		E48EA08C1B175C48008890DC /* AccountHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA08B1B175C48008890DC /* AccountHistory.m */; };
+		E48EA08F1B175C48008890DC /* Icon.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA08E1B175C48008890DC /* Icon.m */; };
+		E48EA0AF1B17F8AA008890DC /* NSObject+KJSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA0AE1B17F8AA008890DC /* NSObject+KJSerializer.m */; };
+		E48EA0B21B17F927008890DC /* AccountBookData.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA0B11B17F927008890DC /* AccountBookData.m */; };
+		E48EA0B51B17FE7F008890DC /* Synchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA0B41B17FE7F008890DC /* Synchronization.m */; };
 		E48F38C71AEA2FE30039157D /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E48F38C61AEA2FE30039157D /* CoreDataHelper.m */; };
 		E49AC0E01B159795009D996D /* AccountBookDao.m in Sources */ = {isa = PBXBuildFile; fileRef = E49AC0C91B159795009D996D /* AccountBookDao.m */; };
 		E49AC0E11B159795009D996D /* AccountDao.m in Sources */ = {isa = PBXBuildFile; fileRef = E49AC0CB1B159795009D996D /* AccountDao.m */; };
@@ -89,17 +103,6 @@
 		E4A963A51B12C0A400EF0EE6 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A963A41B12C0A400EF0EE6 /* LeftMenuViewController.m */; };
 		E4A9775B1AFA199900910FF7 /* UserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A9775A1AFA199900910FF7 /* UserTableViewController.m */; };
 		E4A9775E1AFA409900910FF7 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A9775D1AFA409900910FF7 /* CoreDataTableViewController.m */; };
-		E4AB6D241B15E640002082D4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6D231B15E640002082D4 /* User.m */; };
-		E4AB6D271B15E641002082D4 /* AccountHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6D261B15E641002082D4 /* AccountHistory.m */; };
-		E4AB6D2A1B15E641002082D4 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6D291B15E641002082D4 /* Account.m */; };
-		E4AB6D2D1B15E641002082D4 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6D2C1B15E641002082D4 /* Record.m */; };
-		E4AB6D301B15E641002082D4 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6D2F1B15E641002082D4 /* Shop.m */; };
-		E4AB6D331B15E641002082D4 /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6D321B15E641002082D4 /* Transfer.m */; };
-		E4AB6D361B15E641002082D4 /* AccountBook.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6D351B15E641002082D4 /* AccountBook.m */; };
-		E4AB6D391B15E641002082D4 /* Classification.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6D381B15E641002082D4 /* Classification.m */; };
-		E4AB6D3C1B15E641002082D4 /* Icon.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6D3B1B15E641002082D4 /* Icon.m */; };
-		E4AB6D3F1B15E642002082D4 /* Template.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6D3E1B15E642002082D4 /* Template.m */; };
-		E4AB6D421B15E642002082D4 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6D411B15E642002082D4 /* Photo.m */; };
 		E4AB6D451B15E6C9002082D4 /* AccountHistoryDao.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6D441B15E6C9002082D4 /* AccountHistoryDao.m */; };
 		E4C215FE1ADF844D00AEC554 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C215FD1ADF844D00AEC554 /* RegisterViewController.m */; };
 		E4C216171ADF941E00AEC554 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C216161ADF941E00AEC554 /* LoginViewController.m */; };
@@ -238,6 +241,34 @@
 		E47B7F7B1B14DD74003943E3 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		E47B7F7D1B14DDD4003943E3 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		E47B7F7E1B14DDD4003943E3 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		E48EA06F1B175C47008890DC /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		E48EA0701B175C47008890DC /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		E48EA0721B175C48008890DC /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shop.h; sourceTree = "<group>"; };
+		E48EA0731B175C48008890DC /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shop.m; sourceTree = "<group>"; };
+		E48EA0751B175C48008890DC /* Transfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transfer.h; sourceTree = "<group>"; };
+		E48EA0761B175C48008890DC /* Transfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transfer.m; sourceTree = "<group>"; };
+		E48EA0781B175C48008890DC /* Template.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Template.h; sourceTree = "<group>"; };
+		E48EA0791B175C48008890DC /* Template.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Template.m; sourceTree = "<group>"; };
+		E48EA07B1B175C48008890DC /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		E48EA07C1B175C48008890DC /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		E48EA07E1B175C48008890DC /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		E48EA07F1B175C48008890DC /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		E48EA0811B175C48008890DC /* Classification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Classification.h; sourceTree = "<group>"; };
+		E48EA0821B175C48008890DC /* Classification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Classification.m; sourceTree = "<group>"; };
+		E48EA0841B175C48008890DC /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
+		E48EA0851B175C48008890DC /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
+		E48EA0871B175C48008890DC /* AccountBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountBook.h; sourceTree = "<group>"; };
+		E48EA0881B175C48008890DC /* AccountBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountBook.m; sourceTree = "<group>"; };
+		E48EA08A1B175C48008890DC /* AccountHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountHistory.h; sourceTree = "<group>"; };
+		E48EA08B1B175C48008890DC /* AccountHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountHistory.m; sourceTree = "<group>"; };
+		E48EA08D1B175C48008890DC /* Icon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Icon.h; sourceTree = "<group>"; };
+		E48EA08E1B175C48008890DC /* Icon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Icon.m; sourceTree = "<group>"; };
+		E48EA0AD1B17F8AA008890DC /* NSObject+KJSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KJSerializer.h"; sourceTree = "<group>"; };
+		E48EA0AE1B17F8AA008890DC /* NSObject+KJSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KJSerializer.m"; sourceTree = "<group>"; };
+		E48EA0B01B17F927008890DC /* AccountBookData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountBookData.h; sourceTree = "<group>"; };
+		E48EA0B11B17F927008890DC /* AccountBookData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountBookData.m; sourceTree = "<group>"; };
+		E48EA0B31B17FE7F008890DC /* Synchronization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Synchronization.h; sourceTree = "<group>"; };
+		E48EA0B41B17FE7F008890DC /* Synchronization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Synchronization.m; sourceTree = "<group>"; };
 		E48F38C51AEA2FE30039157D /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		E48F38C61AEA2FE30039157D /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		E49AC0C81B159795009D996D /* AccountBookDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountBookDao.h; sourceTree = "<group>"; };
@@ -294,28 +325,6 @@
 		E4A9775A1AFA199900910FF7 /* UserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTableViewController.m; sourceTree = "<group>"; };
 		E4A9775C1AFA409900910FF7 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		E4A9775D1AFA409900910FF7 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
-		E4AB6D221B15E640002082D4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		E4AB6D231B15E640002082D4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		E4AB6D251B15E641002082D4 /* AccountHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountHistory.h; sourceTree = "<group>"; };
-		E4AB6D261B15E641002082D4 /* AccountHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountHistory.m; sourceTree = "<group>"; };
-		E4AB6D281B15E641002082D4 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
-		E4AB6D291B15E641002082D4 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
-		E4AB6D2B1B15E641002082D4 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
-		E4AB6D2C1B15E641002082D4 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
-		E4AB6D2E1B15E641002082D4 /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shop.h; sourceTree = "<group>"; };
-		E4AB6D2F1B15E641002082D4 /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shop.m; sourceTree = "<group>"; };
-		E4AB6D311B15E641002082D4 /* Transfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transfer.h; sourceTree = "<group>"; };
-		E4AB6D321B15E641002082D4 /* Transfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transfer.m; sourceTree = "<group>"; };
-		E4AB6D341B15E641002082D4 /* AccountBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountBook.h; sourceTree = "<group>"; };
-		E4AB6D351B15E641002082D4 /* AccountBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountBook.m; sourceTree = "<group>"; };
-		E4AB6D371B15E641002082D4 /* Classification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Classification.h; sourceTree = "<group>"; };
-		E4AB6D381B15E641002082D4 /* Classification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Classification.m; sourceTree = "<group>"; };
-		E4AB6D3A1B15E641002082D4 /* Icon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Icon.h; sourceTree = "<group>"; };
-		E4AB6D3B1B15E641002082D4 /* Icon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Icon.m; sourceTree = "<group>"; };
-		E4AB6D3D1B15E642002082D4 /* Template.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Template.h; sourceTree = "<group>"; };
-		E4AB6D3E1B15E642002082D4 /* Template.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Template.m; sourceTree = "<group>"; };
-		E4AB6D401B15E642002082D4 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
-		E4AB6D411B15E642002082D4 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		E4AB6D431B15E6C9002082D4 /* AccountHistoryDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountHistoryDao.h; sourceTree = "<group>"; };
 		E4AB6D441B15E6C9002082D4 /* AccountHistoryDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountHistoryDao.m; sourceTree = "<group>"; };
 		E4C215FC1ADF844D00AEC554 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -421,8 +430,12 @@
 				E46FD95F1B142B8100E10D8F /* DateTool.m */,
 				E45023561AF0DBC6006B12D0 /* InternetHelper.h */,
 				E45023571AF0DBC6006B12D0 /* InternetHelper.m */,
+				E48EA0B31B17FE7F008890DC /* Synchronization.h */,
+				E48EA0B41B17FE7F008890DC /* Synchronization.m */,
 				E433688E1AF4E209005F7BC4 /* SystemInit.h */,
 				E433688F1AF4E209005F7BC4 /* SystemInit.m */,
+				E48EA0AD1B17F8AA008890DC /* NSObject+KJSerializer.h */,
+				E48EA0AE1B17F8AA008890DC /* NSObject+KJSerializer.m */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -571,6 +584,8 @@
 				E47610681B10515300893D09 /* RecordMonthlyStatisticalData.m */,
 				E45E8AEE1B1180AF0056F320 /* TransferMonthlyStatisticalData.h */,
 				E45E8AEF1B1180AF0056F320 /* TransferMonthlyStatisticalData.m */,
+				E48EA0B01B17F927008890DC /* AccountBookData.h */,
+				E48EA0B11B17F927008890DC /* AccountBookData.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -650,28 +665,28 @@
 		E4C215831ADF58B600AEC554 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				E4AB6D401B15E642002082D4 /* Photo.h */,
-				E4AB6D411B15E642002082D4 /* Photo.m */,
-				E4AB6D3D1B15E642002082D4 /* Template.h */,
-				E4AB6D3E1B15E642002082D4 /* Template.m */,
-				E4AB6D3A1B15E641002082D4 /* Icon.h */,
-				E4AB6D3B1B15E641002082D4 /* Icon.m */,
-				E4AB6D371B15E641002082D4 /* Classification.h */,
-				E4AB6D381B15E641002082D4 /* Classification.m */,
-				E4AB6D341B15E641002082D4 /* AccountBook.h */,
-				E4AB6D351B15E641002082D4 /* AccountBook.m */,
-				E4AB6D311B15E641002082D4 /* Transfer.h */,
-				E4AB6D321B15E641002082D4 /* Transfer.m */,
-				E4AB6D2E1B15E641002082D4 /* Shop.h */,
-				E4AB6D2F1B15E641002082D4 /* Shop.m */,
-				E4AB6D2B1B15E641002082D4 /* Record.h */,
-				E4AB6D2C1B15E641002082D4 /* Record.m */,
-				E4AB6D281B15E641002082D4 /* Account.h */,
-				E4AB6D291B15E641002082D4 /* Account.m */,
-				E4AB6D251B15E641002082D4 /* AccountHistory.h */,
-				E4AB6D261B15E641002082D4 /* AccountHistory.m */,
-				E4AB6D221B15E640002082D4 /* User.h */,
-				E4AB6D231B15E640002082D4 /* User.m */,
+				E48EA08D1B175C48008890DC /* Icon.h */,
+				E48EA08E1B175C48008890DC /* Icon.m */,
+				E48EA08A1B175C48008890DC /* AccountHistory.h */,
+				E48EA08B1B175C48008890DC /* AccountHistory.m */,
+				E48EA0871B175C48008890DC /* AccountBook.h */,
+				E48EA0881B175C48008890DC /* AccountBook.m */,
+				E48EA0841B175C48008890DC /* Record.h */,
+				E48EA0851B175C48008890DC /* Record.m */,
+				E48EA0811B175C48008890DC /* Classification.h */,
+				E48EA0821B175C48008890DC /* Classification.m */,
+				E48EA07E1B175C48008890DC /* Account.h */,
+				E48EA07F1B175C48008890DC /* Account.m */,
+				E48EA07B1B175C48008890DC /* User.h */,
+				E48EA07C1B175C48008890DC /* User.m */,
+				E48EA0781B175C48008890DC /* Template.h */,
+				E48EA0791B175C48008890DC /* Template.m */,
+				E48EA0751B175C48008890DC /* Transfer.h */,
+				E48EA0761B175C48008890DC /* Transfer.m */,
+				E48EA0721B175C48008890DC /* Shop.h */,
+				E48EA0731B175C48008890DC /* Shop.m */,
+				E48EA06F1B175C47008890DC /* Photo.h */,
+				E48EA0701B175C47008890DC /* Photo.m */,
 				E43CC5371A33251100146C77 /* AccountManagement.xcdatamodeld */,
 			);
 			name = "Data Model";
@@ -711,6 +726,8 @@
 				E4E265971AFB07E5002019F5 /* ImportUserViewController.m */,
 				E46423AD1B0A02AC00FE40D9 /* LatestRecordTableViewController.h */,
 				E46423AE1B0A02AC00FE40D9 /* LatestRecordTableViewController.m */,
+				E4A963A31B12C0A400EF0EE6 /* LeftMenuViewController.h */,
+				E4A963A41B12C0A400EF0EE6 /* LeftMenuViewController.m */,
 				E4C216151ADF941E00AEC554 /* LoginViewController.h */,
 				E4C216161ADF941E00AEC554 /* LoginViewController.m */,
 				E4C2B2B81B0F289200230249 /* PhotoViewController.h */,
@@ -723,8 +740,6 @@
 				E4A963941B12352C00EF0EE6 /* MainTableViewController.m */,
 				E4A963A01B12AE7000EF0EE6 /* MenuRootViewController.h */,
 				E4A963A11B12AE7000EF0EE6 /* MenuRootViewController.m */,
-				E4A963A31B12C0A400EF0EE6 /* LeftMenuViewController.h */,
-				E4A963A41B12C0A400EF0EE6 /* LeftMenuViewController.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -853,7 +868,6 @@
 			files = (
 				E4A9775B1AFA199900910FF7 /* UserTableViewController.m in Sources */,
 				E4A9639D1B12AD6C00EF0EE6 /* RECommonFunctions.m in Sources */,
-				E4AB6D391B15E641002082D4 /* Classification.m in Sources */,
 				E4E265981AFB07E5002019F5 /* ImportUserViewController.m in Sources */,
 				E4450A691AFC96F900294BB0 /* AddTemplateViewController.m in Sources */,
 				E43ECDCE1AEF302D00CB3C46 /* AFURLSessionManager.m in Sources */,
@@ -861,7 +875,8 @@
 				E409F28F1AE8CD2E001C55C6 /* CoreDataImporter.m in Sources */,
 				E45E8B131B11A2390056F320 /* MJRefreshGifFooter.m in Sources */,
 				E45E8B161B11A2390056F320 /* MJRefreshLegendFooter.m in Sources */,
-				E4AB6D2A1B15E641002082D4 /* Account.m in Sources */,
+				E48EA08C1B175C48008890DC /* AccountHistory.m in Sources */,
+				E48EA0861B175C48008890DC /* Record.m in Sources */,
 				E45E8B191B11A2390056F320 /* UIScrollView+MJRefresh.m in Sources */,
 				E45E8B171B11A2390056F320 /* MJRefreshLegendHeader.m in Sources */,
 				E4E265A11AFB5A7F002019F5 /* ShopsTableViewController.m in Sources */,
@@ -880,9 +895,9 @@
 				E45E8B141B11A2390056F320 /* MJRefreshGifHeader.m in Sources */,
 				E49AC0E51B159795009D996D /* RecordDao.m in Sources */,
 				E4A9775E1AFA409900910FF7 /* CoreDataTableViewController.m in Sources */,
-				E4AB6D3C1B15E641002082D4 /* Icon.m in Sources */,
-				E4AB6D421B15E642002082D4 /* Photo.m in Sources */,
-				E4AB6D2D1B15E641002082D4 /* Record.m in Sources */,
+				E48EA0B21B17F927008890DC /* AccountBookData.m in Sources */,
+				E48EA0801B175C48008890DC /* Account.m in Sources */,
+				E48EA0711B175C47008890DC /* Photo.m in Sources */,
 				E47B7F751B14DC30003943E3 /* ListViewController.m in Sources */,
 				E45E8B111B11A2390056F320 /* MJRefreshConst.m in Sources */,
 				E42F24721AFD118800F5216E /* SelectorView.m in Sources */,
@@ -891,8 +906,10 @@
 				E45E8B151B11A2390056F320 /* MJRefreshHeader.m in Sources */,
 				E4C216171ADF941E00AEC554 /* LoginViewController.m in Sources */,
 				E45E8AF31B1194D90056F320 /* TransferViewController.m in Sources */,
-				E4AB6D301B15E641002082D4 /* Shop.m in Sources */,
+				E48EA07A1B175C48008890DC /* Template.m in Sources */,
+				E48EA08F1B175C48008890DC /* Icon.m in Sources */,
 				E49AC0E41B159795009D996D /* PhotoDao.m in Sources */,
+				E48EA0741B175C48008890DC /* Shop.m in Sources */,
 				E43ECDC61AEF302D00CB3C46 /* AFHTTPRequestOperation.m in Sources */,
 				E4A1BE951AEB84C6009DE9D8 /* AccountBooksTableViewController.m in Sources */,
 				E4450A6C1AFC971400294BB0 /* TemplatesTableViewController.m in Sources */,
@@ -900,13 +917,14 @@
 				E49AC0E81B159795009D996D /* TransferDao.m in Sources */,
 				E4E2659E1AFB5A62002019F5 /* AccountsTableViewController.m in Sources */,
 				E43ECDC81AEF302D00CB3C46 /* AFHTTPSessionManager.m in Sources */,
-				E4AB6D271B15E641002082D4 /* AccountHistory.m in Sources */,
 				E49AC0E11B159795009D996D /* AccountDao.m in Sources */,
+				E48EA0891B175C48008890DC /* AccountBook.m in Sources */,
 				E49AC0F41B15DB79009D996D /* AccountStatementsTableViewController.m in Sources */,
 				E450235C1AF10DE1006B12D0 /* CreateAccountBookViewController.m in Sources */,
 				E4A89F0B1B161ABE0068911A /* DetailStatementTableViewController.m in Sources */,
 				E4FA68AD1A669B57007AC9AE /* AddEarnViewController.m in Sources */,
 				E4C215FE1ADF844D00AEC554 /* RegisterViewController.m in Sources */,
+				E48EA07D1B175C48008890DC /* User.m in Sources */,
 				E49AC0EA1B159795009D996D /* DaoManager.m in Sources */,
 				E401EE441A3FFF11004EAF7C /* AddClassificationViewController.m in Sources */,
 				E4A9639F1B12AD6C00EF0EE6 /* UIViewController+RESideMenu.m in Sources */,
@@ -916,7 +934,6 @@
 				E49AC0EE1B159D5F009D996D /* AccountInformation.m in Sources */,
 				E49AC0E61B159795009D996D /* ShopDao.m in Sources */,
 				E4FA68B01A669B68007AC9AE /* AddTransferViewController.m in Sources */,
-				E4AB6D3F1B15E642002082D4 /* Template.m in Sources */,
 				E43ECDC91AEF302D00CB3C46 /* AFNetworkReachabilityManager.m in Sources */,
 				E49AC0E01B159795009D996D /* AccountBookDao.m in Sources */,
 				E46423AF1B0A02AC00FE40D9 /* LatestRecordTableViewController.m in Sources */,
@@ -930,27 +947,28 @@
 				E43ECDCD1AEF302D00CB3C46 /* AFURLResponseSerialization.m in Sources */,
 				E43368901AF4E209005F7BC4 /* SystemInit.m in Sources */,
 				E47610691B10515300893D09 /* RecordMonthlyStatisticalData.m in Sources */,
-				E4AB6D331B15E641002082D4 /* Transfer.m in Sources */,
 				E43ECDCB1AEF302D00CB3C46 /* AFURLConnectionOperation.m in Sources */,
+				E48EA0B51B17FE7F008890DC /* Synchronization.m in Sources */,
 				E4C2B2BA1B0F289200230249 /* PhotoViewController.m in Sources */,
 				E45E8B101B11A2390056F320 /* MJRefreshComponent.m in Sources */,
 				E4A213181B00CFFB00105FD3 /* DateSelectorView.m in Sources */,
-				E4AB6D241B15E640002082D4 /* User.m in Sources */,
 				E46FD9601B142B8100E10D8F /* DateTool.m in Sources */,
 				E4A2131C1B0106EC00105FD3 /* AutoTextFiled.m in Sources */,
 				E4A963A51B12C0A400EF0EE6 /* LeftMenuViewController.m in Sources */,
 				E4FA68AA1A669B47007AC9AE /* AddSpendViewController.m in Sources */,
 				E43CC5361A33251100146C77 /* AppDelegate.m in Sources */,
+				E48EA0831B175C48008890DC /* Classification.m in Sources */,
 				E4AB6D451B15E6C9002082D4 /* AccountHistoryDao.m in Sources */,
-				E4AB6D361B15E641002082D4 /* AccountBook.m in Sources */,
 				E4A1BE981AEB90C8009DE9D8 /* AccountBookViewController.m in Sources */,
 				E4A9639E1B12AD6C00EF0EE6 /* RESideMenu.m in Sources */,
 				E45E8AED1B1178FC0056F320 /* TransferListTableViewController.m in Sources */,
 				E45E8B121B11A2390056F320 /* MJRefreshFooter.m in Sources */,
+				E48EA0771B175C48008890DC /* Transfer.m in Sources */,
 				E43CC5331A33251100146C77 /* main.m in Sources */,
 				E43ECDC71AEF302D00CB3C46 /* AFHTTPRequestOperationManager.m in Sources */,
 				E4D7EC5B1A4299EF00C35931 /* TimeInformationController.m in Sources */,
 				E47B7F7C1B14DD74003943E3 /* AccountViewController.m in Sources */,
+				E48EA0AF1B17F8AA008890DC /* NSObject+KJSerializer.m in Sources */,
 				E4A963A21B12AE7000EF0EE6 /* MenuRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

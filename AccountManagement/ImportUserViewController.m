@@ -10,6 +10,7 @@
 #import "InternetHelper.h"
 #import "DaoManager.h"
 #import "SystemInit.h"
+#import "Synchronization.h"
 
 @interface ImportUserViewController ()
 
@@ -463,6 +464,9 @@
                 NSSet *accountBooks=importUser.accountBooks;
                 for(AccountBook *accountBook in accountBooks)
                     allAccountsCount+=accountBook.accounts.count;
+                //如果没有要导入的历史记录，直接跳过
+                if(allAccountsCount==0)
+                    self.importUserInfoStatus++;
                 for(AccountBook *accountBook in accountBooks) {
                     for(Account *account in accountBook.accounts) {
                         [manager POST:[InternetHelper createUrl:@"iOSAccountHistoryServlet?task=getAccountHistories"]
@@ -501,6 +505,7 @@
                 break;
             }
             case ImportUserInfoStatusEnd:
+
                 //导入全部完成
                 [self finishImport];
                 break;
@@ -528,6 +533,9 @@
     [self removeObserver:self forKeyPath:@"importUserInfoStatus"];
     //设置当前用户已登录
     [dao.userDao setUserLogin:YES withUid:importUser.objectID];
+    //注册同步密钥
+    Synchronization *sync=[[Synchronization alloc] init];
+    [sync registSyncKey];
     //1s后跳转到主页面
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(gotoMain) userInfo:nil repeats:NO];
 }
