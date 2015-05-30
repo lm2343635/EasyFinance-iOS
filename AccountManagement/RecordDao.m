@@ -22,7 +22,7 @@
                           andShop:(Shop *)shop
                          andPhoto:(Photo *)photo
                     inAccountBook:(AccountBook *)accountBook {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     Record *record=[NSEntityDescription insertNewObjectForEntityForName:RecordEntityName
                                                  inManagedObjectContext:self.cdh.context];
@@ -49,7 +49,7 @@
                             andShop:(Shop *)shop
                            andPhoto:(Photo *)photo
                       inAccountBook:(AccountBook *)accountBook {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     Record *record=[NSEntityDescription insertNewObjectForEntityForName:RecordEntityName
                                                  inManagedObjectContext:self.cdh.context];
@@ -82,23 +82,34 @@
 }
 
 -(NSArray *)findByAccountBook:(AccountBook *)accountBook {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    NSFetchRequest *request=[NSFetchRequest fetchRequestWithEntityName:RecordEntityName];
-    request.sortDescriptors=[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"time"
-                                                                                   ascending:NO]];
-    request.predicate=[NSPredicate predicateWithFormat:@"accountBook=%@",accountBook];
-    NSError *error=nil;
-    NSArray *records=[self.cdh.context executeFetchRequest:request error:&error];
-    if(error)
-        NSLog(@"Error: %@",error);
-    return records;
+    NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"time"
+                                        ascending:NO];
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"accountBook=%@",accountBook];
+    return [self findByPredicate:predicate
+                  withEntityName:RecordEntityName
+                         orderBy:sort];
 }
+
+-(NSArray *)findNotSyncByUser:(User *)user {
+    if(DEBUG==1&&DAO_DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSMutableArray *notSyncRecords=[[NSMutableArray alloc] init];
+    for(AccountBook *accountBook in user.accountBooks) {
+        NSPredicate *predicate=[NSPredicate predicateWithFormat:@"accountBook=%@ and sync=%@",accountBook,NOT_SYNC];
+        NSArray *records=[self findByPredicate:predicate
+                                withEntityName:RecordEntityName];
+        [notSyncRecords addObjectsFromArray:records];
+    }
+    return notSyncRecords;
+}
+
 
 -(NSArray *)findByAccountBook:(AccountBook *)accountBook
                          from:(NSDate *)start
                            to:(NSDate *)end {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSFetchRequest *request=[NSFetchRequest fetchRequestWithEntityName:RecordEntityName];
     request.sortDescriptors=[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"time"
@@ -113,7 +124,7 @@
 
 -(NSArray *)findByAccount:(Account *)account
                    onDate:(NSDate *)date {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSDate *start=[DateTool getThisDayStart:date];
     NSDate *end=[DateTool getThisDayEnd:date];
@@ -128,7 +139,7 @@
 -(NSArray *)getMonthlyStatisticalDataFrom:(NSDate *)start
                                        to:(NSDate *)end
                             inAccountBook:(AccountBook *)accountBook {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSArray *records=[self findByAccountBook:accountBook from:start to:end];
     NSMutableArray *datas=[[NSMutableArray alloc] init];
@@ -164,7 +175,7 @@
 }
 
 -(Record *)getLatestRecordInAccountBook:(AccountBook *)accountBook {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSSortDescriptor *sortDescriptors=[NSSortDescriptor sortDescriptorWithKey:@"time"
                                                                     ascending:NO];
@@ -177,6 +188,8 @@
 -(double)getTotalSpendFrom:(NSDate *)start
                         to:(NSDate *)end
              inAccountBook:(AccountBook *)accountBook {
+    if(DEBUG==1&&DAO_DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     double totalSpend=0.0;
     NSFetchRequest *request=[NSFetchRequest fetchRequestWithEntityName:RecordEntityName];
     request.predicate=[NSPredicate predicateWithFormat:@"time>=%@ and time<=%@ and accountBook=%@ and money<=0",start,end,accountBook];
@@ -192,6 +205,8 @@
 -(double)getTotalEarnFrom:(NSDate *)start
                        to:(NSDate *)end
             inAccountBook:(AccountBook *)accountBook {
+    if(DEBUG==1&&DAO_DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     double totalEarn=0.0;
     NSFetchRequest *request=[NSFetchRequest fetchRequestWithEntityName:RecordEntityName];
     request.predicate=[NSPredicate predicateWithFormat:@"time>=%@ and time<=%@ and accountBook=%@ and money>0",start,end,accountBook];

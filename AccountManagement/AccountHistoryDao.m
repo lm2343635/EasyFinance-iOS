@@ -50,6 +50,19 @@
     return histories;
 }
 
+-(NSArray *)findNotSyncByUser:(User *)user {
+    if(DEBUG==1&&DAO_DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSMutableArray *notSyncAccountHistories=[[NSMutableArray alloc] init];
+    for(AccountBook *accountBook in user.accountBooks) {
+        NSPredicate *predicate=[NSPredicate predicateWithFormat:@"accountBook=%@ and sync=%d",accountBook,NOT_SYNC];
+        NSArray *accountHistories=[self findByPredicate:predicate
+                                         withEntityName:AccountHistoryEntityName];
+        [notSyncAccountHistories addObjectsFromArray:accountHistories];
+    }
+    return notSyncAccountHistories;
+}
+
 -(NSManagedObjectID *)updateWithMoney:(double)money
                                onDate:(NSDate *)date
                             inAccount:(Account *)account {

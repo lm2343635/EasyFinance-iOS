@@ -21,7 +21,7 @@
                     andOutAccount:(Account *)tfout
                      andInAccount:(Account *)tfin
                     inAccountBook:(AccountBook *)accountBook {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     Transfer *transfer=[NSEntityDescription insertNewObjectForEntityForName:TransferEntityName
                                                      inManagedObjectContext:self.cdh.context];
@@ -44,7 +44,7 @@
                       andOutAccount:(Account *)tfout
                        andInAccount:(Account *)tfin
                       inAccountBook:(AccountBook *)accountBook{
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     Transfer *transfer=[NSEntityDescription insertNewObjectForEntityForName:TransferEntityName
                                                      inManagedObjectContext:self.cdh.context];
@@ -62,10 +62,23 @@
     return transfer.objectID;
 }
 
+-(NSArray *)findNotSyncByUser:(User *)user {
+    if(DEBUG==1&&DAO_DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSMutableArray *notSyncTransfers=[[NSMutableArray alloc] init];
+    for(AccountBook *accountBook in user.accountBooks) {
+        NSPredicate *predicate=[NSPredicate predicateWithFormat:@"accountBook=%@ and sync=%d",accountBook,NOT_SYNC];
+        NSArray *transfers=[self findByPredicate:predicate
+                                  withEntityName:TransferEntityName];
+        [notSyncTransfers addObjectsFromArray:transfers];
+    }
+    return notSyncTransfers;
+}
+
 -(NSArray *)findByAccountBook:(AccountBook *)accountBook
                          from:(NSDate *)start
                            to:(NSDate *)end {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSFetchRequest *request=[NSFetchRequest fetchRequestWithEntityName:TransferEntityName];
     request.sortDescriptors=[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"time"
@@ -81,7 +94,7 @@
 -(NSArray *)getMonthlyStatisticalDataFrom:(NSDate *)start
                                        to:(NSDate *)end
                             inAccountBook:(AccountBook *)accountBook {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSArray *transfers=[self findByAccountBook:accountBook from:start to:end];
     NSMutableArray *datas=[[NSMutableArray alloc] init];
@@ -114,7 +127,7 @@
 
 -(NSArray *)findByTfin:(Account *)tfin
                 onDate:(NSDate *)date {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSDate *start=[DateTool getThisDayStart:date];
     NSDate *end=[DateTool getThisDayEnd:date];
@@ -128,7 +141,7 @@
 
 -(NSArray *)findByTfout:(Account *)tfout
                  onDate:(NSDate *)date {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSDate *start=[DateTool getThisDayStart:date];
     NSDate *end=[DateTool getThisDayEnd:date];

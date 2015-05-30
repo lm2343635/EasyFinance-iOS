@@ -9,6 +9,7 @@
 #import "DaoTemplate.h"
 #import "AccountHistory.h"
 #import "Account.h"
+#import "User.h"
 
 #define AccountHistoryEntityName @"AccountHistory"
 
@@ -21,13 +22,17 @@
                          onDate:(NSDate *)date
                       inAccount:(Account *)account;
 
+//新建或更新对账历史记录
 -(NSManagedObjectID *)updateWithMoney:(double)money
                                onDate:(NSDate *)date
                             inAccount:(Account *)account;
 
-//获取指定时间段的对账单
+//得到指定时间段的对账单
 -(NSArray *)findByAccount:(Account *)account
                      from:(NSDate *)start
                        to:(NSDate *)end;
+
+//得到指定用户的所有未同步对账历史记录
+-(NSArray *)findNotSyncByUser:(User *)user;
 
 @end

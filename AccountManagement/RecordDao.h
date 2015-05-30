@@ -11,6 +11,7 @@
 #import "Classification.h"
 #import "Account.h"
 #import "Shop.h"
+#import "User.h"
 
 #define RecordEntityName @"Record"
 
@@ -38,6 +39,9 @@
 
 //得到某个账本的所有收支记录
 -(NSArray *)findByAccountBook:(AccountBook *)accountBook;
+
+//得到指定用户的所有未同步收支记录
+-(NSArray *)findNotSyncByUser:(User *)user;
 
 //得到某个账本在某个时间段的收支记录
 -(NSArray *)findByAccountBook:(AccountBook *)accountBook

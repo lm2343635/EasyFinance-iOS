@@ -104,11 +104,12 @@
 - (IBAction)synchronize:(id)sender {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    [self.sideMenuViewController hideMenuViewController];
     if([InternetHelper testNetStatus]!=NotReachable)
         [self performSegueWithIdentifier:@"synchronizaSegue" sender:self];
     else
         [Util showAlert:@"Cannot connect to server, please check your Internet Connection!"];
-    //[self.sideMenuViewController hideMenuViewController];
+    
 }
 
 #pragma mark - Service

@@ -8,6 +8,7 @@
 
 #import "DaoTemplate.h"
 #import "Photo.h"
+#import "User.h"
 
 #define PhotoEntityName @"Photo"
 
@@ -21,10 +22,13 @@
 -(NSManagedObjectID *)saveWithData:(NSData *)pdata
                      inAccountBook:(AccountBook *)accountBook;
 
-//导入账本照片使用
+//导入服务器照片使用
 -(NSManagedObjectID *)saveWithSid:(NSNumber *)sid
                         andUpload:(NSDate *)upload
                     inAccountBook:(AccountBook *)accountBook;
 
 -(Photo *)getBySid:(NSNumber *)sid;
+
+//得到指定用户未同步的照片
+-(NSArray *)findNotSyncByUser:(User *)user;
 @end
