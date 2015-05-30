@@ -30,7 +30,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    templates=[loginedUser.usingAccountBook.templates allObjects];
+    templates=[dao.templateDao findByAccountBook:loginedUser.usingAccountBook];
     [self.tableView reloadData];
 }
 

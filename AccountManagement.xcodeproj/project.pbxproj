@@ -109,6 +109,7 @@
 		E4A9775B1AFA199900910FF7 /* UserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A9775A1AFA199900910FF7 /* UserTableViewController.m */; };
 		E4A9775E1AFA409900910FF7 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A9775D1AFA409900910FF7 /* CoreDataTableViewController.m */; };
 		E4AB6D451B15E6C9002082D4 /* AccountHistoryDao.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB6D441B15E6C9002082D4 /* AccountHistoryDao.m */; };
+		E4BB8F371B19E1C4000495BB /* TemplateData.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BB8F361B19E1C4000495BB /* TemplateData.m */; };
 		E4C215FE1ADF844D00AEC554 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C215FD1ADF844D00AEC554 /* RegisterViewController.m */; };
 		E4C216171ADF941E00AEC554 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C216161ADF941E00AEC554 /* LoginViewController.m */; };
 		E4C2161D1ADFA9F100AEC554 /* AddAccountBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C2161C1ADFA9F100AEC554 /* AddAccountBookViewController.m */; };
@@ -342,6 +343,8 @@
 		E4A9775D1AFA409900910FF7 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		E4AB6D431B15E6C9002082D4 /* AccountHistoryDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountHistoryDao.h; sourceTree = "<group>"; };
 		E4AB6D441B15E6C9002082D4 /* AccountHistoryDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountHistoryDao.m; sourceTree = "<group>"; };
+		E4BB8F351B19E1C4000495BB /* TemplateData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateData.h; sourceTree = "<group>"; };
+		E4BB8F361B19E1C4000495BB /* TemplateData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateData.m; sourceTree = "<group>"; };
 		E4C215FC1ADF844D00AEC554 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		E4C215FD1ADF844D00AEC554 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		E4C216151ADF941E00AEC554 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -609,6 +612,8 @@
 				E4A5BC361B196EC0001AA69F /* ShopData.m */,
 				E45E8AEE1B1180AF0056F320 /* TransferMonthlyStatisticalData.h */,
 				E45E8AEF1B1180AF0056F320 /* TransferMonthlyStatisticalData.m */,
+				E4BB8F351B19E1C4000495BB /* TemplateData.h */,
+				E4BB8F361B19E1C4000495BB /* TemplateData.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -986,6 +991,7 @@
 				E4FA68AA1A669B47007AC9AE /* AddSpendViewController.m in Sources */,
 				E43CC5361A33251100146C77 /* AppDelegate.m in Sources */,
 				E48EA0831B175C48008890DC /* Classification.m in Sources */,
+				E4BB8F371B19E1C4000495BB /* TemplateData.m in Sources */,
 				E4AB6D451B15E6C9002082D4 /* AccountHistoryDao.m in Sources */,
 				E49F6B3E1B18BACF0009CC9A /* SynchronizeViewController.m in Sources */,
 				E4A1BE981AEB90C8009DE9D8 /* AccountBookViewController.m in Sources */,

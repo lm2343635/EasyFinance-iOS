@@ -33,9 +33,9 @@
     dao=[[DaoManager alloc] init];
     loginedUser=[dao.userDao getLoginedUser];
     //加载分类，账户和商家
-    classifications=[loginedUser.usingAccountBook.classifications allObjects];
-    accounts=[loginedUser.usingAccountBook.accounts allObjects];
-    shops=[loginedUser.usingAccountBook.shops allObjects];
+    classifications=[dao.classificationDao findByAccountBook:loginedUser.usingAccountBook];
+    accounts=[dao.accountDao findByAccountBook:loginedUser.usingAccountBook];
+    shops=[dao.shopDao findByAccoutBook:loginedUser.usingAccountBook];
     selectedClassification=nil;
     selectedAccount=nil;
     selectedShop=nil;

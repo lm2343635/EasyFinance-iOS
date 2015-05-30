@@ -51,12 +51,24 @@
     self.netAssetsMoneyLabel.text=[NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:information.netAssets]];
     //设置最近一条收支记录的信息
     Record *latestRecord=[dao.recordDao getLatestRecordInAccountBook:usingAccountBook];
-    self.latestRecordClassificationIconImageView.image=[UIImage imageWithData:latestRecord.classification.cicon.idata];
-    self.latestRecordClassificationLabel.text=latestRecord.classification.cname;
-    self.latestRecordTimeLabel.text=[DateTool formateDate:latestRecord.time withFormat:DateFormatYearMonthDayHourMinutes];
-    self.latestRecordMoneyLabel.text=[NSString stringWithFormat:@"%@",latestRecord.money];
-    if([latestRecord.money doubleValue]<=0)
-        self.latestRecordMoneyLabel.textColor=[UIColor redColor];
+    if (latestRecord!=nil) {
+        self.latestRecordClassificationIconImageView.image=[UIImage imageWithData:latestRecord.classification.cicon.idata];
+        self.latestRecordClassificationLabel.text=latestRecord.classification.cname;
+        self.latestRecordTimeLabel.text=[DateTool formateDate:latestRecord.time withFormat:DateFormatYearMonthDayHourMinutes];
+        self.latestRecordMoneyLabel.text=[NSString stringWithFormat:@"%@",latestRecord.money];
+        if([latestRecord.money doubleValue]<=0)
+            self.latestRecordMoneyLabel.textColor=[UIColor redColor];
+    }else{
+        for(UIView *view in self.latestRecordTableViewCell.subviews)
+            [view removeFromSuperview];
+        UILabel *tipLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+        tipLabel.text=@"No Record in This Account Book!";
+        tipLabel.textColor=[UIColor redColor];
+        tipLabel.font=[UIFont fontWithName:@"Helvetica" size:14];
+        tipLabel.textAlignment=NSTextAlignmentCenter;
+        [self.latestRecordTableViewCell addSubview:tipLabel];
+    }
+    
     //设置本日收支记录信息
     NSDate *todayStart=[DateTool getThisDayStart:nowDate];
     NSDate *todayEnd=[DateTool getThisDayEnd:nowDate];

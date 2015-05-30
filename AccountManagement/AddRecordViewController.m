@@ -29,10 +29,11 @@
     imagePickerController.delegate=self;
     self.dao=[[DaoManager alloc] init];
     self.loginedUser=[self.dao.userDao getLoginedUser];
-    classifications=[self.loginedUser.usingAccountBook.classifications allObjects];
-    accounts=[self.loginedUser.usingAccountBook.accounts allObjects];
-    shops=[self.loginedUser.usingAccountBook.shops allObjects];
-    templates=[self.loginedUser.usingAccountBook.templates allObjects];
+    AccountBook *usingAccountBook=self.loginedUser.usingAccountBook;
+    classifications=[self.dao.classificationDao findByAccountBook:usingAccountBook];
+    accounts=[self.dao.accountDao findByAccountBook:usingAccountBook];
+    shops=[self.dao.shopDao findByAccoutBook:usingAccountBook];
+    templates=[self.dao.templateDao findByAccountBook:usingAccountBook];
     self.selectedClassification=nil;
     self.selectedAccount=nil;
     self.selectedShop=nil;

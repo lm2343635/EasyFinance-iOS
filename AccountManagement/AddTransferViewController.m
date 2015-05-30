@@ -29,7 +29,7 @@
     [super viewDidLoad];
     dao=[[DaoManager alloc] init];
     loginedUser=[dao.userDao getLoginedUser];
-    accounts=[loginedUser.usingAccountBook.accounts allObjects];
+    accounts=[dao.accountDao findByAccountBook:loginedUser.usingAccountBook];
     [self setTime:[[NSDate alloc] init]];
     [self setCloseKeyboardAccessoryForSender:self.remarkTextView];
     [self setCloseKeyboardAccessoryForSender:self.moneyTextField];

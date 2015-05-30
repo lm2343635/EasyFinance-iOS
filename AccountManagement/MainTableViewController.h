@@ -27,6 +27,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *latestRecordClassificationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *latestRecordTimeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *latestRecordMoneyLabel;
+@property (strong, nonatomic) IBOutlet UITableViewCell *latestRecordTableViewCell;
 
 //今天的收支记录
 @property (strong, nonatomic) IBOutlet UILabel *todayDateLabel;

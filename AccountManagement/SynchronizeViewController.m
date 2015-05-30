@@ -14,6 +14,7 @@
 #import "ClassificationData.h"
 #import "AccountData.h"
 #import "ShopData.h"
+#import "TemplateData.h"
 
 @interface SynchronizeViewController ()
 
@@ -72,6 +73,9 @@
                 break;
             case SynchronizeStatusTemplate:
                 [self synchronizeTemplate];
+                break;
+            case SynchronizeStatusPhoto:
+                [self synchronizePhoto];
                 break;
             default:
                 break;
@@ -336,6 +340,72 @@
 }
 
 -(void)synchronizeTemplate {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSArray *templates=[dao.templateDao findNotSyncByUser:loginedUser];
+    NSMutableArray *templateDatas=[[NSMutableArray alloc] init];
+    for(Template *template in templates)
+        [templateDatas addObject:[[TemplateData alloc] initWithTemplate:template]];
+    //发送推送请求
+    [manager POST:[InternetHelper createUrl:@"iOSTemplateServlet?task=push"]
+       parameters:@{@"array":[self createJSONArrayStringFromNSArray:templateDatas]}
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              if(DEBUG==1)
+                  NSLog(@"Get message from server: %@",operation.responseString);
+              NSArray *objects=[NSJSONSerialization JSONObjectWithData:responseObject
+                                                               options:NSJSONReadingMutableContainers
+                                                                 error:nil];
+              for (int i=0; i<templates.count; i++) {
+                  Template *template=[templates objectAtIndex:i];
+                  NSObject *object=[objects objectAtIndex:i];
+                  int stpid=[[object valueForKey:@"tpid"] intValue];
+                  template.sid=[NSNumber numberWithInt:stpid];
+                  template.sync=[NSNumber numberWithInt:SYNCED];
+                  if(DEBUG==1)
+                      NSLog(@"Synchronized template %@ with server and update sid=%d",[object valueForKey:@"tpname"],stpid);
+              }
+              [dao.cdh saveContext];
+              //发送更新请求
+              [manager POST:[InternetHelper createUrl:@"iOSTemplateServlet?task=update"]
+                 parameters:@{@"uid":loginedUser.sid}
+                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        if(DEBUG==1)
+                            NSLog(@"Get message from server: %@",operation.responseString);
+                        NSArray *objects=[NSJSONSerialization JSONObjectWithData:responseObject
+                                                                         options:NSJSONReadingMutableContainers
+                                                                           error:nil];
+                        for(NSObject *object in objects) {
+                            int stpid=[[object valueForKey:@"tpid"] intValue];
+                            NSString *tpname=[object valueForKey:@"tpname"];
+                            int scid=[[object valueForKey:@"cid"] intValue];
+                            int said=[[object valueForKey:@"aid"] intValue];
+                            int ssid=[[object valueForKey:@"sid"] intValue];
+                            int sabid=[[object valueForKey:@"abid"] intValue];
+                            Classification *classification=[dao.classificationDao getBySid:[NSNumber numberWithInt:scid]];
+                            Account *account=[dao.accountDao getBySid:[NSNumber numberWithInt:said]];
+                            Shop *shop=[dao.shopDao getBySid:[NSNumber numberWithInt:ssid]];
+                            AccountBook *accountBook=[dao.accountBookDao getBySid:[NSNumber numberWithInt:sabid]];
+                            NSManagedObjectID *tpid=[dao.templateDao saveWithSid:[NSNumber numberWithInt:stpid]
+                                                                       andTpname:tpname
+                                                               andClassification:classification
+                                                                      andAccount:account
+                                                                         andShop:shop
+                                                                   inAccountBook:accountBook];
+                            if(DEBUG==1)
+                                NSLog(@"Synchronized template %@ from server with tpid=%@",tpname,tpid);
+                        }
+                        self.synchronizaStatus++;
+                    }
+                    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        NSLog(@"Server Error: %@",error);
+                    }];
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Server Error: %@",error);
+          }];
+}
+
+-(void)synchronizePhoto {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     [self finishSynchronization];
