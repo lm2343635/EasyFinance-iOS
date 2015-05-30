@@ -69,8 +69,8 @@
     NSManagedObjectID *aid=[dao.accountDao saveWithSid:[NSNumber numberWithInt:SYS_NULL_ID]
                                               andAname:SYS_NULL_ACCOUNT
                                               andAicon:icon
-                                                andAin:0
-                                               andAout:0
+                                                andAin:[NSNumber numberWithInt:0]
+                                               andAout:[NSNumber numberWithInt:0]
                                          inAccountBook:accountBook];
     if(DEBUG==1)
         NSLog(@"Create system null account(aid=%@)",aid);
@@ -78,8 +78,8 @@
     NSManagedObjectID *cid=[dao.classificationDao saveWithSid:[NSNumber numberWithInt:SYS_NULL_ID]
                                                      andCname:SYS_NULL_CLASSIFICATION
                                                      andCicon:icon
-                                                       andCin:0
-                                                      andCout:0
+                                                       andCin:[NSNumber numberWithInt:0]
+                                                      andCout:[NSNumber numberWithInt:0]
                                                 inAccountBook:accountBook];
     if(DEBUG==1)
         NSLog(@"Create system null classification(cid=%@)",cid);
@@ -87,8 +87,8 @@
     NSManagedObjectID *sid=[dao.shopDao saveWithSid:[NSNumber numberWithInt:SYS_NULL_ID]
                                            andSname:SYS_NULL_ACCOUNT
                                            andSicon:icon
-                                             andSin:0
-                                            andSout:0
+                                             andSin:[NSNumber numberWithInt:0]
+                                            andSout:[NSNumber numberWithInt:0]
                                       inAccountBook:accountBook];
     if(DEBUG==1)
         NSLog(@"Create system null shop(sid=%@)",sid);

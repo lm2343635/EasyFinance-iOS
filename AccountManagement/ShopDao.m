@@ -57,7 +57,7 @@
     if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSPredicate *predicate=[NSPredicate predicateWithFormat: @"accountBook=%@",accountBook];
-    NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"aname"
+    NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"sname"
                                                          ascending:YES];
     return [self findByPredicate:predicate
                   withEntityName:ShopEntityName

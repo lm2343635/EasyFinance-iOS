@@ -29,6 +29,9 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    [super viewWillAppear:animated];
     shops=[dao.shopDao findByAccoutBook:loginedUser.usingAccountBook];
     [self.tableView reloadData];
 }

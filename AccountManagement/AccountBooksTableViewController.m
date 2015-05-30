@@ -31,6 +31,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    [super viewWillAppear:animated];
     accountBooks=[dao.accountBookDao findByUser:loginedUser];
     [self.tableView reloadData];
 }

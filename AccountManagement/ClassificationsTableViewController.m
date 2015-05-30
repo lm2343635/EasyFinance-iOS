@@ -31,6 +31,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    [super viewWillAppear:animated];
     classifications=[dao.classificationDao findByAccountBook:loginedUser.usingAccountBook];
     [self.tableView reloadData];
 }

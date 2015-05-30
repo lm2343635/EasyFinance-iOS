@@ -105,7 +105,7 @@
                   //设置服务器实体id
                   accountBook.sid=[NSNumber numberWithInt:sabid];
                   if(DEBUG==1)
-                      NSLog(@"Synchronized account book %@(sid=%d)",[object valueForKey:@"abname"],sabid);
+                      NSLog(@"Synchronized account book %@ with server and update sid=%d",[object valueForKey:@"abname"],sabid);
               }
               //保存上下文
               [dao.cdh saveContext];
@@ -166,7 +166,7 @@
                   classification.sid=[NSNumber numberWithInt:scid];
                   classification.sync=[NSNumber numberWithInt:SYNCED];
                   if(DEBUG==1)
-                      NSLog(@"Synchronized classification %@ (sid=%d)",[object valueForKey:@"cname"],scid);
+                      NSLog(@"Synchronized classification %@ with server and update sid=%d",[object valueForKey:@"cname"],scid);
               }
               [dao.cdh saveContext];
               //发送更新请求
@@ -230,7 +230,7 @@
                   account.sid=[NSNumber numberWithInt:said];
                   account.sync=[NSNumber numberWithInt:SYNCED];
                   if(DEBUG==1)
-                      NSLog(@"Synchronized account %@ (sid=%d)",[object valueForKey:@"aname"],said);
+                      NSLog(@"Synchronized account %@ with server and update sid=%d",[object valueForKey:@"aname"],said);
               }
               [dao.cdh saveContext];
               //发送更新请求
@@ -274,7 +274,65 @@
 -(void)synchronizeShop {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    self.synchronizaStatus++;
+    NSArray *shops=[dao.shopDao findNotSyncByUser:loginedUser];
+    NSMutableArray *shopDatas=[[NSMutableArray alloc] init];
+    for(Shop *shop in shops)
+        [shopDatas addObject:[[ShopData alloc] initWithShop:shop]];
+    //发送推送请求
+    [manager POST:[InternetHelper createUrl:@"iOSShopServlet?task=push"]
+       parameters:@{@"array":[self createJSONArrayStringFromNSArray:shopDatas]}
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              if(DEBUG==1)
+                  NSLog(@"Get message from server: %@",operation.responseString);
+              NSArray *objects=[NSJSONSerialization JSONObjectWithData:responseObject
+                                                               options:NSJSONReadingMutableContainers
+                                                                 error:nil];
+              for(int i=0;i<shops.count;i++) {
+                  Shop *shop=[shops objectAtIndex:i];
+                  NSObject *object=[objects objectAtIndex:i];
+                  int ssid=[[object valueForKey:@"sid"] intValue];
+                  shop.sid=[NSNumber numberWithInt:ssid];
+                  shop.sync=[NSNumber numberWithInt:SYNCED];
+                  if(DEBUG==1)
+                      NSLog(@"Synchronized classification %@ with server and update sid=%d",[object valueForKey:@"sname"],ssid);
+              }
+              [dao.cdh saveContext];
+              //发送更新请求
+              [manager POST:[InternetHelper createUrl:@"iOSShopServlet?task=update"]
+                 parameters:@{@"uid":loginedUser.sid}
+                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        if(DEBUG==1)
+                            NSLog(@"Get message from server: %@",operation.responseString);
+                        NSArray *objects=[NSJSONSerialization JSONObjectWithData:responseObject
+                                                                         options:NSJSONReadingMutableContainers
+                                                                           error:nil];
+                        for(NSObject *object in objects) {
+                            int ssid=[[object valueForKey:@"sid"] intValue];
+                            NSString *sname=[object valueForKey:@"sname"];
+                            int siid=[[object valueForKey:@"iid"] intValue];
+                            Icon *icon=[dao.iconDao getBySid:[NSNumber numberWithInt:siid]];
+                            double sin=[[object valueForKey:@"sin"] doubleValue];
+                            double sout=[[object valueForKey:@"sout"] doubleValue];
+                            int sabid=[[object valueForKey:@"abid"] intValue];
+                            AccountBook *accountBook=[dao.accountBookDao getBySid:[NSNumber numberWithInt:sabid]];
+                            NSManagedObjectID *sid=[dao.shopDao saveWithSid:[NSNumber numberWithInt:ssid]
+                                                                   andSname:sname
+                                                                   andSicon:icon
+                                                                     andSin:[NSNumber numberWithDouble:sin]
+                                                                    andSout:[NSNumber numberWithDouble:sout]
+                                                              inAccountBook:accountBook];
+                            if(DEBUG==1)
+                                NSLog(@"Synchronized shop %@ from server with sid=%@",sname,sid);
+                        }
+                        self.synchronizaStatus++;
+                    }
+                    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        NSLog(@"Server Error: %@",error);
+                    }];
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Server Error: %@",error);
+          }];
 }
 
 -(void)synchronizeTemplate {
