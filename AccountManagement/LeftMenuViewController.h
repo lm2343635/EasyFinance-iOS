@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RESideMenu.h"
 
-@interface LeftMenuViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface LeftMenuViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate, RESideMenuDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *usingAccountBookLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *usingAccountBookImageView;

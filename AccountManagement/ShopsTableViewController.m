@@ -29,7 +29,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    shops=[loginedUser.usingAccountBook.shops allObjects];
+    shops=[dao.shopDao findByAccoutBook:loginedUser.usingAccountBook];
     [self.tableView reloadData];
 }
 

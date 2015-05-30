@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AppDelegate.h"
+#import "Reachability.h"
 
 //#define Server @"120.25.237.244"
 //#define WebServiceName @"AccountManagement"
@@ -25,5 +26,7 @@
 
 //创建访问服务器的url
 +(NSString *)createUrl:(NSString *)relativePosition;
+
++(NSInteger)testNetStatus;
 
 @end

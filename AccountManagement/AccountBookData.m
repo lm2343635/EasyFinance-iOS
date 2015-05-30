@@ -10,6 +10,12 @@
 
 @implementation AccountBookData
 
+@synthesize abname;
+@synthesize abid;
+@synthesize iid;
+@synthesize uid;
+@synthesize sync;
+
 -(instancetype)initWithAccountBook:(AccountBook *)accountBook {
     self=[super init];
     self.abname=accountBook.abname;

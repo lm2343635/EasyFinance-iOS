@@ -26,4 +26,11 @@
     return url;
 }
 
++(NSInteger)testNetStatus {
+    if(DEBUG==1)
+        NSLog(@"Running InternetHelper '%@'",NSStringFromSelector(_cmd));
+    Reachability *reach=[Reachability reachabilityWithHostName:@"baidu.com"];
+    return [reach currentReachabilityStatus];
+}
+
 @end

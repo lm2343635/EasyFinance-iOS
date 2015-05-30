@@ -15,6 +15,18 @@
 
 @implementation MenuRootViewController
 
+-(void)viewDidLoad {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    [super viewDidLoad];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+}
+
+#pragma mark - RESideMenuDelegate
 -(void)awakeFromNib {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
@@ -32,7 +44,6 @@
     self.delegate = self;
 }
 
-#pragma mark - RESideMenuDelegate
 -(void)sideMenu:(RESideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));

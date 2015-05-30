@@ -9,6 +9,8 @@
 #import "DaoTemplate.h"
 #import "Account.h"
 #import "AccountInformation.h"
+#import "User.h"
+#import "AccountBook.h"
 
 #define AccountEntityName @"Account"
 
@@ -35,4 +37,7 @@
 
 //得到指定账本的所有账户，并按账户名称排序
 -(NSArray *)findByAccountBook:(AccountBook *)accountBook;
+
+//得到指定用户的所有未同步账户
+-(NSArray *)findNotSyncByUser:(User *)user;
 @end

@@ -16,7 +16,7 @@
                            andSin:(NSNumber *)sin
                           andSout:(NSNumber *)sout
                     inAccountBook:(AccountBook *)accountBook {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     Shop *shop=[NSEntityDescription insertNewObjectForEntityForName:ShopEntityName
                                              inManagedObjectContext:self.cdh.context];
@@ -35,7 +35,7 @@
 -(NSManagedObjectID *)saveWithAccountBook:(AccountBook *)accountBook
                                  andSname:(NSString *)sname
                                  andSicon:(Icon *)sicon {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     Shop *shop=[NSEntityDescription insertNewObjectForEntityForName:ShopEntityName
                                              inManagedObjectContext:self.cdh.context];
@@ -47,10 +47,34 @@
 }
 
 -(Shop *)getBySid:(NSNumber *)sid {
-    if(DEBUG==1)
+    if(DEBUG==1&&DAO_DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSPredicate *predicate=[NSPredicate predicateWithFormat:@"sid=%@",sid];
     return (Shop *)[self getByPredicate:predicate withEntityName:ShopEntityName];
+}
+
+-(NSArray *)findByAccoutBook:(AccountBook *)accountBook {
+    if(DEBUG==1&&DAO_DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSPredicate *predicate=[NSPredicate predicateWithFormat: @"accountBook=%@",accountBook];
+    NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"aname"
+                                                         ascending:YES];
+    return [self findByPredicate:predicate
+                  withEntityName:ShopEntityName
+                         orderBy:sort];
+}
+
+-(NSArray *)findNotSyncByUser:(User *)user {
+    if(DEBUG==1&&DAO_DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSMutableArray *notSyncShops=[[NSMutableArray alloc] init];
+    for(AccountBook *accountBook in user.accountBooks) {
+        NSPredicate *predicate=[NSPredicate predicateWithFormat:@"sync=%d and accountBook=%@",NOT_SYNC,accountBook];
+        NSArray *shops=[self findByPredicate:predicate
+                              withEntityName:ShopEntityName];
+        [notSyncShops addObjectsFromArray:shops];
+    }
+    return notSyncShops;
 }
 
 @end

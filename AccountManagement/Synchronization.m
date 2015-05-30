@@ -7,7 +7,7 @@
 //
 
 #import "Synchronization.h"
-#import "InternetHelper.h"
+
 #import "NSObject+KJSerializer.h"
 #import "AccountBookData.h"
 

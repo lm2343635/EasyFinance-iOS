@@ -9,6 +9,8 @@
 #import "LeftMenuViewController.h"
 #import "DaoManager.h"
 #import "Synchronization.h"
+#import "SynchronizeViewController.h"
+#import "Util.h"
 
 @interface LeftMenuViewController ()
 
@@ -38,6 +40,14 @@
     //设置默认账本
     [self setUsingAccountBook];
     [self.accountBooksCollectionView reloadData];
+}
+
+#pragma mark - Navigation
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    SynchronizeViewController *controller=(SynchronizeViewController *)[segue destinationViewController];
+    controller.modalPresentationStyle=UIModalPresentationOverCurrentContext;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -94,8 +104,11 @@
 - (IBAction)synchronize:(id)sender {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    Synchronization *sync=[[Synchronization alloc] init];
-    [sync synchronize];
+    if([InternetHelper testNetStatus]!=NotReachable)
+        [self performSegueWithIdentifier:@"synchronizaSegue" sender:self];
+    else
+        [Util showAlert:@"Cannot connect to server, please check your Internet Connection!"];
+    //[self.sideMenuViewController hideMenuViewController];
 }
 
 #pragma mark - Service

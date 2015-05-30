@@ -90,10 +90,15 @@
 		E49AC0EB1B159795009D996D /* DaoTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = E49AC0DF1B159795009D996D /* DaoTemplate.m */; };
 		E49AC0EE1B159D5F009D996D /* AccountInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = E49AC0ED1B159D5F009D996D /* AccountInformation.m */; };
 		E49AC0F41B15DB79009D996D /* AccountStatementsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49AC0F31B15DB79009D996D /* AccountStatementsTableViewController.m */; };
+		E49F6B3E1B18BACF0009CC9A /* SynchronizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49F6B3D1B18BACF0009CC9A /* SynchronizeViewController.m */; };
 		E4A1BE951AEB84C6009DE9D8 /* AccountBooksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A1BE941AEB84C6009DE9D8 /* AccountBooksTableViewController.m */; };
 		E4A1BE981AEB90C8009DE9D8 /* AccountBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A1BE971AEB90C8009DE9D8 /* AccountBookViewController.m */; };
 		E4A213181B00CFFB00105FD3 /* DateSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A213171B00CFFB00105FD3 /* DateSelectorView.m */; };
 		E4A2131C1B0106EC00105FD3 /* AutoTextFiled.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A2131B1B0106EC00105FD3 /* AutoTextFiled.m */; };
+		E4A5BC2E1B1961DF001AA69F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A5BC2D1B1961DF001AA69F /* Reachability.m */; };
+		E4A5BC311B196C6B001AA69F /* ClassificationData.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A5BC301B196C6B001AA69F /* ClassificationData.m */; };
+		E4A5BC341B196EAF001AA69F /* AccountData.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A5BC331B196EAF001AA69F /* AccountData.m */; };
+		E4A5BC371B196EC0001AA69F /* ShopData.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A5BC361B196EC0001AA69F /* ShopData.m */; };
 		E4A89F0B1B161ABE0068911A /* DetailStatementTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A89F0A1B161ABE0068911A /* DetailStatementTableViewController.m */; };
 		E4A963951B12352C00EF0EE6 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A963941B12352C00EF0EE6 /* MainTableViewController.m */; };
 		E4A9639D1B12AD6C00EF0EE6 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A963981B12AD6C00EF0EE6 /* RECommonFunctions.m */; };
@@ -299,6 +304,8 @@
 		E49AC0ED1B159D5F009D996D /* AccountInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInformation.m; sourceTree = "<group>"; };
 		E49AC0F21B15DB79009D996D /* AccountStatementsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountStatementsTableViewController.h; sourceTree = "<group>"; };
 		E49AC0F31B15DB79009D996D /* AccountStatementsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountStatementsTableViewController.m; sourceTree = "<group>"; };
+		E49F6B3C1B18BACF0009CC9A /* SynchronizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynchronizeViewController.h; sourceTree = "<group>"; };
+		E49F6B3D1B18BACF0009CC9A /* SynchronizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SynchronizeViewController.m; sourceTree = "<group>"; };
 		E4A1BE931AEB84C6009DE9D8 /* AccountBooksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountBooksTableViewController.h; sourceTree = "<group>"; };
 		E4A1BE941AEB84C6009DE9D8 /* AccountBooksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountBooksTableViewController.m; sourceTree = "<group>"; };
 		E4A1BE961AEB90C8009DE9D8 /* AccountBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountBookViewController.h; sourceTree = "<group>"; };
@@ -307,6 +314,14 @@
 		E4A213171B00CFFB00105FD3 /* DateSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSelectorView.m; sourceTree = "<group>"; };
 		E4A2131A1B0106EC00105FD3 /* AutoTextFiled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoTextFiled.h; sourceTree = "<group>"; };
 		E4A2131B1B0106EC00105FD3 /* AutoTextFiled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoTextFiled.m; sourceTree = "<group>"; };
+		E4A5BC2C1B1961DF001AA69F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		E4A5BC2D1B1961DF001AA69F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		E4A5BC2F1B196C6B001AA69F /* ClassificationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassificationData.h; sourceTree = "<group>"; };
+		E4A5BC301B196C6B001AA69F /* ClassificationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassificationData.m; sourceTree = "<group>"; };
+		E4A5BC321B196EAF001AA69F /* AccountData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountData.h; sourceTree = "<group>"; };
+		E4A5BC331B196EAF001AA69F /* AccountData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountData.m; sourceTree = "<group>"; };
+		E4A5BC351B196EC0001AA69F /* ShopData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopData.h; sourceTree = "<group>"; };
+		E4A5BC361B196EC0001AA69F /* ShopData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopData.m; sourceTree = "<group>"; };
 		E4A89F091B161ABE0068911A /* DetailStatementTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailStatementTableViewController.h; sourceTree = "<group>"; };
 		E4A89F0A1B161ABE0068911A /* DetailStatementTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailStatementTableViewController.m; sourceTree = "<group>"; };
 		E4A963931B12352C00EF0EE6 /* MainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
@@ -430,6 +445,8 @@
 				E46FD95F1B142B8100E10D8F /* DateTool.m */,
 				E45023561AF0DBC6006B12D0 /* InternetHelper.h */,
 				E45023571AF0DBC6006B12D0 /* InternetHelper.m */,
+				E4A5BC2C1B1961DF001AA69F /* Reachability.h */,
+				E4A5BC2D1B1961DF001AA69F /* Reachability.m */,
 				E48EA0B31B17FE7F008890DC /* Synchronization.h */,
 				E48EA0B41B17FE7F008890DC /* Synchronization.m */,
 				E433688E1AF4E209005F7BC4 /* SystemInit.h */,
@@ -578,14 +595,20 @@
 		E47610661B10511E00893D09 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				E49AC0EC1B159D5F009D996D /* AccountInformation.h */,
-				E49AC0ED1B159D5F009D996D /* AccountInformation.m */,
-				E47610671B10515300893D09 /* RecordMonthlyStatisticalData.h */,
-				E47610681B10515300893D09 /* RecordMonthlyStatisticalData.m */,
-				E45E8AEE1B1180AF0056F320 /* TransferMonthlyStatisticalData.h */,
-				E45E8AEF1B1180AF0056F320 /* TransferMonthlyStatisticalData.m */,
 				E48EA0B01B17F927008890DC /* AccountBookData.h */,
 				E48EA0B11B17F927008890DC /* AccountBookData.m */,
+				E4A5BC321B196EAF001AA69F /* AccountData.h */,
+				E4A5BC331B196EAF001AA69F /* AccountData.m */,
+				E49AC0EC1B159D5F009D996D /* AccountInformation.h */,
+				E49AC0ED1B159D5F009D996D /* AccountInformation.m */,
+				E4A5BC2F1B196C6B001AA69F /* ClassificationData.h */,
+				E4A5BC301B196C6B001AA69F /* ClassificationData.m */,
+				E47610671B10515300893D09 /* RecordMonthlyStatisticalData.h */,
+				E47610681B10515300893D09 /* RecordMonthlyStatisticalData.m */,
+				E4A5BC351B196EC0001AA69F /* ShopData.h */,
+				E4A5BC361B196EC0001AA69F /* ShopData.m */,
+				E45E8AEE1B1180AF0056F320 /* TransferMonthlyStatisticalData.h */,
+				E45E8AEF1B1180AF0056F320 /* TransferMonthlyStatisticalData.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -734,6 +757,8 @@
 				E4C2B2B91B0F289200230249 /* PhotoViewController.m */,
 				E4C215FC1ADF844D00AEC554 /* RegisterViewController.h */,
 				E4C215FD1ADF844D00AEC554 /* RegisterViewController.m */,
+				E49F6B3C1B18BACF0009CC9A /* SynchronizeViewController.h */,
+				E49F6B3D1B18BACF0009CC9A /* SynchronizeViewController.m */,
 				E4D7EC591A4299EF00C35931 /* TimeInformationController.h */,
 				E4D7EC5A1A4299EF00C35931 /* TimeInformationController.m */,
 				E4A963931B12352C00EF0EE6 /* MainTableViewController.h */,
@@ -872,6 +897,7 @@
 				E4450A691AFC96F900294BB0 /* AddTemplateViewController.m in Sources */,
 				E43ECDCE1AEF302D00CB3C46 /* AFURLSessionManager.m in Sources */,
 				E43ECDCA1AEF302D00CB3C46 /* AFSecurityPolicy.m in Sources */,
+				E4A5BC371B196EC0001AA69F /* ShopData.m in Sources */,
 				E409F28F1AE8CD2E001C55C6 /* CoreDataImporter.m in Sources */,
 				E45E8B131B11A2390056F320 /* MJRefreshGifFooter.m in Sources */,
 				E45E8B161B11A2390056F320 /* MJRefreshLegendFooter.m in Sources */,
@@ -913,6 +939,7 @@
 				E43ECDC61AEF302D00CB3C46 /* AFHTTPRequestOperation.m in Sources */,
 				E4A1BE951AEB84C6009DE9D8 /* AccountBooksTableViewController.m in Sources */,
 				E4450A6C1AFC971400294BB0 /* TemplatesTableViewController.m in Sources */,
+				E4A5BC341B196EAF001AA69F /* AccountData.m in Sources */,
 				E4E8D6141AF6F1C0007F6569 /* Util.m in Sources */,
 				E49AC0E81B159795009D996D /* TransferDao.m in Sources */,
 				E4E2659E1AFB5A62002019F5 /* AccountsTableViewController.m in Sources */,
@@ -947,6 +974,7 @@
 				E43ECDCD1AEF302D00CB3C46 /* AFURLResponseSerialization.m in Sources */,
 				E43368901AF4E209005F7BC4 /* SystemInit.m in Sources */,
 				E47610691B10515300893D09 /* RecordMonthlyStatisticalData.m in Sources */,
+				E4A5BC311B196C6B001AA69F /* ClassificationData.m in Sources */,
 				E43ECDCB1AEF302D00CB3C46 /* AFURLConnectionOperation.m in Sources */,
 				E48EA0B51B17FE7F008890DC /* Synchronization.m in Sources */,
 				E4C2B2BA1B0F289200230249 /* PhotoViewController.m in Sources */,
@@ -959,6 +987,7 @@
 				E43CC5361A33251100146C77 /* AppDelegate.m in Sources */,
 				E48EA0831B175C48008890DC /* Classification.m in Sources */,
 				E4AB6D451B15E6C9002082D4 /* AccountHistoryDao.m in Sources */,
+				E49F6B3E1B18BACF0009CC9A /* SynchronizeViewController.m in Sources */,
 				E4A1BE981AEB90C8009DE9D8 /* AccountBookViewController.m in Sources */,
 				E4A9639E1B12AD6C00EF0EE6 /* RESideMenu.m in Sources */,
 				E45E8AED1B1178FC0056F320 /* TransferListTableViewController.m in Sources */,
@@ -967,6 +996,7 @@
 				E43CC5331A33251100146C77 /* main.m in Sources */,
 				E43ECDC71AEF302D00CB3C46 /* AFHTTPRequestOperationManager.m in Sources */,
 				E4D7EC5B1A4299EF00C35931 /* TimeInformationController.m in Sources */,
+				E4A5BC2E1B1961DF001AA69F /* Reachability.m in Sources */,
 				E47B7F7C1B14DD74003943E3 /* AccountViewController.m in Sources */,
 				E48EA0AF1B17F8AA008890DC /* NSObject+KJSerializer.m in Sources */,
 				E4A963A21B12AE7000EF0EE6 /* MenuRootViewController.m in Sources */,
