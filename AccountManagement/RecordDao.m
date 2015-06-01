@@ -97,7 +97,7 @@
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSMutableArray *notSyncRecords=[[NSMutableArray alloc] init];
     for(AccountBook *accountBook in user.accountBooks) {
-        NSPredicate *predicate=[NSPredicate predicateWithFormat:@"accountBook=%@ and sync=%@",accountBook,NOT_SYNC];
+        NSPredicate *predicate=[NSPredicate predicateWithFormat:@"accountBook=%@ and sync=%d",accountBook,NOT_SYNC];
         NSArray *records=[self findByPredicate:predicate
                                 withEntityName:RecordEntityName];
         [notSyncRecords addObjectsFromArray:records];
