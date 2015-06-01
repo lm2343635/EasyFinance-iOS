@@ -22,7 +22,7 @@
 -(NSManagedObjectID *)saveWithData:(NSData *)pdata
                      inAccountBook:(AccountBook *)accountBook;
 
-//导入服务器照片使用
+//导入服务器收支记录照片使用
 -(NSManagedObjectID *)saveWithSid:(NSNumber *)sid
                         andUpload:(NSDate *)upload
                     inAccountBook:(AccountBook *)accountBook;

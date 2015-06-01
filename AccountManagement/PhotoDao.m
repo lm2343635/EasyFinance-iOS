@@ -46,6 +46,8 @@
     photo.sid=sid;
     photo.upload=upload;
     photo.accountBook=accountBook;
+    //导入服务器数据时sync=1，默认认为它已同步
+    photo.sync=[NSNumber numberWithInt:SYNCED];
     [self.cdh saveContext];
     return photo.objectID;
 }
@@ -62,7 +64,7 @@
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     NSMutableArray *notSyncPhotos=[[NSMutableArray alloc] init];
     for(AccountBook *accountBook in user.accountBooks) {
-        NSPredicate *predicate=[NSPredicate predicateWithFormat:@"accountBook=%@ and sync=%@",accountBook,NOT_SYNC];
+        NSPredicate *predicate=[NSPredicate predicateWithFormat:@"accountBook=%@ and sync=%d",accountBook,NOT_SYNC];
         NSArray *photos=[self findByPredicate:predicate
                                withEntityName:PhotoEntityName];
         [notSyncPhotos addObjectsFromArray:photos];

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E43CC52C1A33251100146C77"
-               BuildableName = "AccountManagement.app"
+               BuildableName = "EasyFinance.app"
                BlueprintName = "AccountManagement"
                ReferencedContainer = "container:AccountManagement.xcodeproj">
             </BuildableReference>
@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E43CC5481A33251200146C77"
-               BuildableName = "AccountManagementTests.xctest"
+               BuildableName = "EasyFinanceTests.xctest"
                BlueprintName = "AccountManagementTests"
                ReferencedContainer = "container:AccountManagement.xcodeproj">
             </BuildableReference>
@@ -47,7 +47,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E43CC5481A33251200146C77"
-               BuildableName = "AccountManagementTests.xctest"
+               BuildableName = "EasyFinanceTests.xctest"
                BlueprintName = "AccountManagementTests"
                ReferencedContainer = "container:AccountManagement.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E43CC52C1A33251100146C77"
-            BuildableName = "AccountManagement.app"
+            BuildableName = "EasyFinance.app"
             BlueprintName = "AccountManagement"
             ReferencedContainer = "container:AccountManagement.xcodeproj">
          </BuildableReference>
@@ -72,11 +72,12 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E43CC52C1A33251100146C77"
-            BuildableName = "AccountManagement.app"
+            BuildableName = "EasyFinance.app"
             BlueprintName = "AccountManagement"
             ReferencedContainer = "container:AccountManagement.xcodeproj">
          </BuildableReference>
@@ -90,11 +91,12 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E43CC52C1A33251100146C77"
-            BuildableName = "AccountManagement.app"
+            BuildableName = "EasyFinance.app"
             BlueprintName = "AccountManagement"
             ReferencedContainer = "container:AccountManagement.xcodeproj">
          </BuildableReference>

@@ -157,7 +157,7 @@
 		E42F24711AFD118800F5216E /* SelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectorView.m; sourceTree = "<group>"; };
 		E433688E1AF4E209005F7BC4 /* SystemInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemInit.h; sourceTree = "<group>"; };
 		E433688F1AF4E209005F7BC4 /* SystemInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemInit.m; sourceTree = "<group>"; };
-		E43CC52D1A33251100146C77 /* AccountManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccountManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E43CC52D1A33251100146C77 /* EasyFinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyFinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E43CC5311A33251100146C77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E43CC5321A33251100146C77 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E43CC5341A33251100146C77 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		E43CC53E1A33251100146C77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E43CC5401A33251100146C77 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E43CC5431A33251100146C77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		E43CC5491A33251200146C77 /* AccountManagementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccountManagementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E43CC5491A33251200146C77 /* EasyFinanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyFinanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E43CC54E1A33251200146C77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E43CC54F1A33251200146C77 /* AccountManagementTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountManagementTests.m; sourceTree = "<group>"; };
 		E43ECDB31AEF302D00CB3C46 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -475,8 +475,8 @@
 		E43CC52E1A33251100146C77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E43CC52D1A33251100146C77 /* AccountManagement.app */,
-				E43CC5491A33251200146C77 /* AccountManagementTests.xctest */,
+				E43CC52D1A33251100146C77 /* EasyFinance.app */,
+				E43CC5491A33251200146C77 /* EasyFinanceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -809,7 +809,7 @@
 			);
 			name = AccountManagement;
 			productName = AccountManagement;
-			productReference = E43CC52D1A33251100146C77 /* AccountManagement.app */;
+			productReference = E43CC52D1A33251100146C77 /* EasyFinance.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E43CC5481A33251200146C77 /* AccountManagementTests */ = {
@@ -827,7 +827,7 @@
 			);
 			name = AccountManagementTests;
 			productName = AccountManagementTests;
-			productReference = E43CC5491A33251200146C77 /* AccountManagementTests.xctest */;
+			productReference = E43CC5491A33251200146C77 /* EasyFinanceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1136,7 +1136,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (K6ZU7987DF)";
 				INFOPLIST_FILE = AccountManagement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EasyFinance;
 			};
 			name = Debug;
 		};
@@ -1147,7 +1147,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (K6ZU7987DF)";
 				INFOPLIST_FILE = AccountManagement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EasyFinance;
 			};
 			name = Release;
 		};
@@ -1166,7 +1166,7 @@
 				);
 				INFOPLIST_FILE = AccountManagementTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EasyFinanceTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AccountManagement.app/AccountManagement";
 			};
 			name = Debug;
@@ -1182,7 +1182,7 @@
 				);
 				INFOPLIST_FILE = AccountManagementTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EasyFinanceTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AccountManagement.app/AccountManagement";
 			};
 			name = Release;

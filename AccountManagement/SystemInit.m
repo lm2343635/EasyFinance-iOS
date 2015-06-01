@@ -43,7 +43,6 @@
     icon.sync=[NSNumber numberWithInt:SYNCED];
     User *user=(User *)[dao getObjectById:uid];
     icon.user=user;
-    [dao.cdh saveContext];
     //新建系统空账本
     NSManagedObjectID *abid=[dao.accountBookDao saveWithSid:[NSNumber numberWithInt:SYS_NULL_ID]
                                                     andName:SYS_NULL_ACCOUNTBOOK
@@ -54,7 +53,6 @@
     //设置系统空用户的账本为系统空账本
     AccountBook *accountBook=(AccountBook *)[dao getObjectById:abid];
     user.usingAccountBook=accountBook;
-    [dao.cdh saveContext];
     //新建系统空照片
     PhotoDao *photoDao=[[PhotoDao alloc] init];
     NSManagedObjectID *upid=[photoDao saveWithSid:[NSNumber numberWithInt:SYS_NULL_ID]
@@ -63,8 +61,8 @@
         NSLog(@"Create system null photo for user (pid=%@)",upid);
     //设置系统空用户的照片为系统空照片
     Photo *userPhoto=(Photo *)[dao getObjectById:upid];
+    userPhoto.accountBook=accountBook;
     user.photo=userPhoto;
-    [dao.cdh saveContext];
     //新建系统空账本
     NSManagedObjectID *aid=[dao.accountDao saveWithSid:[NSNumber numberWithInt:SYS_NULL_ID]
                                               andAname:SYS_NULL_ACCOUNT
@@ -95,9 +93,11 @@
     //收支记录空照片
     NSManagedObjectID *rpid=[photoDao saveWithSid:[NSNumber numberWithInt:SYS_RECORD_PHOTO_NULL]
                                           andData:UIImagePNGRepresentation([UIImage imageNamed:SYS_NULL_RECORD_PHOTO])];
+    Photo *recordNullPhoto=(Photo *)[dao getObjectById:rpid];
+    recordNullPhoto.accountBook=accountBook;
     if(DEBUG==1)
         NSLog(@"Create system null photo for record (pid=%@)",rpid);
-    
+    [dao.cdh saveContext];
 }
 
 -(void)importDefaultDataFromServer {

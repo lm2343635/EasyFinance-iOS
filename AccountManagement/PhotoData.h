@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DaoManager.h"
 
 @interface PhotoData : NSObject
+
+@property (nonatomic) int pid;
+@property (nonatomic) long timeInterval;
+@property (nonatomic) int abid;
+@property (nonatomic) int sync;
+
+-(instancetype)initWithPhoto:(Photo *)photo;
 
 @end

@@ -10,4 +10,18 @@
 
 @implementation PhotoData
 
+@synthesize pid;
+@synthesize timeInterval;
+@synthesize sync;
+@synthesize abid;
+
+-(instancetype)initWithPhoto:(Photo *)photo {
+    self=[super init];
+    self.pid=photo.sid.intValue;
+    self.timeInterval=[photo.upload timeIntervalSince1970]*1000;
+    self.abid=photo.accountBook.sid.intValue;
+    self.sync=photo.sync.intValue;
+    return self;
+}
+
 @end

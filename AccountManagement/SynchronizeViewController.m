@@ -1,4 +1,4 @@
-//
+
 //  SynchronizeViewController.m
 //  AccountManagement
 //
@@ -15,6 +15,7 @@
 #import "AccountData.h"
 #import "ShopData.h"
 #import "TemplateData.h"
+#import "PhotoData.h"
 
 @interface SynchronizeViewController ()
 
@@ -76,6 +77,18 @@
                 break;
             case SynchronizeStatusPhoto:
                 [self synchronizePhoto];
+                break;
+            case SynchronizeStatusRecord:
+                [self synchronizeRecord];
+                break;
+            case SynchronizeStatusTransfer:
+                [self synchronizeTransfer];
+                break;
+            case SynchronizeStatusAccountHistory:
+                [self synchronizeAccountHistory];
+                break;
+            case SynchronizeStatusEnd:
+                [self finishSynchronization];
                 break;
             default:
                 break;
@@ -408,9 +421,94 @@
 -(void)synchronizePhoto {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    [self finishSynchronization];
+    NSArray *photos=[dao.photoDao findNotSyncByUser:loginedUser];
+    NSMutableArray *photoDatas=[[NSMutableArray alloc] init];
+    for(Photo *photo in photos)
+        [photoDatas addObject:[[PhotoData alloc] initWithPhoto:photo]];
+    //发送推送请求
+    [manager POST:[InternetHelper createUrl:@"iOSPhotoServlet?task=push"]
+       parameters:@{@"array":[self createJSONArrayStringFromNSArray:photoDatas]}
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              if(DEBUG==1)
+                  NSLog(@"Get message from server: %@",operation.responseString);
+              NSArray *objects=[NSJSONSerialization JSONObjectWithData:responseObject
+                                                               options:NSJSONReadingMutableContainers
+                                                                 error:nil];
+              for(int i=0;i<photos.count;i++) {
+                  Photo *photo=[photos objectAtIndex:i];
+                  NSObject *object=[objects objectAtIndex:i];
+                  int spid=[[object valueForKey:@"pid"] intValue];
+                  photo.sid=[NSNumber numberWithInt:spid];
+                  photo.sync=[NSNumber numberWithInt:SYNCED];
+                  if(DEBUG==1)
+                      NSLog(@"Synchronized photo %@ with server and update sid=%d",[object valueForKey:@"timeInterval"],spid);
+                  //上传图片
+                  [manager POST:[InternetHelper createUrl:@"iOSPhotoUploadServlet"]
+                     parameters:@{@"pid":[object valueForKey:@"pid"]}
+                     constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                            [formData appendPartWithFileData:photo.pdata
+                                                        name:@"iOSClentUpload"
+                                                    fileName:@"iOSClentUpload.jpg"
+                                                    mimeType:@"image/jpeg"];
+                        }
+                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            if(DEBUG==1)
+                                NSLog(@"Upload photo(spid=%d) to server successfully.",spid);
+                        }
+                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            NSLog(@"Server Error: %@",error);
+                        }];
+              }
+              [dao.cdh saveContext];
+              //发送更新请求
+              [manager POST:[InternetHelper createUrl:@"iOSPhotoServlet?task=update"]
+                 parameters:@{@"uid":loginedUser.sid}
+                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        if(DEBUG==1)
+                            NSLog(@"Get message from server: %@",operation.responseString);
+                        NSArray *objects=[NSJSONSerialization JSONObjectWithData:responseObject
+                                                                         options:NSJSONReadingMutableContainers
+                                                                           error:nil];
+                        for(NSObject *object in objects) {
+                            int spid=[[object valueForKey:@"pid"] intValue];
+                            long long timeInterval=[[object valueForKey:@"timeInterval"] longLongValue];
+                            NSDate *upload=[NSDate dateWithTimeIntervalSince1970:timeInterval/1000];
+                            int sabid=[[object valueForKey:@"abid"] intValue];
+                            AccountBook *accountBook=[dao.accountBookDao getBySid:[NSNumber numberWithInt:sabid]];
+                            NSManagedObjectID *pid=[dao.photoDao saveWithSid:[NSNumber numberWithInt:spid]
+                                                                   andUpload:upload
+                                                               inAccountBook:accountBook];
+                            if(DEBUG==1)
+                                NSLog(@"Synchronized photo %lld from server with sid=%@",timeInterval,pid);
+                        }
+                        self.synchronizaStatus++;
+                    }
+                    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        NSLog(@"Server Error: %@",error);
+                    }];
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Server Error: %@",error);
+          }];
 }
 
+-(void)synchronizeRecord {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    self.synchronizaStatus++;
+}
+
+-(void)synchronizeTransfer {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    self.synchronizaStatus++;
+}
+
+-(void)synchronizeAccountHistory {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    self.synchronizaStatus++;
+}
 
 -(void)finishSynchronization {
     if(DEBUG==1)
