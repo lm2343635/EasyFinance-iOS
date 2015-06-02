@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "AppDelegate.h"
 #import "Reachability.h"
+#include <ifaddrs.h>
+#include <arpa/inet.h>
 
-//#define Server @"120.25.237.244"
+#define Server @"120.25.237.244"
 //#define WebServiceName @"AccountManagement"
-#define Server @"127.0.0.1:8080"
+//#define Server @"127.0.0.1:8080"
 #define WebServiceName @"EasyFinanceWeb"
 
 #define LOGIN_SUCCESS 0
@@ -28,5 +30,9 @@
 +(NSString *)createUrl:(NSString *)relativePosition;
 
 +(NSInteger)testNetStatus;
+
++(NSString *)getIPAddress;
+
++(NSString *)getDeviceInfo;
 
 @end

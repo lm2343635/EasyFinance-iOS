@@ -2,7 +2,7 @@
 //  Photo.h
 //  AccountManagement
 //
-//  Created by 李大爷 on 15/5/28.
+//  Created by 李大爷 on 15/6/2.
 //  Copyright (c) 2015年 李大爷. All rights reserved.
 //
 
@@ -15,8 +15,8 @@
 
 @property (nonatomic, retain) NSData * pdata;
 @property (nonatomic, retain) NSNumber * sid;
-@property (nonatomic, retain) NSDate * upload;
 @property (nonatomic, retain) NSNumber * sync;
+@property (nonatomic, retain) NSDate * upload;
 @property (nonatomic, retain) AccountBook *accountBook;
 
 @end

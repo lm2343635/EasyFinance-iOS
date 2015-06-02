@@ -1,5 +1,5 @@
 //
-//  Icon.h
+//  SynchronizationHistory.h
 //  AccountManagement
 //
 //  Created by 李大爷 on 15/6/2.
@@ -11,12 +11,12 @@
 
 @class User;
 
-@interface Icon : NSManagedObject
+@interface SynchronizationHistory : NSManagedObject
 
-@property (nonatomic, retain) NSData * idata;
+@property (nonatomic, retain) NSDate * time;
+@property (nonatomic, retain) NSString * ip;
+@property (nonatomic, retain) NSString * device;
 @property (nonatomic, retain) NSNumber * sid;
-@property (nonatomic, retain) NSNumber * sync;
-@property (nonatomic, retain) NSNumber * type;
 @property (nonatomic, retain) User *user;
 
 @end

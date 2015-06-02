@@ -33,6 +33,7 @@
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     loginedUser.login=[NSNumber numberWithBool:NO];
     [dao.cdh saveContext];
-    [self performSegueWithIdentifier:@"logoutSegue" sender:self];
+//    [self performSegueWithIdentifier:@"logoutSegue" sender:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

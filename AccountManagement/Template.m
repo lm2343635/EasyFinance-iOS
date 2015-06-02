@@ -2,7 +2,7 @@
 //  Template.m
 //  AccountManagement
 //
-//  Created by 李大爷 on 15/5/28.
+//  Created by 李大爷 on 15/6/2.
 //  Copyright (c) 2015年 李大爷. All rights reserved.
 //
 
@@ -16,8 +16,8 @@
 @implementation Template
 
 @dynamic sid;
-@dynamic tpname;
 @dynamic sync;
+@dynamic tpname;
 @dynamic account;
 @dynamic accountBook;
 @dynamic classification;

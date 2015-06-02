@@ -2,7 +2,7 @@
 //  User.h
 //  AccountManagement
 //
-//  Created by 李大爷 on 15/5/28.
+//  Created by 李大爷 on 15/6/2.
 //  Copyright (c) 2015年 李大爷. All rights reserved.
 //
 
@@ -17,8 +17,8 @@
 @property (nonatomic, retain) NSNumber * login;
 @property (nonatomic, retain) NSString * password;
 @property (nonatomic, retain) NSNumber * sid;
-@property (nonatomic, retain) NSString * uname;
 @property (nonatomic, retain) NSString * syncKey;
+@property (nonatomic, retain) NSString * uname;
 @property (nonatomic, retain) NSSet *accountBooks;
 @property (nonatomic, retain) NSSet *icons;
 @property (nonatomic, retain) Photo *photo;

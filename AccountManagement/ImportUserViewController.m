@@ -504,8 +504,41 @@
                 }
                 break;
             }
+            case ImportUserInfoStatusSynchronizationHistory:{
+                [manager POST:[InternetHelper createUrl:@"iOSSynchronizeServlet?task=getSynchronizationHistories"]
+                   parameters:@{@"uid":importUserUsid}
+                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                          if(DEBUG==1)
+                              NSLog(@"Get message from server: %@",operation.responseString);
+                          NSArray *objects=[NSJSONSerialization JSONObjectWithData:responseObject
+                                                                           options:NSJSONReadingMutableContainers
+                                                                             error:nil];
+                          for(NSObject *object in objects) {
+                              int sshid=[[object valueForKey:@"shid"] intValue];
+                              NSString *device=[object valueForKey:@"device"];
+                              NSString *ip=[object valueForKey:@"ip"];
+                              long long timeInterval=[[object valueForKey:@"timeInterval"] longLongValue];
+                              NSDate *time=[NSDate dateWithTimeIntervalSince1970:timeInterval/1000];
+                              int suid=[[object valueForKey:@"uid"] intValue];
+                              User *user=[dao.userDao getBySid:[NSNumber numberWithInt:suid]];
+                              NSManagedObjectID *ahid=[dao.synchronizationHistoryDao saveWithSid:[NSNumber numberWithInt:sshid]
+                                                                                         andTime:time
+                                                                                           andIP:ip
+                                                                                       andDevice:device
+                                                                                          inUser:user];
+                              if(DEBUG==1)
+                                  NSLog(@"Create SynchronizationHistory(ahid=%@) for user %@",ahid,user.uname);
+                              [self refreshConsole:[NSString stringWithFormat:@"Importing synchronization history in %@",[dateFormatter stringFromDate:time]]];
+                          }
+                          self.importUserInfoStatus++;
+                      }
+                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                          NSLog(@"Server Error:%@",error);
+                      }];
+                break;
+            }
             case ImportUserInfoStatusEnd:
-
+                
                 //导入全部完成
                 [self finishImport];
                 break;

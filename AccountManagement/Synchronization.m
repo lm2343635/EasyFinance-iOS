@@ -28,14 +28,11 @@
 -(void)registSyncKey {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    //iOS设备信息
-    NSString *iOSDeviceInfo=[NSString stringWithFormat:@"%@ iOS %@",
-                             [[UIDevice currentDevice] name],
-                             [[UIDevice currentDevice] systemVersion]];
+
     //注册同步密钥
     [manager POST:[InternetHelper createUrl:@"iOSSynchronizeServlet?task=resgistSyncKey"]
        parameters:@{
-                    @"iOSDeviceInfo":iOSDeviceInfo,
+                    @"iOSDeviceInfo":[InternetHelper getDeviceInfo],
                     @"uid":loginedUser.sid
                     }
           success:^(AFHTTPRequestOperation *operation, id responseObject) {

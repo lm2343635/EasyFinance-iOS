@@ -18,6 +18,7 @@
 #import "TransferDao.h"
 #import "TemplateDao.h"
 #import "AccountHistoryDao.h"
+#import "SynchronizationHistoryDao.h"
 
 @interface DaoManager : NSObject
 
@@ -32,6 +33,7 @@
 @property (strong,nonatomic) TransferDao *transferDao;
 @property (strong,nonatomic) TemplateDao *templateDao;
 @property (strong,nonatomic) AccountHistoryDao *accountHistoryDao;
+@property (strong,nonatomic) SynchronizationHistoryDao *synchronizationHistoryDao;
 
 @property (strong,nonatomic) CoreDataHelper *cdh;
 

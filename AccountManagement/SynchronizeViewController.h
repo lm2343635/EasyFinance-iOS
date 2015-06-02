@@ -20,7 +20,7 @@
 //#define SynchronizeStatusAccountHistory 9
 #define SynchronizeStatusEnd 9
 
-@interface SynchronizeViewController : UIViewController
+@interface SynchronizeViewController : UIViewController <UIAlertViewDelegate>
 
 @property (nonatomic) NSInteger synchronizaStatus;
 

@@ -75,6 +75,13 @@
         <relationship name="accountBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountBook" inverseName="shops" inverseEntity="AccountBook" syncable="YES"/>
         <relationship name="sicon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Icon" syncable="YES"/>
     </entity>
+    <entity name="SynchronizationHistory" representedClassName="SynchronizationHistory" syncable="YES">
+        <attribute name="device" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ip" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
+    </entity>
     <entity name="Template" representedClassName="Template" syncable="YES">
         <attribute name="sid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="sync" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -114,9 +121,10 @@
         <element name="Icon" positionX="-281" positionY="-37" width="128" height="118"/>
         <element name="Photo" positionX="628" positionY="-46" width="128" height="118"/>
         <element name="Record" positionX="457" positionY="287" width="128" height="193"/>
-        <element name="Shop" positionX="-101" positionY="548" width="128" height="148"/>
-        <element name="Template" positionX="394" positionY="477" width="128" height="148"/>
-        <element name="Transfer" positionX="493" positionY="110" width="128" height="163"/>
+        <element name="Shop" positionX="-101" positionY="549" width="128" height="148"/>
+        <element name="Template" positionX="394" positionY="491" width="128" height="148"/>
+        <element name="Transfer" positionX="493" positionY="99" width="128" height="163"/>
         <element name="User" positionX="36" positionY="-261" width="128" height="193"/>
+        <element name="SynchronizationHistory" positionX="-279" positionY="-253" width="128" height="118"/>
     </elements>
 </model>

@@ -20,6 +20,7 @@
 #import "RecordData.h"
 #import "TransferData.h"
 #import "AccountHistoryData.h"
+#import "SynchronizationHistoryData.h"
 
 @interface SynchronizeViewController ()
 
@@ -41,15 +42,70 @@
     [self synchronize];
 }
 
+#pragma mark - UIAlertViewDelagate
+-(void)alertViewCancel:(UIAlertView *)alertView {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    switch (buttonIndex) {
+        case 0:
+            loginedUser.login=[NSNumber numberWithBool:NO];
+            [dao.cdh saveContext];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+
+#pragma mark - Service
+
 - (void)synchronize {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    [self addObserver:self
-           forKeyPath:@"synchronizaStatus"
-              options:NSKeyValueObservingOptionNew
-              context:nil];
-    //开始导入
-    self.synchronizaStatus=SynchronizeStatusIcon;
+    //与服务器核对更新密钥，完成后重新生成更新密钥
+    [manager POST:[InternetHelper createUrl:@"iOSSynchronizeServlet?task=checkSyncKey"]
+       parameters:@{
+                    @"uid":loginedUser.sid,
+                    @"key":loginedUser.syncKey
+                    }
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              if(DEBUG==1)
+                  NSLog(@"Get message from server: %@",operation.responseString);
+              NSString *key=operation.responseString;
+              //更新密钥非空说明客户端密钥与服务器匹配，否则不能完成更新
+              if(![key isEqualToString:@""]) {
+                  if(DEBUG==1)
+                      NSLog(@"Update sync key %@ for user %@",key,loginedUser.uname);
+                  //更新密钥
+                  loginedUser.syncKey=key;
+                  [dao.cdh saveContext];
+                  //注册监听对象
+                  [self addObserver:self
+                         forKeyPath:@"synchronizaStatus"
+                            options:NSKeyValueObservingOptionNew
+                            context:nil];
+                  //开始同步数据
+                  self.synchronizaStatus=SynchronizeStatusIcon;
+              }else{
+                  UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Warning"
+                                                                message:@"Synchronization Key is illegal, this user may signed in other device, please sign out from this device and resign in."
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"OK",nil];
+                  [alert show];
+              }
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Server Error: %@",error);
+          }];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath
@@ -705,10 +761,38 @@
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     [self removeObserver:self forKeyPath:@"synchronizaStatus"];
-    //导入完成后退出导入界面，返回原来的界面
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //在iOS客户端创建同步历史记录
+    NSManagedObjectID *shid=[dao.synchronizationHistoryDao saveWithTime:[NSDate date]
+                                                                  andIP:[InternetHelper getIPAddress]
+                                                              andDevice:[InternetHelper getDeviceInfo]
+                                                                 inUser:loginedUser];
+    if(DEBUG==1)
+        NSLog(@"Create accountHistory(ahid=%@) for user %@",shid,loginedUser.uname);
+    SynchronizationHistory *history=(SynchronizationHistory *)[dao getObjectById:shid];
+    SynchronizationHistoryData *data=[[SynchronizationHistoryData alloc] initWithSynchronizationHistory:history];
+    //把同步记录发送给服务器
+    [manager POST:[InternetHelper createUrl:@"iOSSynchronizeServlet?task=receiveSynchronizationHistory"]
+       parameters:@{@"object":[self createJSONObjectFromNSObject:data]}
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              if(DEBUG==1)
+                  NSLog(@"Get message from server: %@",operation.responseString);
+              NSObject *object=[NSJSONSerialization JSONObjectWithData:responseObject
+                                                               options:NSJSONReadingMutableContainers
+                                                                 error:nil];
+              int sshid=[[object valueForKey:@"shid"] intValue];
+              history.sid=[NSNumber numberWithInt:sshid];
+              [dao.cdh saveContext];
+              if(DEBUG==1)
+                  NSLog(@"Update synchronization history %@ set shid=%d",[object valueForKey:@"timeInterval"],sshid);
+              //导入完成后退出导入界面，返回原来的界面
+              [self dismissViewControllerAnimated:YES completion:nil];
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Server Error: %@",error);
+          }];
 }
 
+//根据数组得到json字符串
 -(NSString *)createJSONArrayStringFromNSArray:(NSArray *)array {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@",self.class,NSStringFromSelector(_cmd));
@@ -735,5 +819,18 @@
         count++;
     }
     return jsonArrayString;
+}
+
+//根据对象得到json字符串
+-(NSString *)createJSONObjectFromNSObject:(NSObject *)object {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@",self.class,NSStringFromSelector(_cmd));
+    NSError *error=nil;
+    NSData *data=[NSJSONSerialization dataWithJSONObject:[object getDictionary]
+                                                 options:NSJSONWritingPrettyPrinted
+                                                   error:&error];
+    if(error)
+        NSLog(@"Error: %@",error);
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 @end

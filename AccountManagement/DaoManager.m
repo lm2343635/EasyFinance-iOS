@@ -25,6 +25,7 @@
     self.transferDao=[[TransferDao alloc] init];
     self.templateDao=[[TemplateDao alloc] init];
     self.accountHistoryDao=[[AccountHistoryDao alloc] init];
+    self.synchronizationHistoryDao=[[SynchronizationHistoryDao alloc] init];
     self.cdh=[(AppDelegate *)[[UIApplication sharedApplication] delegate] cdh];
     return self;
 }
