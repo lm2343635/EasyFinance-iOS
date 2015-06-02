@@ -180,7 +180,7 @@
                 if(money>0)
                     history.ain=[NSNumber numberWithDouble:history.ain.doubleValue+money];
                 else
-                    history.aout=[NSNumber numberWithDouble:history.aout.doubleValue+money];
+                    history.aout=[NSNumber numberWithDouble:history.aout.doubleValue-money];
             }
         }
     }

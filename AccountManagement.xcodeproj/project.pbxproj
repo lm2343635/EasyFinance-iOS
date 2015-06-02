@@ -63,6 +63,7 @@
 		E47B7F7F1B14DDD4003943E3 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E47B7F7E1B14DDD4003943E3 /* SettingViewController.m */; };
 		E47C58DE1B1C4206009A3700 /* RecordData.m in Sources */ = {isa = PBXBuildFile; fileRef = E47C58DD1B1C4206009A3700 /* RecordData.m */; };
 		E47C58E11B1C4532009A3700 /* TransferData.m in Sources */ = {isa = PBXBuildFile; fileRef = E47C58E01B1C4532009A3700 /* TransferData.m */; };
+		E47C58E41B1C96BF009A3700 /* AccountHistoryData.m in Sources */ = {isa = PBXBuildFile; fileRef = E47C58E31B1C96BF009A3700 /* AccountHistoryData.m */; };
 		E48EA0711B175C47008890DC /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA0701B175C47008890DC /* Photo.m */; };
 		E48EA0741B175C48008890DC /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA0731B175C48008890DC /* Shop.m */; };
 		E48EA0771B175C48008890DC /* Transfer.m in Sources */ = {isa = PBXBuildFile; fileRef = E48EA0761B175C48008890DC /* Transfer.m */; };
@@ -254,6 +255,8 @@
 		E47C58DD1B1C4206009A3700 /* RecordData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordData.m; sourceTree = "<group>"; };
 		E47C58DF1B1C4532009A3700 /* TransferData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferData.h; sourceTree = "<group>"; };
 		E47C58E01B1C4532009A3700 /* TransferData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferData.m; sourceTree = "<group>"; };
+		E47C58E21B1C96BF009A3700 /* AccountHistoryData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountHistoryData.h; sourceTree = "<group>"; };
+		E47C58E31B1C96BF009A3700 /* AccountHistoryData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountHistoryData.m; sourceTree = "<group>"; };
 		E48EA06F1B175C47008890DC /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		E48EA0701B175C47008890DC /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		E48EA0721B175C48008890DC /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shop.h; sourceTree = "<group>"; };
@@ -611,6 +614,8 @@
 				E48EA0B11B17F927008890DC /* AccountBookData.m */,
 				E4A5BC321B196EAF001AA69F /* AccountData.h */,
 				E4A5BC331B196EAF001AA69F /* AccountData.m */,
+				E47C58E21B1C96BF009A3700 /* AccountHistoryData.h */,
+				E47C58E31B1C96BF009A3700 /* AccountHistoryData.m */,
 				E49AC0EC1B159D5F009D996D /* AccountInformation.h */,
 				E49AC0ED1B159D5F009D996D /* AccountInformation.m */,
 				E4A5BC2F1B196C6B001AA69F /* ClassificationData.h */,
@@ -1017,6 +1022,7 @@
 				E45E8AED1B1178FC0056F320 /* TransferListTableViewController.m in Sources */,
 				E45E8B121B11A2390056F320 /* MJRefreshFooter.m in Sources */,
 				E48EA0771B175C48008890DC /* Transfer.m in Sources */,
+				E47C58E41B1C96BF009A3700 /* AccountHistoryData.m in Sources */,
 				E43CC5331A33251100146C77 /* main.m in Sources */,
 				E43ECDC71AEF302D00CB3C46 /* AFHTTPRequestOperationManager.m in Sources */,
 				E4D7EC5B1A4299EF00C35931 /* TimeInformationController.m in Sources */,

@@ -16,7 +16,7 @@
 #define RecordEntityName @"Record"
 
 @interface RecordDao : DaoTemplate
-//从服务器导入数据使用，不需要更新账户、分类和商家的资金流入流出
+//从服务器导入默认数据使用，不需要更新账户、分类和商家的资金流入流出流出，以及对账历史记录
 -(NSManagedObjectID *)saveWithSid:(NSNumber *)sid
                          andMoney:(NSNumber *)money
                         andRemark:(NSString *)remark
@@ -27,7 +27,18 @@
                          andPhoto:(Photo *)photo
                     inAccountBook:(AccountBook *)accountBook;
 
-//iOS客户端新建收支记录使用，必须更新账户、分类和商家的资金流入流出
+//从服务器同步数据使用，要更新账户、分类和商家的资金流入流出流出，以及对账历史记录
+-(NSManagedObjectID *)synchronizeWithSid:(NSNumber *)sid
+                                andMoney:(NSNumber *)money
+                               andRemark:(NSString *)remark
+                                 andTime:(NSDate *)time
+                       andClassification:(Classification *)classsification
+                              andAccount:(Account *)account
+                                 andShop:(Shop *)shop
+                                andPhoto:(Photo *)photo
+                           inAccountBook:(AccountBook *)accountBook;
+
+//iOS客户端新建收支记录使用，必须更新账户、分类和商家的资金流入流出，以及对账历史记录
 -(NSManagedObjectID *)saveWithMoney:(NSNumber *)money
                           andRemark:(NSString *)remark
                             andTime:(NSDate *)time

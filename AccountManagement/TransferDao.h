@@ -12,7 +12,7 @@
 #import "User.h"
 
 @interface TransferDao : DaoTemplate
-//从服务器导入转账记录使用，不需要更新账户的资金流入流出
+//从服务器导入转账记录使用，不需要更新账户的资金流入流出，以及对账历史记录
 -(NSManagedObjectID *)saveWithSid:(NSNumber *)sid
                          andMoney:(NSNumber *)money
                         andRemark:(NSString *)remark
@@ -21,7 +21,16 @@
                      andInAccount:(Account *)tfin
                     inAccountBook:(AccountBook *)accountBook;
 
-//iOS客户端新建转账记录使用，必须更新账户的资金流入流出
+//从服务器同步转账记录使用，必须更新账户的资金流入流出，以及对账历史记录
+-(NSManagedObjectID *)synchronizeWithSid:(NSNumber *)sid
+                                andMoney:(NSNumber *)money
+                               andRemark:(NSString *)remark
+                                 andTime:(NSDate *)time
+                           andOutAccount:(Account *)tfout
+                            andInAccount:(Account *)tfin
+                           inAccountBook:(AccountBook *)accountBook;
+
+//iOS客户端新建转账记录使用，必须更新账户的资金流入流出，以及对账历史记录
 -(NSManagedObjectID *)saveWithMoney:(NSNumber *)money
                           andRemark:(NSString *)remark
                             andTime:(NSDate *)time

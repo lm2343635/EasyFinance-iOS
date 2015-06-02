@@ -34,7 +34,7 @@
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     [super viewWillAppear:animated];
-    accounts=[loginedUser.usingAccountBook.accounts allObjects];
+    accounts=[dao.accountDao findByAccountBook:loginedUser.usingAccountBook];
     AccountInformation *information=[dao.accountDao getAccountInformationInAccountBook:loginedUser.usingAccountBook];
     self.netAssetsLabel.text=[NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:information.netAssets]];
     self.totalAssetsLabel.text=[NSString stringWithFormat:@"%@",[NSNumber numberWithDouble:information.totalAssets]];

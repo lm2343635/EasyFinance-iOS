@@ -19,6 +19,7 @@
 #import "PhotoData.h"
 #import "RecordData.h"
 #import "TransferData.h"
+#import "AccountHistoryData.h"
 
 @interface SynchronizeViewController ()
 
@@ -86,9 +87,6 @@
                 break;
             case SynchronizeStatusTransfer:
                 [self synchronizeTransfer];
-                break;
-            case SynchronizeStatusAccountHistory:
-                [self synchronizeAccountHistory];
                 break;
             case SynchronizeStatusEnd:
                 [self finishSynchronization];
@@ -549,15 +547,15 @@
                             //iOS客户端空照片就设为null，只有当照片不为系统空收支记录照片时才设置photo
                             if(spid!=SYS_RECORD_PHOTO_NULL)
                                 photo=[dao.photoDao getBySid:[NSNumber numberWithInt:spid]];
-                            NSManagedObjectID *rid=[dao.recordDao saveWithSid:[NSNumber numberWithInt:srid]
-                                                                     andMoney:[NSNumber numberWithDouble:money]
-                                                                    andRemark:remark
-                                                                      andTime:time
-                                                            andClassification:classification
-                                                                   andAccount:account
-                                                                      andShop:shop
-                                                                     andPhoto:photo
-                                                                inAccountBook:accountBook];
+                            NSManagedObjectID *rid=[dao.recordDao synchronizeWithSid:[NSNumber numberWithInt:srid]
+                                                                            andMoney:[NSNumber numberWithDouble:money]
+                                                                           andRemark:remark
+                                                                             andTime:time
+                                                                   andClassification:classification
+                                                                          andAccount:account
+                                                                             andShop:shop
+                                                                            andPhoto:photo
+                                                                       inAccountBook:accountBook];
                             if(DEBUG==1)
                                 NSLog(@"Synchronized record %lld from server with rid=%@",timeInterval,rid);
                         }
@@ -619,13 +617,13 @@
                             Account *tfin=[dao.accountDao getBySid:[NSNumber numberWithInt:tfinid]];
                             Account *tfout=[dao.accountDao getBySid:[NSNumber numberWithInt:tfoutid]];
                             AccountBook *accountBook=[dao.accountBookDao getBySid:[NSNumber numberWithInt:sabid]];
-                            NSManagedObjectID *tfid=[dao.transferDao saveWithSid:[NSNumber numberWithInt:stfid]
-                                                                        andMoney:[NSNumber numberWithDouble:money]
-                                                                       andRemark:remark
-                                                                         andTime:time
-                                                                   andOutAccount:tfout
-                                                                    andInAccount:tfin
-                                                                   inAccountBook:accountBook];
+                            NSManagedObjectID *tfid=[dao.transferDao synchronizeWithSid:[NSNumber numberWithInt:stfid]
+                                                                               andMoney:[NSNumber numberWithDouble:money]
+                                                                              andRemark:remark
+                                                                                andTime:time
+                                                                          andOutAccount:tfout
+                                                                           andInAccount:tfin
+                                                                          inAccountBook:accountBook];
                             if(DEBUG==1)
                                 NSLog(@"Synchronized transfer %lld from server with tfid=%@",timeInterval,tfid);
                         }
@@ -640,9 +638,66 @@
           }];
 }
 
+//暂时作废的方法
 -(void)synchronizeAccountHistory {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    NSArray *accountHistories=[dao.accountHistoryDao findNotSyncByUser:loginedUser];
+    NSMutableArray *accountHistoryDatas=[[NSMutableArray alloc] init];
+    for(AccountHistory *accountHistory in accountHistories)
+        [accountHistoryDatas addObject:[[AccountHistoryData alloc] initWithAccountHistory:accountHistory]];
+    //发送推送请求
+    [manager POST:[InternetHelper createUrl:@"iOSAccountHistoryServlet?task=push"]
+       parameters:@{@"array":[self createJSONArrayStringFromNSArray:accountHistoryDatas]}
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              if(DEBUG==1)
+                  NSLog(@"Get message from server: %@",operation.responseString);
+              NSArray *objects=[NSJSONSerialization JSONObjectWithData:responseObject
+                                                               options:NSJSONReadingMutableContainers
+                                                                 error:nil];
+              for (int i=0; i<accountHistories.count; i++) {
+                  AccountHistory *accountHistory=[accountHistories objectAtIndex:i];
+                  NSObject *object=[objects objectAtIndex:i];
+                  int sahid=[[object valueForKey:@"ahid"] intValue];
+                  accountHistory.sid=[NSNumber numberWithInt:sahid];
+                  accountHistory.sync=[NSNumber numberWithInt:SYNCED];
+                  if(DEBUG==1)
+                      NSLog(@"Synchronized account history %@ with server and update sid=%d",[object valueForKey:@"timeInterval"],sahid);
+              }
+              [dao.cdh saveContext];
+              //发送更新请求
+              [manager POST:[InternetHelper createUrl:@"iOSAccountHistoryServlet?task=update"]
+                 parameters:@{@"uid":loginedUser.sid}
+                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        if(DEBUG==1)
+                            NSLog(@"Get message from server: %@",operation.responseString);
+                        NSArray *objects=[NSJSONSerialization JSONObjectWithData:responseObject
+                                                                         options:NSJSONReadingMutableContainers
+                                                                           error:nil];
+                        for(NSObject *object in objects) {
+                            int sahid=[[object valueForKey:@"ahid"] intValue];
+                            double ain=[[object valueForKey:@"ain"] doubleValue];
+                            double aout=[[object valueForKey:@"aout"] doubleValue];
+                            long long timeInterval=[[object valueForKey:@"timeInterval"] longLongValue];
+                            NSDate *date=[NSDate dateWithTimeIntervalSince1970:timeInterval];
+                            int said=[[object valueForKey:@"aid"] intValue];
+                            Account *account=[dao.accountDao getBySid:[NSNumber numberWithInt:said]];
+                            NSManagedObjectID *ahid=[dao.accountHistoryDao saveBySid:[NSNumber numberWithInt:sahid]
+                                                                              andAin:[NSNumber numberWithDouble:ain]
+                                                                             andAout:[NSNumber numberWithDouble:aout]
+                                                                              onDate:date
+                                                                           inAccount:account];
+                            if(DEBUG==1)
+                                NSLog(@"Synchronized account history %lld from server with ahid=%@",timeInterval,ahid);
+                        }
+                    }
+                    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        NSLog(@"Server Error: %@",error);
+                    }];
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Server Error: %@",error);
+          }];
     self.synchronizaStatus++;
 }
 

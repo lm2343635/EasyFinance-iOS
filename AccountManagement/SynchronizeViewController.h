@@ -17,8 +17,8 @@
 #define SynchronizeStatusPhoto 6
 #define SynchronizeStatusRecord 7
 #define SynchronizeStatusTransfer 8
-#define SynchronizeStatusAccountHistory 9
-#define SynchronizeStatusEnd 10
+//#define SynchronizeStatusAccountHistory 9
+#define SynchronizeStatusEnd 9
 
 @interface SynchronizeViewController : UIViewController
 

@@ -41,6 +41,50 @@
     return record.objectID;
 }
 
+-(NSManagedObjectID *)synchronizeWithSid:(NSNumber *)sid
+                                andMoney:(NSNumber *)money
+                               andRemark:(NSString *)remark
+                                 andTime:(NSDate *)time
+                       andClassification:(Classification *)classsification
+                              andAccount:(Account *)account
+                                 andShop:(Shop *)shop
+                                andPhoto:(Photo *)photo
+                           inAccountBook:(AccountBook *)accountBook {
+    if(DEBUG==1&&DAO_DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    Record *record=[NSEntityDescription insertNewObjectForEntityForName:RecordEntityName
+                                                 inManagedObjectContext:self.cdh.context];
+    record.sid=sid;
+    record.money=money;
+    record.remark=remark;
+    record.time=time;
+    record.classification=classsification;
+    record.account=account;
+    record.shop=shop;
+    record.photo=photo;
+    record.accountBook=accountBook;
+    //同步服务器数据时sync=1，默认认为它已同步
+    record.sync=[NSNumber numberWithInt:SYNCED];
+    double moneyDoubleValue=money.doubleValue;
+    //更新账本历史记录
+    AccountHistoryDao *accountHistoryDao=[[AccountHistoryDao alloc] init];
+    [accountHistoryDao updateWithMoney:moneyDoubleValue
+                                onDate:[DateTool getThisDayStart:time]
+                             inAccount:account];
+    //更新账户、分类和商家的资金流入流出
+    if(moneyDoubleValue>0) {
+        record.classification.cin=[NSNumber numberWithDouble:[record.classification.cin doubleValue]+moneyDoubleValue];
+        record.account.ain=[NSNumber numberWithDouble:[record.account.ain doubleValue]+moneyDoubleValue];
+        record.shop.sin=[NSNumber numberWithDouble:[record.shop.sin doubleValue]+moneyDoubleValue];
+    }else{
+        record.classification.cout=[NSNumber numberWithDouble:[record.classification.cout doubleValue]-moneyDoubleValue];
+        record.account.aout=[NSNumber numberWithDouble:[record.account.aout doubleValue]-moneyDoubleValue];
+        record.shop.sout=[NSNumber numberWithDouble:[record.shop.sout doubleValue]-moneyDoubleValue];
+    }
+    [self.cdh saveContext];
+    return record.objectID;
+}
+
 -(NSManagedObjectID *)saveWithMoney:(NSNumber *)money
                           andRemark:(NSString *)remark
                             andTime:(NSDate *)time

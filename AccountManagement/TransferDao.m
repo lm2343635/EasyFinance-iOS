@@ -7,6 +7,7 @@
 //
 
 #import "TransferDao.h"
+#import "AccountHistoryDao.h"
 #import "DateTool.h"
 #import "TransferMonthlyStatisticalData.h"
 
@@ -38,6 +39,43 @@
     return transfer.objectID;
 }
 
+-(NSManagedObjectID *)synchronizeWithSid:(NSNumber *)sid
+                                andMoney:(NSNumber *)money
+                               andRemark:(NSString *)remark
+                                 andTime:(NSDate *)time
+                           andOutAccount:(Account *)tfout
+                            andInAccount:(Account *)tfin
+                           inAccountBook:(AccountBook *)accountBook {
+    if(DEBUG==1&&DAO_DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    Transfer *transfer=[NSEntityDescription insertNewObjectForEntityForName:TransferEntityName
+                                                     inManagedObjectContext:self.cdh.context];
+    transfer.sid=sid;
+    transfer.money=money;
+    transfer.remark=remark;
+    transfer.time=time;
+    transfer.tfin=tfin;
+    transfer.tfout=tfout;
+    transfer.accountBook=accountBook;
+    //导入服务器数据时sync=1，默认认为它已同步
+    transfer.sync=[NSNumber numberWithInt:SYNCED];
+    //更新账户的资金流入流出
+    double moneyDoubleValue=money.doubleValue;
+    transfer.tfin.ain=[NSNumber numberWithDouble:transfer.tfin.ain.doubleValue+moneyDoubleValue];
+    transfer.tfout.aout=[NSNumber numberWithDouble:transfer.tfout.aout.doubleValue+moneyDoubleValue];
+    
+    //更新账本历史记录
+    AccountHistoryDao *accountHistoryDao=[[AccountHistoryDao alloc] init];
+    [accountHistoryDao updateWithMoney:moneyDoubleValue
+                                onDate:[DateTool getThisDayStart:time]
+                             inAccount:tfin];
+    [accountHistoryDao updateWithMoney:-moneyDoubleValue
+                                onDate:[DateTool getThisDayStart:time]
+                             inAccount:tfout];
+    [self.cdh saveContext];
+    return transfer.objectID;
+}
+
 -(NSManagedObjectID *)saveWithMoney:(NSNumber *)money
                           andRemark:(NSString *)remark
                             andTime:(NSDate *)time
@@ -58,6 +96,15 @@
     double moneyDoubleValue=money.doubleValue;
     transfer.tfin.ain=[NSNumber numberWithDouble:transfer.tfin.ain.doubleValue+moneyDoubleValue];
     transfer.tfout.aout=[NSNumber numberWithDouble:transfer.tfout.aout.doubleValue+moneyDoubleValue];
+    
+    //更新账本历史记录
+    AccountHistoryDao *accountHistoryDao=[[AccountHistoryDao alloc] init];
+    [accountHistoryDao updateWithMoney:moneyDoubleValue
+                                onDate:[DateTool getThisDayStart:time]
+                             inAccount:tfin];
+    [accountHistoryDao updateWithMoney:-moneyDoubleValue
+                                onDate:[DateTool getThisDayStart:time]
+                             inAccount:tfout];
     [self.cdh saveContext];
     return transfer.objectID;
 }
