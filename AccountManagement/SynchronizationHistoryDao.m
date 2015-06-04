@@ -29,7 +29,6 @@
 }
 
 -(NSManagedObjectID *)saveWithTime:(NSDate *)time
-                             andIP:(NSString *)ip
                          andDevice:(NSString *)device
                             inUser:(User *)user {
     if(DEBUG==1&&DAO_DEBUG==1)
@@ -37,7 +36,6 @@
     SynchronizationHistory *history=[NSEntityDescription insertNewObjectForEntityForName:SynchronizationHistoryEntityName
                                                                   inManagedObjectContext:self.cdh.context];
     history.time=time;
-    history.ip=ip;
     history.device=device;
     history.user=user;
     [self.cdh saveContext];

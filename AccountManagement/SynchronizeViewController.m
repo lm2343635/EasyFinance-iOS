@@ -9,6 +9,7 @@
 #import "SynchronizeViewController.h"
 #import "DaoManager.h"
 #import "InternetHelper.h"
+#import "DateTool.h"
 #import "SystemInit.h"
 #import "NSObject+KJSerializer.h"
 #import "AccountBookData.h"
@@ -763,7 +764,6 @@
     [self removeObserver:self forKeyPath:@"synchronizaStatus"];
     //在iOS客户端创建同步历史记录
     NSManagedObjectID *shid=[dao.synchronizationHistoryDao saveWithTime:[NSDate date]
-                                                                  andIP:[InternetHelper getIPAddress]
                                                               andDevice:[InternetHelper getDeviceInfo]
                                                                  inUser:loginedUser];
     if(DEBUG==1)
@@ -781,6 +781,7 @@
                                                                  error:nil];
               int sshid=[[object valueForKey:@"shid"] intValue];
               history.sid=[NSNumber numberWithInt:sshid];
+              history.ip=[object valueForKey:@"ip"];
               [dao.cdh saveContext];
               if(DEBUG==1)
                   NSLog(@"Update synchronization history %@ set shid=%d",[object valueForKey:@"timeInterval"],sshid);

@@ -16,7 +16,7 @@
 @property (nonatomic) int tfinid;
 @property (nonatomic) double money;
 @property (nonatomic) NSString *remark;
-@property (nonatomic) long timeInterval;
+@property (nonatomic) long long timeInterval;
 @property (nonatomic) int abid;
 @property (nonatomic) int sync;
 

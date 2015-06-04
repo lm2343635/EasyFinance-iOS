@@ -17,6 +17,7 @@
 @implementation MainTableViewController {
     DaoManager *dao;
     User *loginedUser;
+    UILabel *tipLabel;
 }
 
 - (void)viewDidLoad {
@@ -52,6 +53,9 @@
     //设置最近一条收支记录的信息
     Record *latestRecord=[dao.recordDao getLatestRecordInAccountBook:usingAccountBook];
     if (latestRecord!=nil) {
+        for(UIView *view in self.latestRecordTableViewCell.subviews)
+            view.hidden=NO;
+        tipLabel.hidden=YES;
         self.latestRecordClassificationIconImageView.image=[UIImage imageWithData:latestRecord.classification.cicon.idata];
         self.latestRecordClassificationLabel.text=latestRecord.classification.cname;
         self.latestRecordTimeLabel.text=[DateTool formateDate:latestRecord.time withFormat:DateFormatYearMonthDayHourMinutes];
@@ -60,8 +64,8 @@
             self.latestRecordMoneyLabel.textColor=[UIColor redColor];
     }else{
         for(UIView *view in self.latestRecordTableViewCell.subviews)
-            [view removeFromSuperview];
-        UILabel *tipLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+            view.hidden=YES;
+        tipLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
         tipLabel.text=@"No Record in This Account Book!";
         tipLabel.textColor=[UIColor redColor];
         tipLabel.font=[UIFont fontWithName:@"Helvetica" size:14];

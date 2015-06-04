@@ -12,7 +12,7 @@
 @interface SynchronizationHistoryData : NSObject
 
 @property (nonatomic) int shid;
-@property (nonatomic) long timeInterval;
+@property (nonatomic) long long timeInterval;
 @property (nonatomic,retain) NSString *device;
 @property (nonatomic,retain) NSString *ip;
 @property (nonatomic) int uid;

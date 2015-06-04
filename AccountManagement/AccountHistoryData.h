@@ -12,7 +12,7 @@
 @interface AccountHistoryData : NSObject
 
 @property (nonatomic) int ahid;
-@property (nonatomic) long timeInterval;
+@property (nonatomic) long long timeInterval;
 @property (nonatomic) double aout;
 @property (nonatomic) double ain;
 @property (nonatomic) int aid;

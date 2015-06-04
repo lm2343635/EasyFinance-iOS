@@ -12,10 +12,10 @@
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 
-#define Server @"120.25.237.244"
-//#define WebServiceName @"AccountManagement"
-//#define Server @"127.0.0.1:8080"
-#define WebServiceName @"EasyFinanceWeb"
+#define Domain @"easy.fczm.pw"
+//#define Domain @"192.168.1.127:8080/EasyFinanceWeb"
+
+#define InteretTestDomain @"easy.fczm.pw"
 
 #define LOGIN_SUCCESS 0
 #define LOGIN_PASSWORD_WRONG 1
@@ -31,8 +31,10 @@
 
 +(NSInteger)testNetStatus;
 
-+(NSString *)getIPAddress;
-
 +(NSString *)getDeviceInfo;
+
++ (void)getLANIPAddressWithCompletion:(void (^)(NSString *IPAddress))completion;
+
++ (void)getWANIPAddressWithCompletion:(void(^)(NSString *IPAddress))completion;
 
 @end

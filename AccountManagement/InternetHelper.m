@@ -18,7 +18,7 @@
 }
 
 +(NSString *)createUrl:(NSString *)relativePosition {
-    NSString *url=[NSString stringWithFormat:@"http://%@/%@/%@",Server,WebServiceName,relativePosition];
+    NSString *url=[NSString stringWithFormat:@"http://%@/%@",Domain,relativePosition];
     if(DEBUG==1) {
         NSLog(@"Running InternetHelper '%@'",NSStringFromSelector(_cmd));
         NSLog(@"Request URL is: %@",url);
@@ -29,12 +29,57 @@
 +(NSInteger)testNetStatus {
     if(DEBUG==1)
         NSLog(@"Running InternetHelper '%@'",NSStringFromSelector(_cmd));
-//    Reachability *reach=[Reachability reachabilityWithHostName:@"baidu.com"];
-//    return [reach currentReachabilityStatus];
-    return ReachableViaWiFi;
+    Reachability *reach=[Reachability reachabilityWithHostName:InteretTestDomain];
+    return [reach currentReachabilityStatus];
 }
 
-+(NSString *)getIPAddress
++(NSString *)getDeviceInfo {
+    //iOS设备信息
+    NSString *iOSDeviceInfo=[NSString stringWithFormat:@"%@ iOS %@",
+                             [[UIDevice currentDevice] name],
+                             [[UIDevice currentDevice] systemVersion]];
+    return iOSDeviceInfo;
+}
+
++ (void)getLANIPAddressWithCompletion:(void (^)(NSString *IPAddress))completion
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *IP = [self getIPAddress];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+                completion(IP);
+            }
+        });
+    });
+}
+
++ (void)getWANIPAddressWithCompletion:(void(^)(NSString *IPAddress))completion
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSString *IP = @"0.0.0.0";
+        NSURL *url = [NSURL URLWithString:@"http://ifconfig.me/ip"];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:8.0];
+        
+        NSURLResponse *response = nil;
+        NSError *error = nil;
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        if (error) {
+            NSLog(@"Failed to get WAN IP Address!\n%@", error);
+            [[[UIAlertView alloc] initWithTitle:@"获取外网 IP 地址失败" message:[error localizedFailureReason] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        } else {
+            NSString *responseStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            IP = responseStr;
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(IP);
+        });
+    });
+}
+
++ (NSString *)getIPAddress
 {
     NSString *address = @"error";
     struct ifaddrs *interfaces = NULL;
@@ -63,13 +108,5 @@
     freeifaddrs(interfaces);
     
     return address;
-}
-
-+(NSString *)getDeviceInfo {
-    //iOS设备信息
-    NSString *iOSDeviceInfo=[NSString stringWithFormat:@"%@ iOS %@",
-                             [[UIDevice currentDevice] name],
-                             [[UIDevice currentDevice] systemVersion]];
-    return iOSDeviceInfo;
 }
 @end

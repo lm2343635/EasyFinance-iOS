@@ -14,7 +14,7 @@
 @property (nonatomic) int rid;
 @property (nonatomic) double money;
 @property (nonatomic, retain) NSString *remark;
-@property (nonatomic) long timeInterval;
+@property (nonatomic) long long timeInterval;
 @property (nonatomic) int cid;
 @property (nonatomic) int aid;
 @property (nonatomic) int sid;

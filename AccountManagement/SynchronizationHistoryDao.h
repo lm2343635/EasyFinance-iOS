@@ -23,7 +23,6 @@
 
 //客户端新建同步历史记录使用
 -(NSManagedObjectID *)saveWithTime:(NSDate *)time
-                             andIP:(NSString *)ip
                          andDevice:(NSString *)device
                             inUser:(User *)user;
 
