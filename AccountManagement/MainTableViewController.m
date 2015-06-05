@@ -7,6 +7,7 @@
 //
 
 #import "MainTableViewController.h"
+#import "TimeInformationNavigationViewController.h"
 #import "DaoManager.h"
 #import "DateTool.h"
 
@@ -17,6 +18,9 @@
 @implementation MainTableViewController {
     DaoManager *dao;
     User *loginedUser;
+    NSDate *nowDate;
+    NSDate *timeInformationStart;
+    NSDate *timeInformationEnd;
     UILabel *tipLabel;
 }
 
@@ -31,12 +35,54 @@
 -(void)viewWillAppear:(BOOL)animated {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    //重新加载当前时间
+    nowDate=[NSDate date];
+    //重新加载视图数据
     [self reloadData];
+}
+
+#pragma mark - Navigation 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    if([segue.identifier isEqualToString:@"timeInformationSegue"]) {
+        TimeInformationNavigationViewController *controller=
+            (TimeInformationNavigationViewController *)[segue destinationViewController];
+        controller.start=timeInformationStart;
+        controller.end=timeInformationEnd;
+    }
+}
+
+#pragma UITableViewDelegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(DEBUG==1)
+        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    switch (indexPath.row) {
+        case MainTableViewLatestRecord:
+            [self performSegueWithIdentifier:@"latestRecordsSegue" sender:self];
+            break;
+        case MainTableViewToday:
+            timeInformationStart=[DateTool getThisDayStart:nowDate];
+            timeInformationEnd=[DateTool getThisDayEnd:nowDate];
+            [self performSegueWithIdentifier:@"timeInformationSegue" sender:self];
+            break;
+        case MainTableViewThisWeek:
+            timeInformationStart=[DateTool getThisWeekStart:nowDate];
+            timeInformationEnd=[DateTool getThisWeekEnd:nowDate];
+            [self performSegueWithIdentifier:@"timeInformationSegue" sender:self];
+            break;
+        case MainTableViewThisMonth:
+            timeInformationStart=[DateTool getThisMonthStart:nowDate];
+            timeInformationEnd=[DateTool getThisMonthEnd:nowDate];
+            [self performSegueWithIdentifier:@"timeInformationSegue" sender:self];
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - Service
 -(void)reloadData {
-    NSDate *nowDate=[NSDate date];
     AccountBook *usingAccountBook=loginedUser.usingAccountBook;
     //设置TabBar选中图标和颜色
     self.tabBarController.tabBar.selectedItem.selectedImage=[UIImage imageNamed:@"tab_main_selected"];

@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#define MainTableViewLatestRecord 0
+#define MainTableViewToday 1
+#define MainTableViewThisWeek 2
+#define MainTableViewThisMonth 3
+
 @interface MainTableViewController : UITableViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;

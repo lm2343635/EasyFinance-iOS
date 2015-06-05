@@ -12,6 +12,8 @@
 		E401EE4A1A402927004EAF7C /* ModifyClassificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E401EE491A402927004EAF7C /* ModifyClassificationController.m */; };
 		E409F28F1AE8CD2E001C55C6 /* CoreDataImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = E409F28E1AE8CD2E001C55C6 /* CoreDataImporter.m */; };
 		E422F8DB1AEC949500F5BD0C /* menuBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E422F8DA1AEC949500F5BD0C /* menuBackground.jpg */; };
+		E42AF1DD1B21CBF0006DC633 /* TimeInformationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E42AF1DC1B21CBF0006DC633 /* TimeInformationTableViewController.m */; };
+		E42AF1E01B21D4E0006DC633 /* TimeInformationNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E42AF1DF1B21D4E0006DC633 /* TimeInformationNavigationViewController.m */; };
 		E42F24721AFD118800F5216E /* SelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E42F24711AFD118800F5216E /* SelectorView.m */; };
 		E43368901AF4E209005F7BC4 /* SystemInit.m in Sources */ = {isa = PBXBuildFile; fileRef = E433688F1AF4E209005F7BC4 /* SystemInit.m */; };
 		E43CC5331A33251100146C77 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E43CC5321A33251100146C77 /* main.m */; };
@@ -128,7 +130,6 @@
 		E4C29DA91A3717F200003D51 /* main_head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C29DA81A3717F200003D51 /* main_head.jpg */; };
 		E4C29DAB1A371D5600003D51 /* AccountBookBG.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C29DAA1A371D5600003D51 /* AccountBookBG.jpg */; };
 		E4C2B2BA1B0F289200230249 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C2B2B91B0F289200230249 /* PhotoViewController.m */; };
-		E4D7EC5B1A4299EF00C35931 /* TimeInformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D7EC5A1A4299EF00C35931 /* TimeInformationController.m */; };
 		E4E265981AFB07E5002019F5 /* ImportUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E265971AFB07E5002019F5 /* ImportUserViewController.m */; };
 		E4E2659B1AFB39B1002019F5 /* ClassificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E2659A1AFB39B1002019F5 /* ClassificationsTableViewController.m */; };
 		E4E2659E1AFB5A62002019F5 /* AccountsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E2659D1AFB5A62002019F5 /* AccountsTableViewController.m */; };
@@ -161,6 +162,10 @@
 		E409F28D1AE8CD2E001C55C6 /* CoreDataImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataImporter.h; sourceTree = "<group>"; };
 		E409F28E1AE8CD2E001C55C6 /* CoreDataImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataImporter.m; sourceTree = "<group>"; };
 		E422F8DA1AEC949500F5BD0C /* menuBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menuBackground.jpg; sourceTree = "<group>"; };
+		E42AF1DB1B21CBF0006DC633 /* TimeInformationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeInformationTableViewController.h; sourceTree = "<group>"; };
+		E42AF1DC1B21CBF0006DC633 /* TimeInformationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeInformationTableViewController.m; sourceTree = "<group>"; };
+		E42AF1DE1B21D4E0006DC633 /* TimeInformationNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeInformationNavigationViewController.h; sourceTree = "<group>"; };
+		E42AF1DF1B21D4E0006DC633 /* TimeInformationNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeInformationNavigationViewController.m; sourceTree = "<group>"; };
 		E42F24701AFD118800F5216E /* SelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectorView.h; sourceTree = "<group>"; };
 		E42F24711AFD118800F5216E /* SelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectorView.m; sourceTree = "<group>"; };
 		E433688E1AF4E209005F7BC4 /* SystemInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemInit.h; sourceTree = "<group>"; };
@@ -385,8 +390,6 @@
 		E4C29DAA1A371D5600003D51 /* AccountBookBG.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = AccountBookBG.jpg; sourceTree = "<group>"; };
 		E4C2B2B81B0F289200230249 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		E4C2B2B91B0F289200230249 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
-		E4D7EC591A4299EF00C35931 /* TimeInformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeInformationController.h; sourceTree = "<group>"; };
-		E4D7EC5A1A4299EF00C35931 /* TimeInformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeInformationController.m; sourceTree = "<group>"; };
 		E4E265961AFB07E5002019F5 /* ImportUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportUserViewController.h; sourceTree = "<group>"; };
 		E4E265971AFB07E5002019F5 /* ImportUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportUserViewController.m; sourceTree = "<group>"; };
 		E4E265991AFB39B1002019F5 /* ClassificationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassificationsTableViewController.h; sourceTree = "<group>"; };
@@ -809,8 +812,10 @@
 				E4C215FD1ADF844D00AEC554 /* RegisterViewController.m */,
 				E49F6B3C1B18BACF0009CC9A /* SynchronizeViewController.h */,
 				E49F6B3D1B18BACF0009CC9A /* SynchronizeViewController.m */,
-				E4D7EC591A4299EF00C35931 /* TimeInformationController.h */,
-				E4D7EC5A1A4299EF00C35931 /* TimeInformationController.m */,
+				E42AF1DE1B21D4E0006DC633 /* TimeInformationNavigationViewController.h */,
+				E42AF1DF1B21D4E0006DC633 /* TimeInformationNavigationViewController.m */,
+				E42AF1DB1B21CBF0006DC633 /* TimeInformationTableViewController.h */,
+				E42AF1DC1B21CBF0006DC633 /* TimeInformationTableViewController.m */,
 				E4A963931B12352C00EF0EE6 /* MainTableViewController.h */,
 				E4A963941B12352C00EF0EE6 /* MainTableViewController.m */,
 				E4A963A01B12AE7000EF0EE6 /* MenuRootViewController.h */,
@@ -1005,6 +1010,7 @@
 				E49AC0EA1B159795009D996D /* DaoManager.m in Sources */,
 				E401EE441A3FFF11004EAF7C /* AddClassificationViewController.m in Sources */,
 				E4A9639F1B12AD6C00EF0EE6 /* UIViewController+RESideMenu.m in Sources */,
+				E42AF1E01B21D4E0006DC633 /* TimeInformationNavigationViewController.m in Sources */,
 				E48F38C71AEA2FE30039157D /* CoreDataHelper.m in Sources */,
 				E4B4C8DE1B1D713C00B9ACD5 /* Account.m in Sources */,
 				E400B8B71AFE6C7900B31D26 /* AddRecordViewController.m in Sources */,
@@ -1029,6 +1035,7 @@
 				E4A5BC311B196C6B001AA69F /* ClassificationData.m in Sources */,
 				E43ECDCB1AEF302D00CB3C46 /* AFURLConnectionOperation.m in Sources */,
 				E4B4C8F01B1D713C00B9ACD5 /* Shop.m in Sources */,
+				E42AF1DD1B21CBF0006DC633 /* TimeInformationTableViewController.m in Sources */,
 				E48EA0B51B17FE7F008890DC /* Synchronization.m in Sources */,
 				E4C2B2BA1B0F289200230249 /* PhotoViewController.m in Sources */,
 				E4B4C8EA1B1D713C00B9ACD5 /* Photo.m in Sources */,
@@ -1055,7 +1062,6 @@
 				E47C58E41B1C96BF009A3700 /* AccountHistoryData.m in Sources */,
 				E43CC5331A33251100146C77 /* main.m in Sources */,
 				E43ECDC71AEF302D00CB3C46 /* AFHTTPRequestOperationManager.m in Sources */,
-				E4D7EC5B1A4299EF00C35931 /* TimeInformationController.m in Sources */,
 				E4A5BC2E1B1961DF001AA69F /* Reachability.m in Sources */,
 				E47B7F7C1B14DD74003943E3 /* AccountViewController.m in Sources */,
 				E48EA0AF1B17F8AA008890DC /* NSObject+KJSerializer.m in Sources */,
