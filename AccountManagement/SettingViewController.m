@@ -17,7 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tabBarController.tabBar.selectedItem.selectedImage=[UIImage imageNamed:@"tab_setting_selected"];
-
 }
 
 @end

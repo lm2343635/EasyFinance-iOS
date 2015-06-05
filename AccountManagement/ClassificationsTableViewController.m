@@ -26,6 +26,7 @@
     [super viewDidLoad];
     dao=[[DaoManager alloc] init];
     loginedUser=[dao.userDao getLoginedUser];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated {

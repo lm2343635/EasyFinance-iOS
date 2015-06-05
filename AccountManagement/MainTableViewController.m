@@ -40,7 +40,10 @@
     AccountBook *usingAccountBook=loginedUser.usingAccountBook;
     //设置TabBar选中图标和颜色
     self.tabBarController.tabBar.selectedItem.selectedImage=[UIImage imageNamed:@"tab_main_selected"];
-    self.tabBarController.tabBar.tintColor=[UIColor colorWithRed:0/255.0 green:136/255.0 blue:0/255.0 alpha:1];
+    self.tabBarController.tabBar.tintColor=[UIColor colorWithRed:TintColorRed
+                                                           green:TintColorGreen
+                                                            blue:TintColorBlue
+                                                           alpha:TintColorAlpha];
     //设置顶部本月收支信息和正在使用的账本信息
     self.timeLabel.text=[DateTool formateDate:[NSDate date] withFormat:DateFormatLocalMonthYear];
     self.usingAccountBookNameLabel.text=usingAccountBook.abname;

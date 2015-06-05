@@ -24,6 +24,11 @@
 - (void)viewDidLoad {
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    //设置TabBar选中的颜色
+    self.tabBarController.tabBar.tintColor=[UIColor colorWithRed:TintColorRed
+                                                           green:TintColorGreen
+                                                            blue:TintColorBlue
+                                                           alpha:TintColorAlpha];
     [super viewDidLoad];
     imagePickerController=[[UIImagePickerController alloc] init];
     imagePickerController.delegate=self;

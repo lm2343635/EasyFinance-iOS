@@ -37,6 +37,7 @@
 		E45023551AF0C1C0006B12D0 /* launch_screen_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E45023541AF0C1C0006B12D0 /* launch_screen_bg.png */; };
 		E45023581AF0DBC6006B12D0 /* InternetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E45023571AF0DBC6006B12D0 /* InternetHelper.m */; };
 		E450235C1AF10DE1006B12D0 /* CreateAccountBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E450235B1AF10DE1006B12D0 /* CreateAccountBookViewController.m */; };
+		E45B616C1B21A6DC00049084 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E45B616B1B21A6DC00049084 /* SettingsTableViewController.m */; };
 		E45E8AED1B1178FC0056F320 /* TransferListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E8AEC1B1178FC0056F320 /* TransferListTableViewController.m */; };
 		E45E8AF01B1180AF0056F320 /* TransferMonthlyStatisticalData.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E8AEF1B1180AF0056F320 /* TransferMonthlyStatisticalData.m */; };
 		E45E8AF31B1194D90056F320 /* TransferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E45E8AF21B1194D90056F320 /* TransferViewController.m */; };
@@ -207,6 +208,8 @@
 		E45023571AF0DBC6006B12D0 /* InternetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetHelper.m; sourceTree = "<group>"; };
 		E450235A1AF10DE1006B12D0 /* CreateAccountBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountBookViewController.h; sourceTree = "<group>"; };
 		E450235B1AF10DE1006B12D0 /* CreateAccountBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountBookViewController.m; sourceTree = "<group>"; };
+		E45B616A1B21A6DC00049084 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		E45B616B1B21A6DC00049084 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		E45E8AEB1B1178FC0056F320 /* TransferListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferListTableViewController.h; sourceTree = "<group>"; };
 		E45E8AEC1B1178FC0056F320 /* TransferListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferListTableViewController.m; sourceTree = "<group>"; };
 		E45E8AEE1B1180AF0056F320 /* TransferMonthlyStatisticalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferMonthlyStatisticalData.h; sourceTree = "<group>"; };
@@ -447,6 +450,8 @@
 				E4E2659A1AFB39B1002019F5 /* ClassificationsTableViewController.m */,
 				E401EE481A402927004EAF7C /* ModifyClassificationController.h */,
 				E401EE491A402927004EAF7C /* ModifyClassificationController.m */,
+				E45B616A1B21A6DC00049084 /* SettingsTableViewController.h */,
+				E45B616B1B21A6DC00049084 /* SettingsTableViewController.m */,
 				E47B7F7D1B14DDD4003943E3 /* SettingViewController.h */,
 				E47B7F7E1B14DDD4003943E3 /* SettingViewController.m */,
 				E4E2659F1AFB5A7F002019F5 /* ShopsTableViewController.h */,
@@ -1034,6 +1039,7 @@
 				E4A2131C1B0106EC00105FD3 /* AutoTextFiled.m in Sources */,
 				E4B4C8E71B1D713C00B9ACD5 /* AccountHistory.m in Sources */,
 				E4A963A51B12C0A400EF0EE6 /* LeftMenuViewController.m in Sources */,
+				E45B616C1B21A6DC00049084 /* SettingsTableViewController.m in Sources */,
 				E4B4C8DB1B1D713C00B9ACD5 /* Transfer.m in Sources */,
 				E4FA68AA1A669B47007AC9AE /* AddSpendViewController.m in Sources */,
 				E43CC5361A33251100146C77 /* AppDelegate.m in Sources */,

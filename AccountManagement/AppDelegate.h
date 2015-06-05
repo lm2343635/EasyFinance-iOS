@@ -20,6 +20,11 @@
 
 #define KeyboardHeight 290.0
 
+#define TintColorRed 0/255.0
+#define TintColorGreen 136/255.0
+#define TintColorBlue 0/255.0
+#define TintColorAlpha 1
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

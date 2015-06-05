@@ -38,6 +38,11 @@
     [super viewDidLoad];
     dao=[[DaoManager alloc] init];
     loginedUser=[dao.userDao getLoginedUser];
+    //设置TabBar选中文字的颜色
+    self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:TintColorRed
+                                                                      green:TintColorGreen
+                                                                       blue:TintColorBlue
+                                                                      alpha:TintColorAlpha];
     //默认显示今年的数据
     yearDate=[NSDate date];
     //默认显示第一个月的详细视图
