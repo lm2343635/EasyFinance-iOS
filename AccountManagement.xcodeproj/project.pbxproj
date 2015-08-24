@@ -10,6 +10,7 @@
 		E400B8B71AFE6C7900B31D26 /* AddRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E400B8B61AFE6C7900B31D26 /* AddRecordViewController.m */; };
 		E401EE441A3FFF11004EAF7C /* AddClassificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E401EE431A3FFF11004EAF7C /* AddClassificationViewController.m */; };
 		E401EE4A1A402927004EAF7C /* ModifyClassificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E401EE491A402927004EAF7C /* ModifyClassificationController.m */; };
+		E4057F801B8ACEAE0004FE54 /* FindPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4057F7F1B8ACEAE0004FE54 /* FindPasswordViewController.m */; };
 		E409F28F1AE8CD2E001C55C6 /* CoreDataImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = E409F28E1AE8CD2E001C55C6 /* CoreDataImporter.m */; };
 		E422F8DB1AEC949500F5BD0C /* menuBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E422F8DA1AEC949500F5BD0C /* menuBackground.jpg */; };
 		E42AF1DD1B21CBF0006DC633 /* TimeInformationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E42AF1DC1B21CBF0006DC633 /* TimeInformationTableViewController.m */; };
@@ -159,6 +160,8 @@
 		E401EE431A3FFF11004EAF7C /* AddClassificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddClassificationViewController.m; sourceTree = "<group>"; };
 		E401EE481A402927004EAF7C /* ModifyClassificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyClassificationController.h; sourceTree = "<group>"; };
 		E401EE491A402927004EAF7C /* ModifyClassificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyClassificationController.m; sourceTree = "<group>"; };
+		E4057F7E1B8ACEAE0004FE54 /* FindPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPasswordViewController.h; sourceTree = "<group>"; };
+		E4057F7F1B8ACEAE0004FE54 /* FindPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPasswordViewController.m; sourceTree = "<group>"; };
 		E409F28D1AE8CD2E001C55C6 /* CoreDataImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataImporter.h; sourceTree = "<group>"; };
 		E409F28E1AE8CD2E001C55C6 /* CoreDataImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataImporter.m; sourceTree = "<group>"; };
 		E422F8DA1AEC949500F5BD0C /* menuBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menuBackground.jpg; sourceTree = "<group>"; };
@@ -798,6 +801,8 @@
 			children = (
 				E450235A1AF10DE1006B12D0 /* CreateAccountBookViewController.h */,
 				E450235B1AF10DE1006B12D0 /* CreateAccountBookViewController.m */,
+				E4057F7E1B8ACEAE0004FE54 /* FindPasswordViewController.h */,
+				E4057F7F1B8ACEAE0004FE54 /* FindPasswordViewController.m */,
 				E4E265961AFB07E5002019F5 /* ImportUserViewController.h */,
 				E4E265971AFB07E5002019F5 /* ImportUserViewController.m */,
 				E46423AD1B0A02AC00FE40D9 /* LatestRecordTableViewController.h */,
@@ -972,6 +977,7 @@
 				E47B7F7F1B14DDD4003943E3 /* SettingViewController.m in Sources */,
 				E49AC0E31B159795009D996D /* IconDao.m in Sources */,
 				E476104C1B1031CC00893D09 /* RecordListTableViewController.m in Sources */,
+				E4057F801B8ACEAE0004FE54 /* FindPasswordViewController.m in Sources */,
 				E4C2161D1ADFA9F100AEC554 /* AddAccountBookViewController.m in Sources */,
 				E45E8B141B11A2390056F320 /* MJRefreshGifHeader.m in Sources */,
 				E49AC0E51B159795009D996D /* RecordDao.m in Sources */,

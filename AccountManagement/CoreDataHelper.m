@@ -112,8 +112,10 @@
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     if ([_context hasChanges]) {
         NSError *error=nil;
-        if([_context save:&error])
-            NSLog(@"_context saved changes to persistent store.");
+        if([_context save:&error]) {
+            if(DEBUG==1)
+                NSLog(@"_context saved changes to persistent store.");
+        }
         else
             NSLog(@"Failed to save _context : %@",error);
     }else{

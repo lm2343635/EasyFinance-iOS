@@ -27,7 +27,11 @@
     [super viewDidLoad];
     dao=[[DaoManager alloc] init];
     loginedUser=[dao.userDao getLoginedUser];
-    
+    //设置TabBar选中文字的颜色
+    self.navigationController.navigationBar.tintColor=[UIColor colorWithRed:TintColorRed
+                                                                      green:TintColorGreen
+                                                                       blue:TintColorBlue
+                                                                      alpha:TintColorAlpha];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
