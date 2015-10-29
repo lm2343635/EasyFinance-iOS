@@ -13,8 +13,6 @@
 #include <arpa/inet.h>
 
 #define Domain @"easy.fczm.pw"
-//#define Domain @"120.25.237.244:8080/EasyFinanceWeb"
-
 
 #define InteretTestDomain @"easy.fczm.pw"
 
