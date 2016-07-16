@@ -22,7 +22,6 @@
 		E43CC5391A33251100146C77 /* AccountManagement.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E43CC5371A33251100146C77 /* AccountManagement.xcdatamodeld */; };
 		E43CC53F1A33251100146C77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E43CC53D1A33251100146C77 /* Main.storyboard */; };
 		E43CC5411A33251100146C77 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E43CC5401A33251100146C77 /* Images.xcassets */; };
-		E43CC5441A33251100146C77 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E43CC5421A33251100146C77 /* LaunchScreen.xib */; };
 		E43ECDC61AEF302D00CB3C46 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E43ECDB41AEF302D00CB3C46 /* AFHTTPRequestOperation.m */; };
 		E43ECDC71AEF302D00CB3C46 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E43ECDB61AEF302D00CB3C46 /* AFHTTPRequestOperationManager.m */; };
 		E43ECDC81AEF302D00CB3C46 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E43ECDB81AEF302D00CB3C46 /* AFHTTPSessionManager.m */; };
@@ -36,6 +35,7 @@
 		E4450A6C1AFC971400294BB0 /* TemplatesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4450A6B1AFC971400294BB0 /* TemplatesTableViewController.m */; };
 		E4450A6F1AFCA8CD00294BB0 /* CoreDatePickerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = E4450A6E1AFCA8CD00294BB0 /* CoreDatePickerTextField.m */; };
 		E449D8481AFBBF2E00DFD095 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E449D8471AFBBF2E00DFD095 /* logo.png */; };
+		E44A61BC1D39FF2B003501B2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E44A61BB1D39FF2B003501B2 /* Launch Screen.storyboard */; };
 		E45023551AF0C1C0006B12D0 /* launch_screen_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E45023541AF0C1C0006B12D0 /* launch_screen_bg.png */; };
 		E45023581AF0DBC6006B12D0 /* InternetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E45023571AF0DBC6006B12D0 /* InternetHelper.m */; };
 		E450235C1AF10DE1006B12D0 /* CreateAccountBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E450235B1AF10DE1006B12D0 /* CreateAccountBookViewController.m */; };
@@ -179,7 +179,6 @@
 		E43CC5381A33251100146C77 /* AccountManagement.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AccountManagement.xcdatamodel; sourceTree = "<group>"; };
 		E43CC53E1A33251100146C77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E43CC5401A33251100146C77 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E43CC5431A33251100146C77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E43CC54E1A33251200146C77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E43ECDB31AEF302D00CB3C46 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		E43ECDB41AEF302D00CB3C46 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
@@ -207,6 +206,7 @@
 		E4450A6D1AFCA8CD00294BB0 /* CoreDatePickerTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDatePickerTextField.h; sourceTree = "<group>"; };
 		E4450A6E1AFCA8CD00294BB0 /* CoreDatePickerTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDatePickerTextField.m; sourceTree = "<group>"; };
 		E449D8471AFBBF2E00DFD095 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		E44A61BB1D39FF2B003501B2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E45023541AF0C1C0006B12D0 /* launch_screen_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_screen_bg.png; sourceTree = "<group>"; };
 		E45023561AF0DBC6006B12D0 /* InternetHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetHelper.h; sourceTree = "<group>"; };
 		E45023571AF0DBC6006B12D0 /* InternetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetHelper.m; sourceTree = "<group>"; };
@@ -526,7 +526,7 @@
 				E43CC5351A33251100146C77 /* AppDelegate.m */,
 				E43CC53D1A33251100146C77 /* Main.storyboard */,
 				E43CC5401A33251100146C77 /* Images.xcassets */,
-				E43CC5421A33251100146C77 /* LaunchScreen.xib */,
+				E44A61BB1D39FF2B003501B2 /* Launch Screen.storyboard */,
 			);
 			path = AccountManagement;
 			sourceTree = "<group>";
@@ -916,9 +916,9 @@
 				E45023551AF0C1C0006B12D0 /* launch_screen_bg.png in Resources */,
 				E45E8B0F1B11A2390056F320 /* MJRefresh.bundle in Resources */,
 				E449D8481AFBBF2E00DFD095 /* logo.png in Resources */,
+				E44A61BC1D39FF2B003501B2 /* Launch Screen.storyboard in Resources */,
 				E4C270261AF61BC300823426 /* SYS_NULL_USER_PHOTO.png in Resources */,
 				E43CC53F1A33251100146C77 /* Main.storyboard in Resources */,
-				E43CC5441A33251100146C77 /* LaunchScreen.xib in Resources */,
 				E4C29DAB1A371D5600003D51 /* AccountBookBG.jpg in Resources */,
 				E4C29DA91A3717F200003D51 /* main_head.jpg in Resources */,
 				E422F8DB1AEC949500F5BD0C /* menuBackground.jpg in Resources */,
@@ -1089,14 +1089,6 @@
 				E43CC53E1A33251100146C77 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		E43CC5421A33251100146C77 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E43CC5431A33251100146C77 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
