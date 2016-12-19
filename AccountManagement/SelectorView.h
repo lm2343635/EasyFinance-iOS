@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define PickerSelectorDebug 0
+#define PickerSelectorDebug 1
 
 //左侧带一张图片的选择器
 #define SelectorTypeHasAnIcon 0

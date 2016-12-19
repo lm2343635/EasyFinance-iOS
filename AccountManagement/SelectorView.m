@@ -64,8 +64,9 @@
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     //选择器正在被其他按钮使用时不能被当前按钮调用
     if(isUsing) {
-        if(DEBUG==1&&PickerSelectorDebug==1)
+        if(DEBUG && PickerSelectorDebug ) {
             NSLog(@"Selector is using by other button.");
+        }
         [Util showAlert:SelectorBeUsingTip];
         return NO;
     }else if(selectorData.count==0) {//选择器数据是否为空
@@ -79,6 +80,9 @@
     isUsing=YES;
     //设置选择器高度
     seletorHeight=self.frame.size.height;
+    if(DEBUG && PickerSelectorDebug ) {
+        NSLog(@"Selector height is %f px.", seletorHeight);
+    }
     return YES;
 }
 
@@ -168,25 +172,35 @@
 #pragma mark - Action
 //显示选择器
 -(void)showSelector {
-    if(DEBUG==1&&PickerSelectorDebug==1)
+    if(DEBUG && PickerSelectorDebug) {
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    }
     CGPoint center=self.center;
-    if(DEBUG==1&&PickerSelectorDebug==1)
+    if(DEBUG && PickerSelectorDebug) {
         NSLog(@"Selector start from (%f,%f)",center.x,center.y);
-    [UIView animateWithDuration:AnimationDurationTime animations:^{
+    }
+    //[UIView animateWithDuration:AnimationDurationTime animations:^{
         self.center=CGPointMake(center.x, center.y-seletorHeight);
-    }];
+        if(DEBUG && PickerSelectorDebug) {
+            NSLog(@"Selector end with (%f,%f)",self.center.x,self.center.y);
+        }
+    //}];
 }
 
 //隐藏选择器
 -(void)hideSelector {
-    if(DEBUG==1&&PickerSelectorDebug==1)
+    if(DEBUG && PickerSelectorDebug) {
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
+    }
     CGPoint center=self.center;
-    if(DEBUG==1&&PickerSelectorDebug==1)
+    if(DEBUG && PickerSelectorDebug) {
         NSLog(@"Selector start from (%f,%f)",center.x,center.y);
+    }
     [UIView animateWithDuration:AnimationDurationTime animations:^{
         self.center=CGPointMake(center.x, center.y+seletorHeight);
+        if(DEBUG && PickerSelectorDebug) {
+            NSLog(@"Selector end with (%f,%f)",self.center.x,self.center.y);
+        }
     }];
 }
 
