@@ -1,4 +1,4 @@
-# AccountManagement
+# iOS Client of Easy finance
 This is iOS client of Easy Finance - An individual finacial management application.
 
 Easy finance is my graduation project, it includes a Web application and an iOS Application. 
