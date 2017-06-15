@@ -16,7 +16,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.manager=[AFHTTPRequestOperationManager manager];
+    self.manager = [AFHTTPRequestOperationManager manager];
     self.manager.responseSerializer=[[AFCompoundResponseSerializer alloc] init];
     return YES;
 }
@@ -47,10 +47,11 @@
     [[self cdh] saveContext];
 }
 
--(CoreDataHelper *)cdh{
-    if(DEBUG==1&&APP_DELEGATE_DEBUG==1)
+-(CoreDataHelper *)cdh {
+    if (DEBUG && APP_DELEGATE_DEBUG) {
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    if(!_coreDataHelper){
+    }
+    if (!_coreDataHelper) {
         static dispatch_once_t predicate;
         dispatch_once(&predicate, ^{
             _coreDataHelper = [CoreDataHelper new];
