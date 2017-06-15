@@ -31,6 +31,7 @@
 @property (nonatomic,strong,readonly) CoreDataHelper *coreDataHelper;
 @property (nonatomic,strong) AFHTTPRequestOperationManager *manager;
 
--(CoreDataHelper *)cdh;
+- (CoreDataHelper *)cdh;
+
 @end
 

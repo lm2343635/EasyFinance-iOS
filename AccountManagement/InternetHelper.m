@@ -10,14 +10,14 @@
 
 @implementation InternetHelper
 
-+(AFHTTPRequestOperationManager *)getRequestOperationManager {
++ (AFHTTPRequestOperationManager *)getRequestOperationManager {
     if(DEBUG==1)
         NSLog(@"Running InternetHelper '%@'",NSStringFromSelector(_cmd));
-    AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     return delegate.manager;
 }
 
-+(NSString *)createUrl:(NSString *)relativePosition {
++ (NSString *)createUrl:(NSString *)relativePosition {
     NSString *url=[NSString stringWithFormat:@"http://%@/%@",Domain,relativePosition];
     if(DEBUG==1) {
         NSLog(@"Running InternetHelper '%@'",NSStringFromSelector(_cmd));
@@ -26,14 +26,14 @@
     return url;
 }
 
-+(NSInteger)testNetStatus {
++ (NSInteger)testNetStatus {
     if(DEBUG==1)
         NSLog(@"Running InternetHelper '%@'",NSStringFromSelector(_cmd));
     Reachability *reach=[Reachability reachabilityWithHostName:InteretTestDomain];
     return [reach currentReachabilityStatus];
 }
 
-+(NSString *)getDeviceInfo {
++ (NSString *)getDeviceInfo {
     //iOS设备信息
     NSString *iOSDeviceInfo=[NSString stringWithFormat:@"%@ iOS %@",
                              [[UIDevice currentDevice] name],

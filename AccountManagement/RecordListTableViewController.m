@@ -11,7 +11,7 @@
 #import "DaoManager.h"
 #import "DateTool.h"
 #import "RecordMonthlyStatisticalData.h"
-#import "MJRefresh.h"
+#import <MJRefresh/MJRefresh.h>
 
 @interface RecordListTableViewController ()
 
@@ -49,17 +49,21 @@
     showMonthIndex=0;
     //去掉表格分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     //设置下拉加载上一年的数据
-    [self.tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(loadListOfLastYear)];
-    [self.tableView.header setTitle:@"Load record list of last year" forState:MJRefreshHeaderStateIdle];
-    [self.tableView.header setTitle:@"Release to load" forState:MJRefreshHeaderStatePulling];
-    [self.tableView.header setTitle:@"Loading ..." forState:MJRefreshHeaderStateRefreshing];
-    self.tableView.header.updatedTimeHidden = YES;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        yearDate = [DateTool getADayOfLastYear:yearDate];
+        [self setDataByYear];
+        [self.tableView.mj_header endRefreshing];
+    }];
+
     //设置上拉加载下一年的数据
-    [self.tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(loadListOfNextYear)];
-    [self.tableView.footer setTitle:@"Drag up to load record list of last year" forState:MJRefreshFooterStateIdle];
-    [self.tableView.footer setTitle:@"Loading ..." forState:MJRefreshFooterStateRefreshing];
-    [self.tableView.footer setTitle:@"No more data" forState:MJRefreshFooterStateNoMoreData];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        yearDate = [DateTool getADayOfNextYear:yearDate];
+        [self setDataByYear];
+        [self.tableView.mj_footer endRefreshing];
+    }];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -197,21 +201,4 @@
     [self.tableView reloadData];
 }
 
-//加载上一年的数据
--(void)loadListOfLastYear {
-    if(DEBUG==1)
-        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    yearDate=[DateTool getADayOfLastYear:yearDate];
-    [self setDataByYear];
-    [self.tableView.header endRefreshing];
-}
-
-//加载下一年的数据
--(void)loadListOfNextYear {
-    if(DEBUG==1)
-        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    yearDate=[DateTool getADayOfNextYear:yearDate];
-    [self setDataByYear];
-    [self.tableView.footer endRefreshing];
-}
 @end

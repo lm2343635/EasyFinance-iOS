@@ -11,7 +11,7 @@
 #import "DaoManager.h"
 #import "DateTool.h"
 #import "TransferMonthlyStatisticalData.h"
-#import "MJRefresh.h"
+#import <MJRefresh/MJRefresh.h>
 
 @interface TransferListTableViewController ()
 
@@ -35,27 +35,31 @@
     if(DEBUG==1)
         NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
     [super viewDidLoad];
-    dao=[[DaoManager alloc] init];
-    loginedUser=[dao.userDao getLoginedUser];
+    dao = [[DaoManager alloc] init];
+    loginedUser = [dao.userDao getLoginedUser];
     //默认显示今年的数据
-    yearDate=[NSDate date];
+    yearDate = [NSDate date];
     //默认显示第一个月的详细视图
-    showMonthIndex=0;
+    showMonthIndex = 0;
     //进度条最大值默认值为0
-    progressMaxValue=0;
+    progressMaxValue = 0;
     //去掉表格分割线
-    self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     //设置下拉加载上一年的数据
-    [self.tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(loadListOfLastYear)];
-    [self.tableView.header setTitle:@"Load transfer list of last year" forState:MJRefreshHeaderStateIdle];
-    [self.tableView.header setTitle:@"Release to load" forState:MJRefreshHeaderStatePulling];
-    [self.tableView.header setTitle:@"Loading ..." forState:MJRefreshHeaderStateRefreshing];
-    self.tableView.header.updatedTimeHidden = YES;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        yearDate = [DateTool getADayOfLastYear:yearDate];
+        [self setDataByYear];
+        [self.tableView.mj_header endRefreshing];
+    }];
+    
     //设置上拉加载下一年的数据
-    [self.tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(loadListOfNextYear)];
-    [self.tableView.footer setTitle:@"Drag up to load transfer list of last year" forState:MJRefreshFooterStateIdle];
-    [self.tableView.footer setTitle:@"Loading ..." forState:MJRefreshFooterStateRefreshing];
-    [self.tableView.footer setTitle:@"No more data" forState:MJRefreshFooterStateNoMoreData];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        yearDate = [DateTool getADayOfNextYear:yearDate];
+        [self setDataByYear];
+        [self.tableView.mj_footer endRefreshing];
+    }];
+
     //根据当前默认年份设置要显示的数据
     [self setDataByYear];
 }
@@ -177,21 +181,4 @@
     [self.tableView reloadData];
 }
 
-//加载上一年的数据
--(void)loadListOfLastYear {
-    if(DEBUG==1)
-        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    yearDate=[DateTool getADayOfLastYear:yearDate];
-    [self setDataByYear];
-    [self.tableView.header endRefreshing];
-}
-
-//加载下一年的数据
--(void)loadListOfNextYear {
-    if(DEBUG==1)
-        NSLog(@"Running %@ '%@'",self.class,NSStringFromSelector(_cmd));
-    yearDate=[DateTool getADayOfNextYear:yearDate];
-    [self setDataByYear];
-    [self.tableView.footer endRefreshing];
-}
 @end
