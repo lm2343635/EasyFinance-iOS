@@ -119,16 +119,6 @@
 		E4FA68B01A669B68007AC9AE /* AddTransferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FA68AF1A669B68007AC9AE /* AddTransferViewController.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		E43CC54A1A33251200146C77 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E43CC5251A33251100146C77 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E43CC52C1A33251100146C77;
-			remoteInfo = AccountManagement;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		2F0126B9055BCB27ACCC5AE6 /* Pods-AccountManagement.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountManagement.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AccountManagement/Pods-AccountManagement.debug.xcconfig"; sourceTree = "<group>"; };
 		B19E640D3286D6FD274EB2DE /* Pods-AccountManagement.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountManagement.release.xcconfig"; path = "Pods/Target Support Files/Pods-AccountManagement/Pods-AccountManagement.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,7 +149,6 @@
 		E43CC5381A33251100146C77 /* AccountManagement.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AccountManagement.xcdatamodel; sourceTree = "<group>"; };
 		E43CC53E1A33251100146C77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E43CC5401A33251100146C77 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E43CC54E1A33251200146C77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4450A671AFC96F900294BB0 /* AddTemplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTemplateViewController.h; sourceTree = "<group>"; };
 		E4450A681AFC96F900294BB0 /* AddTemplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTemplateViewController.m; sourceTree = "<group>"; };
 		E4450A6A1AFC971400294BB0 /* TemplatesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatesTableViewController.h; sourceTree = "<group>"; };
@@ -214,7 +203,6 @@
 		E48F38C51AEA2FE30039157D /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		E48F38C61AEA2FE30039157D /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		E491C0241BA85DFC00CB3632 /* EasyFinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyFinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E491C0251BA85DFC00CB3632 /* EasyFinanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyFinanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E49AC0C81B159795009D996D /* AccountBookDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountBookDao.h; sourceTree = "<group>"; };
 		E49AC0C91B159795009D996D /* AccountBookDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountBookDao.m; sourceTree = "<group>"; };
 		E49AC0CA1B159795009D996D /* AccountDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountDao.h; sourceTree = "<group>"; };
@@ -353,13 +341,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E43CC5461A33251200146C77 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -448,9 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				E43CC52F1A33251100146C77 /* AccountManagement */,
-				E43CC54C1A33251200146C77 /* AccountManagementTests */,
 				E491C0241BA85DFC00CB3632 /* EasyFinance.app */,
-				E491C0251BA85DFC00CB3632 /* EasyFinanceTests.xctest */,
 				971397E86609AA913112CF63 /* Pods */,
 				587229478020BA63D65B645F /* Frameworks */,
 			);
@@ -492,22 +471,6 @@
 				E4C29DA81A3717F200003D51 /* main_head.jpg */,
 				E43CC5311A33251100146C77 /* Info.plist */,
 				E43CC5321A33251100146C77 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E43CC54C1A33251200146C77 /* AccountManagementTests */ = {
-			isa = PBXGroup;
-			children = (
-				E43CC54D1A33251200146C77 /* Supporting Files */,
-			);
-			path = AccountManagementTests;
-			sourceTree = "<group>";
-		};
-		E43CC54D1A33251200146C77 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E43CC54E1A33251200146C77 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -731,24 +694,6 @@
 			productReference = E491C0241BA85DFC00CB3632 /* EasyFinance.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E43CC5481A33251200146C77 /* AccountManagementTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E43CC5561A33251200146C77 /* Build configuration list for PBXNativeTarget "AccountManagementTests" */;
-			buildPhases = (
-				E43CC5451A33251200146C77 /* Sources */,
-				E43CC5461A33251200146C77 /* Frameworks */,
-				E43CC5471A33251200146C77 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E43CC54B1A33251200146C77 /* PBXTargetDependency */,
-			);
-			name = AccountManagementTests;
-			productName = AccountManagementTests;
-			productReference = E491C0251BA85DFC00CB3632 /* EasyFinanceTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -760,11 +705,7 @@
 				TargetAttributes = {
 					E43CC52C1A33251100146C77 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 5EE3Z46PC9;
-					};
-					E43CC5481A33251200146C77 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = E43CC52C1A33251100146C77;
+						DevelopmentTeam = 6ANM44X2CJ;
 					};
 				};
 			};
@@ -782,7 +723,6 @@
 			projectRoot = "";
 			targets = (
 				E43CC52C1A33251100146C77 /* AccountManagement */,
-				E43CC5481A33251200146C77 /* AccountManagementTests */,
 			);
 		};
 /* End PBXProject section */
@@ -803,13 +743,6 @@
 				E422F8DB1AEC949500F5BD0C /* menuBackground.jpg in Resources */,
 				E43CC5411A33251100146C77 /* Images.xcassets in Resources */,
 				E4C270251AF61BC300823426 /* SYS_NULL_RECORD_PHOTO.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E43CC5471A33251200146C77 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -964,22 +897,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E43CC5451A33251200146C77 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E43CC54B1A33251200146C77 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E43CC52C1A33251100146C77 /* AccountManagement */;
-			targetProxy = E43CC54A1A33251200146C77 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E43CC53D1A33251100146C77 /* Main.storyboard */ = {
@@ -1076,8 +994,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				INFOPLIST_FILE = AccountManagement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.mushare.EasyFinance;
 				PRODUCT_NAME = EasyFinance;
 				PROVISIONING_PROFILE = "";
 			};
@@ -1090,46 +1010,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				INFOPLIST_FILE = AccountManagement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.mushare.EasyFinance;
 				PRODUCT_NAME = EasyFinance;
 				PROVISIONING_PROFILE = "";
-			};
-			name = Release;
-		};
-		E43CC5571A33251200146C77 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (K6ZU7987DF)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = AccountManagementTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = EasyFinanceTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AccountManagement.app/AccountManagement";
-			};
-			name = Debug;
-		};
-		E43CC5581A33251200146C77 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (K6ZU7987DF)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = AccountManagementTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = EasyFinanceTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AccountManagement.app/AccountManagement";
 			};
 			name = Release;
 		};
@@ -1150,15 +1036,6 @@
 			buildConfigurations = (
 				E43CC5541A33251200146C77 /* Debug */,
 				E43CC5551A33251200146C77 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E43CC5561A33251200146C77 /* Build configuration list for PBXNativeTarget "AccountManagementTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E43CC5571A33251200146C77 /* Debug */,
-				E43CC5581A33251200146C77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+.idea
+
+# Xcode
+xcuserdata/
+*.moved-aside
+*.xcuserstate
+
+# Pod
+*.xcworkspace/
+Pods/
+
+# R.swift
+*.generated.swift
+
+# Ruby
+/.bundle
+/vendor/bundle
+
+# fastlane
+*.ipa
+*.app.dSYM.zip
+fastlane/README.md
+fastlane/report.xml
+fastlane/test_output/
