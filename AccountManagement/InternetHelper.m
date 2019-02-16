@@ -18,7 +18,7 @@
 }
 
 + (NSString *)createUrl:(NSString *)relativePosition {
-    NSString *url=[NSString stringWithFormat:@"http://%@/%@",Domain,relativePosition];
+    NSString *url=[NSString stringWithFormat:@"https://%@/%@",Domain,relativePosition];
     if(DEBUG==1) {
         NSLog(@"Running InternetHelper '%@'",NSStringFromSelector(_cmd));
         NSLog(@"Request URL is: %@",url);
